@@ -13,7 +13,7 @@ bar {
     }
     .leitura-outer {
         position: relative;
-        height: 90%;
+        height: 85%;
         width: 100%;
         margin: 0%;
         background-color: #f4f4f4;
@@ -21,7 +21,7 @@ bar {
         color: #000;
         border-radius: 10px;
     }
- 
+
     .leitura-inner {
         position: absolute;
         bottom: 0%;
@@ -34,15 +34,15 @@ bar {
     }
 
     .texto{
-        font-size: 300%;
-        height:6%;
+        font-size: 200%;
+        height:10%;
         width:100%;
     }
 
     .nome_do_sensor{
         font-size:100%;
-        height:4%;
+        height:5%;
         width:100%;
     }
- 
+
 }
