@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 
 import { SensorsPage } from '../pages/sensors/sensors';
 import { ConstantsPage } from '../pages/constants/constants';
-import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,7 +16,6 @@ import { BarComponent } from '../components/bar/bar';
     MyApp,
     SensorsPage,
     ConstantsPage,
-    HomePage,
     TabsPage,
     BarComponent,
   ],
@@ -30,7 +28,6 @@ import { BarComponent } from '../components/bar/bar';
     MyApp,
     SensorsPage,
     ConstantsPage,
-    HomePage,
     TabsPage
   ],
   providers: [

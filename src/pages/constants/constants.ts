@@ -6,9 +6,16 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'constants.html'
 })
 export class ConstantsPage {
+  static get parameters() {
+      return []
+  }
 
   constructor(public navCtrl: NavController) {
 
+  }
+
+  onSubmit(formData) {
+      console.log('Form submission is ', formData);
   }
 
 }
