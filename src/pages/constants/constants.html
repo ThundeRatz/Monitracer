@@ -26,10 +26,10 @@
     </ion-list>
     <ion-row>
         <ion-col width-50 style = "text-align: right">
-            <button ion-button block color = "secondary">START</button>
+            <button ion-button (click)="start()" block color = "secondary">START</button>
         </ion-col>
         <ion-col width-50 style = "text-align: right">
-            <button ion-button block color = "danger">STOP</button>
+            <button ion-button (click)="stop()" block color = "danger">STOP</button>
         </ion-col>
     </ion-row>
 

@@ -16,6 +16,14 @@ export class ConstantsPage {
 
   onSubmit(formData) {
       console.log('Form submission is ', formData);
+      // send constants
   }
-
+  start() {
+      console.log('Robot started.')
+      // send start signal
+  }
+  stop() {
+      console.log('Robot stopped.')
+      // send stop signal
+  }
 }
