@@ -1,29 +1,35 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { ViewController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'page-constants',
   templateUrl: 'constants.html'
 })
 export class ConstantsPage {
-  static get parameters() {
-      return []
+  constants: FormGroup;
+
+  constructor(public viewCtrl: ViewController, public navParams: NavParams, public formBuilder: FormBuilder) {
+    this.constants = formBuilder.group({
+      kp: [''],
+      ki: [''],
+      kd: ['']
+    });
   }
 
-  constructor(public navCtrl: NavController) {
-
+  save() {
+    console.log(this.constants.value['kp'])
+    console.log(this.constants.value['ki'])
+    console.log(this.constants.value['kd'])
   }
 
-  onSubmit(formData) {
-      console.log('Form submission is ', formData);
-      // send constants
-  }
   start() {
       console.log('Robot started.')
       // send start signal
   }
+
   stop() {
       console.log('Robot stopped.')
       // send stop signal
-  }
+}
 }

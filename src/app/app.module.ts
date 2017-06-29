@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { MyApp } from './app.component';
 
 import { SensorsPage } from '../pages/sensors/sensors';
@@ -33,6 +34,7 @@ import { BarComponent } from '../components/bar/bar';
   providers: [
     StatusBar,
     SplashScreen,
+    BluetoothSerial,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

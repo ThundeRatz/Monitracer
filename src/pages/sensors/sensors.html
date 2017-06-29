@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <ion-title>
       Sensors
     </ion-title>
@@ -8,5 +8,5 @@
 
 
 <ion-content padding>
-    <bar *ngFor="let t of teste" [nome]=t.name [leitura]=t.valor></bar>
+    <bar *ngFor="let sensor of sensores" [nome]=sensor.name [leitura]=sensor.valor></bar>
 </ion-content>

@@ -1,36 +1,36 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color = "primary">
     <ion-title>
       Constants
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content class="addtrans">
-    <ion-list inset>
-        <form #formData='ngForm' (ngSubmit)="onSubmit(formData.value)">
-            <ion-item>
-                <ion-label floating>kp</ion-label>
-                <ion-input type="text" ngControl="name"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>ki</ion-label>
-                <ion-input type="text" ngControl="name"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-label floating>kd</ion-label>
-                <ion-input type="text" ngControl="name"></ion-input>
-            </ion-item>
-            <button ion-button block>Apply</button>
-        </form>
-    </ion-list>
-    <ion-row>
+
+<ion-content padding>
+  <ion-list>
+    <form [formGroup]="constants">
+      <ion-item>
+        <ion-label floating>Kp</ion-label>
+        <ion-input formControlName="kp" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Ki</ion-label>
+        <ion-input formControlName="ki" type="text"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Kd</ion-label>
+        <ion-input formControlName="kd" type="text"></ion-input>
+      </ion-item>
+      <button block ion-button (click)="save()">Salvar</button>
+    </form>
+  </ion-list>
+  <ion-row>
         <ion-col width-50 style = "text-align: right">
             <button ion-button (click)="start()" block color = "secondary">START</button>
         </ion-col>
         <ion-col width-50 style = "text-align: right">
             <button ion-button (click)="stop()" block color = "danger">STOP</button>
         </ion-col>
-    </ion-row>
-
+  </ion-row>
 </ion-content>
