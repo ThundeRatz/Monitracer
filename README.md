@@ -1,4 +1,4 @@
-# Moainitor
+# Tracer
 
 Android app to monitor team's autonomous line follower, Tracer, through bluetooth.
 
