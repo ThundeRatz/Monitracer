@@ -43,12 +43,18 @@ export class ConstantsPage {
     let kp: number = this.constants.value['kp'];
     let ki: number = this.constants.value['ki'];
     let kd: number = this.constants.value['kd'];
-    console.log(kp);
-    console.log(ki);
-    console.log(kd);
-    this.send([0XFF, CMD_KP, kp >> 8, kp & 0xFF, 0Xfe]);
-    this.send([0XFF, CMD_KI, ki >> 8, ki & 0xFF, 0Xfe]);
-    this.send([0XFF, CMD_KD, kd >> 8, kd & 0xFF, 0Xfe]);
+    if (this.constants.value['kp'] != ""){
+      this.send([0XFF, CMD_KP, kp >> 8, kp & 0xFF, 0Xfe]);
+      console.log(kp);
+    }
+    if (this.constants.value['ki'] != ""){
+      this.send([0XFF, CMD_KI, ki >> 8, ki & 0xFF, 0Xfe]);
+      console.log(ki);
+    }
+    if (this.constants.value['kd'] != ""){
+      this.send([0XFF, CMD_KD, kd >> 8, kd & 0xFF, 0Xfe]);
+      console.log(kd);
+    }
   }
 
   start() {
