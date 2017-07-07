@@ -3,6 +3,13 @@ import { ViewController, NavParams, LoadingController, ToastController } from 'i
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+const CMD_ST = 0;
+const CMD_IN = 1;
+
+const CMD_KP = 3;
+const CMD_KI = 4;
+const CMD_KD = 5;
+
 @Component({
   selector: 'page-constants',
   templateUrl: 'constants.html'
@@ -39,17 +46,19 @@ export class ConstantsPage {
     console.log(kp);
     console.log(ki);
     console.log(kd);
-    this.send([255, 6, kp, kd, ki, 254]);
+    this.send([255, CMD_KP, kp >> 8, kp & 0xFF, 254]);
+    this.send([255, CMD_KI, ki >> 8, ki & 0xFF, 254]);
+    this.send([255, CMD_KD, kd >> 8, kd & 0xFF, 254]);
   }
 
   start() {
     console.log('Robot started.');
-    this.send([255, 4, 1, 254]);
+    this.send([255, CMD_IN, CMD_IN, CMD_IN, 254]);
   }
 
   stop() {
     console.log('Robot stopped.');
-    this.send([255, 4, 0, 254]);
+    this.send([255, CMD_ST, CMD_ST, CMD_ST, 254]);
   }
 
   connect() {
