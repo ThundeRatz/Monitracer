@@ -46,19 +46,19 @@ export class ConstantsPage {
     console.log(kp);
     console.log(ki);
     console.log(kd);
-    this.send([255, CMD_KP, kp >> 8, kp & 0xFF, 254]);
-    this.send([255, CMD_KI, ki >> 8, ki & 0xFF, 254]);
-    this.send([255, CMD_KD, kd >> 8, kd & 0xFF, 254]);
+    this.send([0XFF, CMD_KP, kp >> 8, kp & 0xFF, 0Xfe]);
+    this.send([0XFF, CMD_KI, ki >> 8, ki & 0xFF, 0Xfe]);
+    this.send([0XFF, CMD_KD, kd >> 8, kd & 0xFF, 0Xfe]);
   }
 
   start() {
     console.log('Robot started.');
-    this.send([255, CMD_IN, CMD_IN, CMD_IN, 254]);
+    this.send([0XFF, CMD_IN, CMD_IN, CMD_IN, 0Xfe]);
   }
 
   stop() {
     console.log('Robot stopped.');
-    this.send([255, CMD_ST, CMD_ST, CMD_ST, 254]);
+    this.send([0XFF, CMD_ST, CMD_ST, CMD_ST, 0Xfe]);
   }
 
   connect() {
