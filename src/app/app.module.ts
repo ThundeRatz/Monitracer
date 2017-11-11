@@ -2,7 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
-import { MyApp } from './app.component';
+import { Monitracer } from './app.component';
 
 import { SensorsPage } from '../pages/sensors/sensors';
 import { ConstantsPage } from '../pages/constants/constants';
@@ -14,7 +14,7 @@ import { BarComponent } from '../components/bar/bar';
 
 @NgModule({
   declarations: [
-    MyApp,
+    Monitracer,
     SensorsPage,
     ConstantsPage,
     TabsPage,
@@ -22,11 +22,11 @@ import { BarComponent } from '../components/bar/bar';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(Monitracer)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    Monitracer,
     SensorsPage,
     ConstantsPage,
     TabsPage
