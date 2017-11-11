@@ -9,6 +9,8 @@ const CMD_IN = 1;
 const CMD_KP = 3;
 const CMD_KI = 4;
 const CMD_KD = 5;
+const CMD_LSPD = 6;
+const CMD_RSPD = 7;
 
 @Component({
   selector: 'page-constants',
@@ -35,7 +37,9 @@ export class ConstantsPage {
     this.constants = formBuilder.group({
       kp: [''],
       ki: [''],
-      kd: ['']
+      kd: [''],
+      left_speed: [''],
+      right_speed: ['']
     });
   }
 
@@ -43,6 +47,8 @@ export class ConstantsPage {
     let kp: number = this.constants.value['kp'];
     let ki: number = this.constants.value['ki'];
     let kd: number = this.constants.value['kd'];
+    let left_speed: number = this.constants.value['left_speed'];
+    let right_speed: number = this.constants.value['right_speed']
     if (this.constants.value['kp'] != ""){
       this.send([0XFF, CMD_KP, kp >> 8, kp & 0xFF, 0Xfe]);
       console.log(kp);
@@ -54,6 +60,14 @@ export class ConstantsPage {
     if (this.constants.value['kd'] != ""){
       this.send([0XFF, CMD_KD, kd >> 8, kd & 0xFF, 0Xfe]);
       console.log(kd);
+    }
+    if (this.constants.value['left_speed'] != ""){
+      this.send([0xFF, CMD_LSPD, left_speed >> 8, left_speed & 0xFF, 0Xfe]);
+      console.log(left_speed);
+    }
+    if (this.constants.value['right_speed'] != ""){
+      this.send([0xFF, CMD_RSPD, right_speed >> 8, right_speed & 0xFF, 0Xfe]);
+      console.log(right_speed);
     }
   }
 
@@ -71,8 +85,8 @@ export class ConstantsPage {
      let loading = this.loadingCtrl.create({
       content: 'Conectando...'
     });
-
     loading.present();
+
 
     this.bt_connection = this.bt.connect(this.mac);
     this.bt_connection.subscribe(() => {
