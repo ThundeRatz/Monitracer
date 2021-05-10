@@ -29,11 +29,9 @@ Quick overview about the installation  of necessary programs to the development
      * Android Virtual Device
 3. Android SDK
    
-    if you chose the default installation of android studio, you may already have android sdk installed
-
    * Open Android Studio
    * Click in "Configure", then in "SDK Manager"
-   * Look for "Android 10 (Q)" or "Android 11 (R)" If not installed, click and download it.
+   * Look for "Android 10 (Q)" (not Android 11 (R)) If not installed, click and download it.
    * Select:
      * Android SDK Plataform 29
      * Intel x86 Atom_64 System Image OR Google APIs Intel x86 Atom System Image
