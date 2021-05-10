@@ -28,7 +28,6 @@ Quick overview about the installation  of necessary programs to the development
      * Android Studio
      * Android Virtual Device
 3. Android SDK
-   
    * Open Android Studio
    * Click in "Configure", then in "SDK Manager"
    * Look for "Android 10 (Q)" (not Android 11 (R)) If not installed, click and download it.
