@@ -13,10 +13,10 @@ import {
 
 import { Navigation } from "react-native-navigation";
 
-import {H1,H2,H3,Body,BodySecondary} from './components/typography'
-import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './components/cell'
-import {PrimaryButton, SecondaryButton} from './components/button'
-import {SmallModal} from './components/modal'
+import {H1,H2,H3,Body,BodySecondary} from './Components/typography'
+import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './Components/cell'
+import {PrimaryButton, SecondaryButton} from './Components/button'
+import {SmallModal} from './Components/modal'
 
 const HomePage = (props) => {
   const [inputValue, setInputValue] = React.useState('');

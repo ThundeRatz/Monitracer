@@ -5,7 +5,6 @@ import {
   TextInput,
 } from 'react-native';
 
-
 export const Header = (props) => {
     return <View style={styles.header}>{props.children}</View>
 }
@@ -41,6 +40,16 @@ export const TextInputCell = (props) => {
     );
 }
 
+export const ListSeparator = () => {
+    return (
+        <View style = {styles.list}>
+            <View style={styles.ListSeparator}></View>
+        </View>
+    )
+}
+
+
+
 const styles = StyleSheet.create({
     header : {
         padding: 16,
@@ -66,11 +75,21 @@ const styles = StyleSheet.create({
     vSeparatorHalf: {
         height: 16,
     },
+    ListSeparator: {
+        height: 1,
+        marginHorizontal: "10%",
+        marginVertical:"2%",
+        width: "80%",
+        backgroundColor: "#000",
+    },
     textInput : {
         backgroundColor: '#ffffff',
         height: 40,
         margin: 12,
         borderRadius: 12,
     },
+    list: {
+        flexDirection: 'row'
+    }
   });
   
