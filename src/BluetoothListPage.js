@@ -11,9 +11,9 @@ import {
   FlatList
 } from 'react-native';
 
-import {H1,H2,H3,Body,BodySecondary} from './Components/typography'
-import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './Components/cell'
-import {BTList, BluetoothEnableButton} from './Components/BTList'
+import {H1,H2,H3,Body,BodySecondary} from './components/typography'
+import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
+import {BTList, BluetoothEnableButton} from './components/BTList'
 
 export const BluetoothListPage = () => {
   
