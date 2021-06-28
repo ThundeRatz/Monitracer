@@ -67,16 +67,16 @@ export const BluetoothEnableButton = (props) =>{
 
   //const [bolEnable, setbolEnable] = useState(false);
 
-  const toggleBluetooth = () => {
-    setbolEnable(!props.bolEnable)
-    console.log("O bluetooth está ", props.bolEnable? "ligado":"desligado")
+  const toggleBluetooth = (props) => {
+    
+    console.log("O bluetooth está ", props.props.value? "ligado":"desligado")
   }
 
 
   return(
     <View style={styles.enable}>
       <BodySecondary>Ligar Bluetooth</BodySecondary>
-      <Switch onValueChange={toggleBluetooth} onValueChange={props.onValueChange}></Switch>
+      <Switch value = {props.value}  ></Switch>
       <Text style={styles.text}>{props.value?"ON":"OFF" }</Text>
     </View>
   )

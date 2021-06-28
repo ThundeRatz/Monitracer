@@ -17,8 +17,7 @@ import {BTList, BluetoothEnableButton} from './components/bluetooth_list/BTList'
 import BluetoothSerial from 'react-native-bluetooth-serial-next'
 
 export const BluetoothListPage = () => {
-
-  const connected = false;
+  
 
   const [lista, setLista] = useState([]);
   const [bolEnable, setBolEnable]= useState(false);
@@ -29,7 +28,7 @@ export const BluetoothListPage = () => {
         const enable = await BluetoothSerial.requestEnable();
         const lista = await BluetoothSerial.list();
         setLista(lista);
-        setBolEnable(enable);
+        setBolEnable(true);
         console.log(lista);
     }
     
@@ -43,7 +42,7 @@ export const BluetoothListPage = () => {
 
         remove();
     }
-}, [])
+  }, [])
 
   const enableBluetooth = async () => {
     try{
@@ -79,7 +78,7 @@ export const BluetoothListPage = () => {
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton value={bolEnable} onValueChange={toggleBluetooth}/>
+        <BluetoothEnableButton value={bolEnable} onValueChange = {toggleBluetooth}/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
       <BTList data = {lista}/>
