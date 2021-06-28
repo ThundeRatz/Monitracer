@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React,{useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,9 +12,17 @@ import {
 
 import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
-import {BTList, BluetoothEnableButton} from './components/BTList'
+import {BTList, BluetoothEnableButton} from './components/bluetooth_list/BTList'
 
 export const BluetoothListPage = () => {
+
+  const connected = false;
+
+  const [lista, setLista] = useState([]);
+  const [bolEnable, setBolEnable]= useState(false);
+
+  const renderEmpty = () => <Empty text ="Não há dispositivos conectados"/>
+
   
   const deviceList = [ //lista que vai ser obtida via bluetooth
     {

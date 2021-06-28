@@ -2,13 +2,14 @@ import React, {useState} from 'react';
 import {
     FlatList,
     View,
+    Text,
     StyleSheet,
     Switch
 } from 'react-native';
 
-import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from './cell'
-import {H1,H2,H3,Body,BodySecondary} from './typography'
-import {PrimaryButton, SecondaryButton} from './button'
+import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from '../cell'
+import {H1,H2,H3,Body,BodySecondary} from '../typography'
+import {PrimaryButton, SecondaryButton} from '../button'
 
 export const BTList = (props) => {
     const renderEmpty = () => {
@@ -51,7 +52,7 @@ export const BTList = (props) => {
     );
 }
 
-export const BluetoothEnableButton = () =>{
+export const BluetoothEnableButton = (props) =>{
 
   const [bolEnable, setbolEnable] = useState(false);
 
@@ -63,7 +64,8 @@ export const BluetoothEnableButton = () =>{
   return(
     <View style={styles.enable}>
       <BodySecondary>Ligar Bluetooth</BodySecondary>
-      <Switch onValueChange={toggleBluetooth}></Switch>
+      <Switch onValueChange={toggleBluetooth} onValueChange={props.onValueChange}></Switch>
+      <Text style={styles.text}>{props.value?"ON":"OFF" }</Text>
     </View>
   )
 };
@@ -79,5 +81,14 @@ const styles = StyleSheet.create({
       flexDirection:'row', 
       marginTop:'5%',
       marginBottom:'2%'
+    },
+    text:{
+      marginLeft:10,
+      fontSize:20,
+      fontWeight:'bold',
+      flex:1
+    },
+    switch:{
+        width:50
     }
 })
