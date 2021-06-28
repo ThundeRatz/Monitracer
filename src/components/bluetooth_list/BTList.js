@@ -12,21 +12,19 @@ import {H1,H2,H3,Body,BodySecondary} from '../typography'
 import {PrimaryButton, SecondaryButton} from '../button'
 
 export const BTList = (props) => {
-    const renderEmpty = () => {
-        return (
-          <VBox>
-            <VSeparator/>
-            <Body> Não há dispositivos disponíveis</Body>  
-          </VBox>
-        )
-      }
-    
     //se quiser que a função receba o id do item mudar o atributo onPress da função renderItem
-    const conectPress = (name) => { 
-      console.log("Conectando ao " + name)
+    const conectPress = async (device) => { 
+      try{
+        connecting = true;
+        await BluetoothSerial.connect(device.id);
+        console.log(`Connected to device ${device.name}`);  
+        ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
+      } catch{
+          console.log((err.message));
+      } 
     }
 
-    const renderItem = ({item}) => {
+    const _renderItem = ({item}) => {
          return(
           <View style={styles.wrapper}> 
             <View>
@@ -40,6 +38,15 @@ export const BTList = (props) => {
         ) 
       }
 
+    const renderEmpty = () => {
+      return (
+        <VBox>
+          <VSeparator/>
+          <Body> Não há dispositivos disponíveis</Body>  
+        </VBox>
+      )
+    }
+
     return (
         <FlatList 
             ListEmptyComponent = {renderEmpty}
@@ -47,7 +54,7 @@ export const BTList = (props) => {
             ItemSeparatorComponent = {ListSeparator}
             ListFooterComponent = {ListSeparator}
             ListHeaderComponent = {ListSeparator}
-            renderItem = {renderItem}> 
+            renderItem = {_renderItem}> 
         </FlatList>
     );
 }

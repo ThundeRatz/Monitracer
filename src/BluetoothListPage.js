@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useEffect,useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -14,6 +14,8 @@ import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
 import {BTList, BluetoothEnableButton} from './components/bluetooth_list/BTList'
 
+import BluetoothSerial from 'react-native-bluetooth-serial-next'
+
 export const BluetoothListPage = () => {
 
   const connected = false;
@@ -21,9 +23,28 @@ export const BluetoothListPage = () => {
   const [lista, setLista] = useState([]);
   const [bolEnable, setBolEnable]= useState(false);
 
-  const renderEmpty = () => <Empty text ="Não há dispositivos conectados"/>
+  useEffect(()=>{
 
-  
+    async function init(){
+        const enable = await BluetoothSerial.requestEnable();
+        const lista = await BluetoothSerial.list();
+        setLista(lista);
+        setBolEnable(enable);
+        console.log(lista);
+    }
+    
+    init();
+
+    return() => {
+        async function remove(){
+            await BluetoothSerial.stopScanning();
+            console.log("Termino scanner");
+        }
+
+        remove();
+    }
+}, [])
+
   const deviceList = [ //lista que vai ser obtida via bluetooth
     {
       name:'dispositivo 1',
@@ -66,7 +87,7 @@ export const BluetoothListPage = () => {
         <BluetoothEnableButton/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
-      <BTList data = {deviceList}/>
+      <BTList data = {lista}/>
     </SafeAreaView>
   );
 }
