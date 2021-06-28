@@ -6,9 +6,10 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import {
   SafeAreaView,
+  
 } from 'react-native';
 
 import { Navigation } from "react-native-navigation";
@@ -18,16 +19,35 @@ import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCe
 import {PrimaryButton, SecondaryButton} from './components/button'
 import {SmallModal} from './components/modal'
 
+import BluetoothSerial from 'react-native-bluetooth-serial-next'
+
 const HomePage = (props) => {
   const [inputValue, setInputValue] = React.useState('');
   const [modalVisible, setModalVisible] = React.useState(false);
 
-  const handleSimpleTestPress = () => {
-    console.log("Press!")
+  const handleSimpleTestPress = async () => {
+    try{
+      console.log("Press simple signal!");
+      await BluetoothSerial.write("0");
+      //console.log(res);
+      console.log('Successfuly wrote to device');
+      //connected = true;
+  } catch(error){
+      console.log(error);
+  }
   }
 
-  const handleComplexTestPress = () => {
-    console.log("sinal: " + inputValue)
+  const handleComplexTestPress = async () => {
+    
+  try{
+      console.log("sinal: " + inputValue)
+      await BluetoothSerial.write(inputValue);
+      //console.log(res);
+      console.log('Successfuly wrote to device');
+      //connected = true;
+  } catch(error){
+      console.log(error);
+  }
   }
 
   const handleBluetoothPress = () => {
