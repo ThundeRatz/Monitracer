@@ -11,7 +11,24 @@ import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparat
 import {H1,H2,H3,Body,BodySecondary} from '../typography'
 import {PrimaryButton, SecondaryButton} from '../button'
 
+import BluetoothSerial from 'react-native-bluetooth-serial-next'
+
 export const BTList = (props) => {
+
+    const _renderItem = ({item}) => {
+         return(
+          <View style={styles.wrapper}> 
+            <View>
+              <H3> {item.name} </H3>
+              <BodySecondary> {item.id}</BodySecondary>      
+            </View>
+            <View>
+              <PrimaryButton title="conectar" onPress={() => conectPress(item)}/>    
+            </View>                               
+          </View>
+        ) 
+      }
+
     //se quiser que a função receba o id do item mudar o atributo onPress da função renderItem
     const conectPress = async (device) => { 
       try{
@@ -23,20 +40,6 @@ export const BTList = (props) => {
           console.log((err.message));
       } 
     }
-
-    const _renderItem = ({item}) => {
-         return(
-          <View style={styles.wrapper}> 
-            <View>
-              <H3> {item.name} </H3>
-              <BodySecondary> {item.id}</BodySecondary>      
-            </View>
-            <View>
-              <PrimaryButton title="conectar" onPress={() => conectPress(item.name)}/>    
-            </View>                               
-          </View>
-        ) 
-      }
 
     const renderEmpty = () => {
       return (
@@ -54,19 +57,21 @@ export const BTList = (props) => {
             ItemSeparatorComponent = {ListSeparator}
             ListFooterComponent = {ListSeparator}
             ListHeaderComponent = {ListSeparator}
-            renderItem = {_renderItem}> 
+            keyExtractor={item => item.id}
+            renderItem={(item) => _renderItem(item)}>
         </FlatList>
     );
 }
 
 export const BluetoothEnableButton = (props) =>{
 
-  const [bolEnable, setbolEnable] = useState(false);
+  //const [bolEnable, setbolEnable] = useState(false);
 
   const toggleBluetooth = () => {
-    setbolEnable(!bolEnable)
-    console.log("O bluetooth está ", bolEnable? "ligado":"desligado")
+    setbolEnable(!props.bolEnable)
+    console.log("O bluetooth está ", props.bolEnable? "ligado":"desligado")
   }
+
 
   return(
     <View style={styles.enable}>

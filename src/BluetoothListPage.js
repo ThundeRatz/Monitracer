@@ -45,46 +45,41 @@ export const BluetoothListPage = () => {
     }
 }, [])
 
-  const deviceList = [ //lista que vai ser obtida via bluetooth
-    {
-      name:'dispositivo 1',
-      id: 'id do dispositivo 1'
-    },
-    {
-      name:'dispositivo 2',
-      id:'id do dispositivo 2'
-    },
-    {
-      name:'dispositivo 3',
-      id:'id do dispositivo 3'
-    },
-    {
-      name:'dispositivo 4',
-      id:'id do dispositivo 4'
-    },
-    {
-      name:'dispositivo 5',
-      id:'id do dispositivo 5'
-    },
-    {
-      name:'dispositivo 6',
-      id:'id do dispositivo 6'
-    },
-    {
-      name:'dispositivo 7',
-      id:'id do dispositivo 7'
-    },
-    {
-      name:'dispositivo 8',
-      id:'id do dispositivo 8'
+  const enableBluetooth = async () => {
+    try{
+        await BluetoothSerial.requestEnable();
+        const lista = await BluetoothSerial.list();
+        await BluetoothSerial.stopScanning();
+        setBolEnable(true);
+        setLista(lista);
+    } catch (error) {
+        console.log(error);
     }
-  ];
-  
+  };
+
+  const disableBluetooth = async () => {
+    try{
+        await BluetoothSerial.disable();
+        await BluetoothSerial.stopScanning();
+        setBolEnable(false);
+        setLista([]);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+  const toggleBluetooth = value => {
+    if(value) {
+        return enableBluetooth();
+    }
+    disableBluetooth();
+  };
+      
   return (
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton/>
+        <BluetoothEnableButton value={bolEnable} onValueChange={toggleBluetooth}/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
       <BTList data = {lista}/>
