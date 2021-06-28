@@ -1,9 +1,12 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * @file HomePage.js
  *
- * @format
- * @flow strict-local
+ * @brief Home page
+ *
+ * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 06/2021
  */
 
 import React,{useEffect} from 'react';

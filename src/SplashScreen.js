@@ -1,9 +1,11 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * @file SplashScreen.js
  *
- * @format
- * @flow strict-local
+ * @brief Splash screen
+ *
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 06/2021
  */
 
 import React, {Component} from 'react' 

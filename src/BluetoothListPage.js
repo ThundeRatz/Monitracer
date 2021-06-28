@@ -1,3 +1,14 @@
+/**
+ * @file BluetoothListPage.js
+ *
+ * @brief Page to bluetooth List 
+ *
+ * @author Lucas Guedes <>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 06/2021
+ */
+
 import React,{useEffect,useState} from 'react';
 import {
   SafeAreaView,
