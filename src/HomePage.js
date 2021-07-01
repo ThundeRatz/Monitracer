@@ -22,6 +22,7 @@ import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCe
 import {PrimaryButton, SecondaryButton} from './components/button'
 import {SmallModal} from './components/modal'
 
+import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
 import BluetoothSerial from 'react-native-bluetooth-serial-next'
 
 const HomePage = (props) => {
@@ -104,6 +105,15 @@ const HomePage = (props) => {
           value={inputValue}
         />
         <PrimaryButton onPress={handleComplexTestPress} title={"Enviar sinal complexo"}/>
+      </CellContainer>
+      <VBox>
+        <VSeparator half/>
+        <CellTitleContainer>
+          <H3>Teste leitura bluetooth</H3>
+        </CellTitleContainer>
+      </VBox>
+      <CellContainer>
+          <BTReadButton title={"iniciar leitura bluetooth"}/>
       </CellContainer>
       <VSeparator half/>
       <VBox>
