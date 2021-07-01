@@ -25,6 +25,7 @@ import {PrimaryButton, SecondaryButton} from './components/button'
 import {SmallModal} from './components/modal'
 import {DataSenderButton} from './server_communication/data_sender'
 
+import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
 import BluetoothSerial from 'react-native-bluetooth-serial-next'
 
 const HomePage = (props) => {
@@ -40,7 +41,7 @@ const HomePage = (props) => {
   const handleSimpleTestPress = async () => {
     try{
       console.log("Press simple signal!");
-      await BluetoothSerial.write("0");
+      await BluetoothSerial.write("1");
       //console.log(res);
       console.log('Successfuly wrote to device');
       //connected = true;
@@ -122,6 +123,15 @@ const HomePage = (props) => {
           />
           <PrimaryButton onPress={handleComplexTestPress} title={"Enviar sinal complexo"}/>
         </CellContainer>
+        <VBox>
+          <VSeparator half/>
+          <CellTitleContainer>
+            <H3>Teste leitura bluetooth</H3>
+          </CellTitleContainer>
+        </VBox>
+      <CellContainer>
+          <BTReadButton title={"iniciar leitura bluetooth"}/>
+      </CellContainer>
         <VSeparator half/>
         <VBox>
           <CellTitleContainer>
@@ -149,7 +159,6 @@ const HomePage = (props) => {
             onChangeText={setInputtime}
             value={inputtime}
           />
-          
           <DataSenderButton title={"Enviar constantes"} kp={inputkp} kd={inputkd} ki={inputki} lap_time={inputtime}/>
         </CellContainer>
         <VSeparator half/>

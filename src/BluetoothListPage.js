@@ -30,8 +30,10 @@ import BluetoothSerial from 'react-native-bluetooth-serial-next'
 export const BluetoothListPage = () => {
   
 
+  const connected = false;
+
   const [lista, setLista] = useState([]);
-  const [bolEnable, setBolEnable]= useState(false);
+  const [bolEnableBlu, setBolEnableBlu]= useState(false);
 
   useEffect(()=>{
 
@@ -39,7 +41,7 @@ export const BluetoothListPage = () => {
         const enable = await BluetoothSerial.requestEnable();
         const lista = await BluetoothSerial.list();
         setLista(lista);
-        setBolEnable(true);
+        setBolEnableBlu(enable);
         console.log(lista);
     }
     
@@ -60,7 +62,7 @@ export const BluetoothListPage = () => {
         await BluetoothSerial.requestEnable();
         const lista = await BluetoothSerial.list();
         await BluetoothSerial.stopScanning();
-        setBolEnable(true);
+        setBolEnableBlu(true);
         setLista(lista);
     } catch (error) {
         console.log(error);
@@ -71,25 +73,25 @@ export const BluetoothListPage = () => {
     try{
         await BluetoothSerial.disable();
         await BluetoothSerial.stopScanning();
-        setBolEnable(false);
+        setBolEnableBlu(false);
         setLista([]);
     } catch (error) {
         console.log(error);
     }
 };
 
-  const toggleBluetooth = value => {
-    if(value) {
+  const toggleBluetooth = () => {
+    if(bolEnableBlu == false) {
         return enableBluetooth();
     }
-    disableBluetooth();
+    return disableBluetooth();
   };
       
   return (
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton value={bolEnable} onValueChange = {toggleBluetooth}/>
+        <BluetoothEnableButton value={bolEnableBlu} onValueChange={toggleBluetooth}/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
       <BTList data = {lista}/>
