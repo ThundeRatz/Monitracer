@@ -31,7 +31,7 @@ const HomePage = (props) => {
   const handleSimpleTestPress = async () => {
     try{
       console.log("Press simple signal!");
-      await BluetoothSerial.write("0");
+      await BluetoothSerial.write("1");
       //console.log(res);
       console.log('Successfuly wrote to device');
       //connected = true;

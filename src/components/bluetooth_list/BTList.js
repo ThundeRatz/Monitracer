@@ -65,19 +65,19 @@ export const BTList = (props) => {
 
 export const BluetoothEnableButton = (props) =>{
 
-  //const [bolEnable, setbolEnable] = useState(false);
+  const [bolEnable, setbolEnable] = useState(false);
 
   const toggleBluetooth = (props) => {
-    
+    setbolEnable(!bolEnable)
     console.log("O bluetooth está ", props.props.value? "ligado":"desligado")
   }
 
 
   return(
     <View style={styles.enable}>
-      <BodySecondary>Ligar Bluetooth</BodySecondary>
-      <Switch value = {props.value}  ></Switch>
-      <Text style={styles.text}>{props.value?"ON":"OFF" }</Text>
+      <BodySecondary >Ligar Bluetooth</BodySecondary>
+      <Text style={styles.text}></Text>
+      <Switch value = {props.value} onValueChange={props.onValueChange}></Switch>
     </View>
   )
 };
