@@ -1,4 +1,16 @@
+/**
+ * @file data_receiver.js
+ *
+ * @brief data receiver function
+ *
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 07/2021
+ */
+
 import React from 'react';
+
+import {api,api_webhook} from './api_config'
 
 export const sendHttpRequest = (method, url, data) =>{
     const promise = new Promise(( resolve, reject) =>{
@@ -18,3 +30,15 @@ export const sendHttpRequest = (method, url, data) =>{
     });
     return promise;
 };
+
+export const GetData = async (props) =>{
+    var link = api_webhook + "/" + props.id;
+    console.log(link);
+    sendHttpRequest('GET',link)
+    .then(responseData=>{
+        var data = JSON.parse(responseData);
+        console.log(data);
+    });
+};
+
+

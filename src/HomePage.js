@@ -21,7 +21,7 @@ import { Navigation } from "react-native-navigation";
 
 import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './components/cell'
-import {PrimaryButton, SecondaryButton,DataSenderButton} from './components/button'
+import {PrimaryButton, SecondaryButton,DataSenderButton, DataReceiverButton} from './components/button'
 import {SmallModal} from './components/modal'
 
 import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
@@ -159,6 +159,7 @@ const HomePage = (props) => {
             value={inputtime}
           />
           <DataSenderButton title={"Enviar constantes"} kp={inputkp} kd={inputkd} ki={inputki} lap_time={inputtime}/>
+          <DataReceiverButton title={"Receber constantes"}/>
         </CellContainer>
         <VSeparator half/>
         <VBox>
