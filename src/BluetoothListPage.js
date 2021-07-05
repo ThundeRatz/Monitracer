@@ -1,5 +1,15 @@
+/**
+ * @file BluetoothListPage.js
+ *
+ * @brief Page to bluetooth List 
+ *
+ * @author Lucas Guedes <>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 06/2021
+ */
 
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -13,53 +23,78 @@ import {
 
 import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
-import {BTList, BluetoothEnableButton} from './components/BTList'
+import {BTList, BluetoothEnableButton} from './components/bluetooth_list/BTList'
+
+import BluetoothSerial from 'react-native-bluetooth-serial-next'
 
 export const BluetoothListPage = () => {
   
-  const deviceList = [ //lista que vai ser obtida via bluetooth
-    {
-      name:'dispositivo 1',
-      id: 'id do dispositivo 1'
-    },
-    {
-      name:'dispositivo 2',
-      id:'id do dispositivo 2'
-    },
-    {
-      name:'dispositivo 3',
-      id:'id do dispositivo 3'
-    },
-    {
-      name:'dispositivo 4',
-      id:'id do dispositivo 4'
-    },
-    {
-      name:'dispositivo 5',
-      id:'id do dispositivo 5'
-    },
-    {
-      name:'dispositivo 6',
-      id:'id do dispositivo 6'
-    },
-    {
-      name:'dispositivo 7',
-      id:'id do dispositivo 7'
-    },
-    {
-      name:'dispositivo 8',
-      id:'id do dispositivo 8'
+
+  const connected = false;
+
+  const [lista, setLista] = useState([]);
+  const [bolEnableBlu, setBolEnableBlu]= useState(false);
+
+  useEffect(()=>{
+
+    async function init(){
+        const enable = await BluetoothSerial.requestEnable();
+        const lista = await BluetoothSerial.list();
+        setLista(lista);
+        setBolEnableBlu(enable);
+        console.log(lista);
     }
-  ];
-  
+    
+    init();
+
+    return() => {
+        async function remove(){
+            await BluetoothSerial.stopScanning();
+            console.log("Termino scanner");
+        }
+
+        remove();
+    }
+  }, [])
+
+  const enableBluetooth = async () => {
+    try{
+        await BluetoothSerial.requestEnable();
+        const lista = await BluetoothSerial.list();
+        await BluetoothSerial.stopScanning();
+        setBolEnableBlu(true);
+        setLista(lista);
+    } catch (error) {
+        console.log(error);
+    }
+  };
+
+  const disableBluetooth = async () => {
+    try{
+        await BluetoothSerial.disable();
+        await BluetoothSerial.stopScanning();
+        setBolEnableBlu(false);
+        setLista([]);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+  const toggleBluetooth = () => {
+    if(bolEnableBlu == false) {
+        return enableBluetooth();
+    }
+    return disableBluetooth();
+  };
+      
   return (
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton/>
+        <BluetoothEnableButton value={bolEnableBlu} onValueChange={toggleBluetooth}/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
-      <BTList data = {deviceList}/>
+      <BTList data = {lista}/>
     </SafeAreaView>
   );
 }
