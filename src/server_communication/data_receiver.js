@@ -1,6 +1,6 @@
 import React from 'react';
 
-const sendHttpRequest = (method, url, data) =>{
+export const sendHttpRequest = (method, url, data) =>{
     const promise = new Promise(( resolve, reject) =>{
         const xhr= new XMLHttpRequest();
         xhr.open(method, url);
@@ -18,5 +18,3 @@ const sendHttpRequest = (method, url, data) =>{
     });
     return promise;
 };
-
-export default sendHttpRequest;

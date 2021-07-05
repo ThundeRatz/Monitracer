@@ -21,9 +21,8 @@ import { Navigation } from "react-native-navigation";
 
 import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './components/cell'
-import {PrimaryButton, SecondaryButton} from './components/button'
+import {PrimaryButton, SecondaryButton,DataSenderButton} from './components/button'
 import {SmallModal} from './components/modal'
-import {DataSenderButton} from './server_communication/data_sender'
 
 import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
 import BluetoothSerial from 'react-native-bluetooth-serial-next'

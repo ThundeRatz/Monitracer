@@ -1,6 +1,8 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity,View } from "react-native";
 import {Body} from './typography'
+
+import {PostData} from "../server_communication/data_sender"
 
 export const PrimaryButton = (props) => {
     return  (
@@ -15,6 +17,14 @@ export const SecondaryButton = (props) => {
     <TouchableOpacity onPress={props.onPress} style={styles.secondaryButton}>
         <Body>{props.title}</Body>
     </TouchableOpacity>
+    );
+}
+
+export const DataSenderButton = (props) => {
+    return(
+        <View>
+            <PrimaryButton onPress={() => PostData(props)} title={props.title}/>
+        </View>
     );
 }
 
