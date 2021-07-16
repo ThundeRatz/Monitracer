@@ -16,13 +16,13 @@ import axios from 'axios';
 
 export const PostData = async (kp,kd,ki,lap_time) => {
     let info = {
-        method: "post",
+        method: "POST",
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
         body:{
-            "id": 0,
+            "name": "neru",
             "values":{
                 "1":parseFloat(kp),
                 "2":parseFloat(kd),
@@ -33,7 +33,8 @@ export const PostData = async (kp,kd,ki,lap_time) => {
 
     try{
         console.log("sinal server: " + kp + kd + ki + lap_time)
-        const res = await axios.post(api_webhook,{...info});
+        console.log(info);
+        const res = await axios.post(api,{...info});
         console.log(res.data);
     } catch(error){
         console.log(error);
