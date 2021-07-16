@@ -14,32 +14,25 @@ import {api,api_webhook} from './api_config'
 
 import axios from 'axios';
 
-//var api = "api.thunderatz.org/tracer";
-//var api_webhook ="https://webhook.site/0da26257-fc6f-4a4a-9b93-a500e9f6d8a3";  
-
-export const PostData = async (props) => {
+export const PostData = async (kp,kd,ki,lap_time) => {
     let info = {
         method: "post",
-        mode: "no-cors",
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json"
         },
         body:{
-            value:{
-                kp:props.kp,
-                kd:props.kd,
-                ki:props.ki
+            "id": 0,
+            "values":{
+                "1":parseFloat(kp),
+                "2":parseFloat(kd),
+                "3":parseFloat(ki)
             },
-            lap_time: props.lap_time,
-            local:{
-                competition:'teste'
-            }
         }
     };
 
     try{
-        console.log("sinal server: " + props.kp + props.kd + props.ki + props.lap_time)
+        console.log("sinal server: " + kp + kd + ki + lap_time)
         const res = await axios.post(api_webhook,{...info});
         console.log(res.data);
     } catch(error){

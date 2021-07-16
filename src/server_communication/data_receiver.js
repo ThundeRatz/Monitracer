@@ -10,7 +10,7 @@
 
 import React from 'react';
 
-import {api,api_webhook} from './api_config'
+import {api,api_get,api_webhook} from './api_config'
 
 export const sendHttpRequest = (method, url, data) =>{
     const promise = new Promise(( resolve, reject) =>{
@@ -32,7 +32,7 @@ export const sendHttpRequest = (method, url, data) =>{
 };
 
 export const GetData = async (props) =>{
-    var link = api_webhook + "/" + props.id;
+    var link = api_get;
     console.log(link);
     sendHttpRequest('GET',link)
     .then(responseData=>{
