@@ -4,6 +4,7 @@
  * @brief data receiver function
  *
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  *
  * @date 07/2021
  */
