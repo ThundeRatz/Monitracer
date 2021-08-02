@@ -36,9 +36,9 @@ const HomePage = (props) => {
       //console.log(res);
       console.log('Successfuly wrote to device');
       //connected = true;
-  } catch(error){
+    } catch(error){
       console.log(error);
-  }
+    }
   }
 
   const handleComplexTestPress = async () => {
@@ -49,9 +49,9 @@ const HomePage = (props) => {
       //console.log(res);
       console.log('Successfuly wrote to device');
       //connected = true;
-  } catch(error){
+    } catch(error){
       console.log(error);
-  }
+    }
   }
 
   const handleBluetoothPress = () => {

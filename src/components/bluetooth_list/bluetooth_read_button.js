@@ -37,7 +37,7 @@ export const BTReadButton = (props) => {
         }
     }
     
-    const aways_read_data = async () =>{
+    const always_read_data = async () =>{
         try{
             BluetoothSerial.readEvery(
                 (data, intervalId) => {
@@ -58,7 +58,7 @@ export const BTReadButton = (props) => {
 
     return  (
         <View>
-            <PrimaryButton onPress={aways_read_data} title={props.title}/>
+            <PrimaryButton onPress={always_read_data} title={props.title}/>
         </View>
     );
 }
