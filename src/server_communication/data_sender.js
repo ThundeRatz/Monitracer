@@ -9,8 +9,22 @@
  */
 
 import {api,api_webhook} from './api_config';
-
 import axios from 'axios';
+
+/*****************************************
+ * Public Functions
+ *****************************************/
+
+/**
+ * @brief Send data to server.
+ *
+ * @param name title to identify constants
+ * @param kp kp from PID
+ * @param kd kd from PID
+ * @param ki ki from PID
+ * @param lap_time time of one lap
+ * 
+ */
 
 export const PostData = async (name,kp,kd,ki,lap_time) => {
     let headers = {
