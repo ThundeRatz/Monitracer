@@ -82,9 +82,9 @@ export const BluetoothListPage = () => {
 
   const toggleBluetooth = () => {
     if(!bolEnableBlu) {
-        return enableBluetooth();
+      enableBluetooth();
     }
-    return disableBluetooth();
+      disableBluetooth();
   };
       
   return (
