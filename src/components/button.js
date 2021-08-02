@@ -24,7 +24,7 @@ export const SecondaryButton = (props) => {
 export const DataSenderButton = (props) => {
     return(
         <View>
-            <PrimaryButton onPress={() => PostData(props.kp,props.kd,props.ki,props.lap_time)} title={props.title}/>
+            <PrimaryButton onPress={() => PostData(props.name,props.kp,props.kd,props.ki,props.lap_time)} title={props.title}/>
         </View>
     );
 }

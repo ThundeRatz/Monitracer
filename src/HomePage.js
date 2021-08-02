@@ -32,6 +32,7 @@ const HomePage = (props) => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   //server variables
+  const [inputname, setInputname] = React.useState('');
   const [inputkp, setInputkp] = React.useState('');
   const [inputkd, setInputkd] = React.useState('');
   const [inputki, setInputki] = React.useState('');
@@ -138,6 +139,11 @@ const HomePage = (props) => {
           </CellTitleContainer>
         </VBox>
         <CellContainer>
+        <TextInputCell 
+            placeholder={"Insira aqui o nome do teste"}
+            onChangeText={setInputname}
+            value={inputname}
+          />
           <TextInputCell 
             placeholder={"Insira aqui o valor de kp"}
             onChangeText={setInputkp}
@@ -158,7 +164,7 @@ const HomePage = (props) => {
             onChangeText={setInputtime}
             value={inputtime}
           />
-          <DataSenderButton title={"Enviar constantes"} kp={inputkp} kd={inputkd} ki={inputki} lap_time={inputtime}/>
+          <DataSenderButton title={"Enviar constantes"} name={inputname} kp={inputkp} kd={inputkd} ki={inputki} lap_time={inputtime}/>
           <DataReceiverButton title={"Receber constantes"}/>
         </CellContainer>
         <VSeparator half/>

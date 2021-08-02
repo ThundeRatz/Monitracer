@@ -8,13 +8,11 @@
  * @date 07/2021
  */
 
-import React, { Component,state } from 'react';
-import { View, StatusBar, StyleSheet } from 'react-native';
-import {api,api_webhook} from './api_config'
+import {api,api_webhook} from './api_config';
 
 import axios from 'axios';
 
-export const PostData = async (kp,kd,ki,lap_time) => {
+export const PostData = async (name,kp,kd,ki,lap_time) => {
     let headers = {
         headers: {
             "Accept": "application/json",
@@ -23,7 +21,7 @@ export const PostData = async (kp,kd,ki,lap_time) => {
     };
 
     let data = {
-        "name": "teste",
+        "name": name,
         "values":{
             "1":parseFloat(kp),
             "2":parseFloat(kd),
