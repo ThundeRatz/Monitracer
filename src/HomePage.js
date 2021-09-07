@@ -21,38 +21,21 @@ import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './components/cell'
 import {PrimaryButton, SecondaryButton} from './components/button'
 import {SmallModal} from './components/modal'
+import {BTPostData} from './bt_communication/bt_data_sender'
 
 import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
-import BluetoothSerial from 'react-native-bluetooth-serial-next'
 
 const HomePage = (props) => {
   const [inputValue, setInputValue] = React.useState('');
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const handleSimpleTestPress = async () => {
-    try{
-      console.log("Press simple signal!");
-      await BluetoothSerial.write("1");
-      //console.log(res);
-      console.log('Successfuly wrote to device');
-      //connected = true;
-    } catch(error){
-      console.log(error);
-    }
-  }
+    BTPostData("1");
+  };
 
   const handleComplexTestPress = async () => {
-    
-  try{
-      console.log("sinal: " + inputValue)
-      await BluetoothSerial.write(inputValue);
-      //console.log(res);
-      console.log('Successfuly wrote to device');
-      //connected = true;
-    } catch(error){
-      console.log(error);
-    }
-  }
+    BTPostData(inputValue);
+  };
 
   const handleBluetoothPress = () => {
     Navigation.push(props.componentId, {

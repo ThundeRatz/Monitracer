@@ -4,7 +4,8 @@ import {
     View,
     Text,
     StyleSheet,
-    Switch
+    Switch,
+    ToastAndroid
 } from 'react-native';
 
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from '../cell'
@@ -36,8 +37,8 @@ export const BTList = (props) => {
         await BluetoothSerial.connect(device.id);
         console.log(`Connected to device ${device.name}`);  
         ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
-      } catch{
-          console.log((err.message));
+      } catch(error){
+          console.log(error);
       } 
     }
 
