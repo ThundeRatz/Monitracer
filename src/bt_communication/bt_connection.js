@@ -29,6 +29,7 @@ export const BTConnection = () => {
     const [lista, setLista] = useState([]);
     const [bolEnableBlu, setBolEnableBlu] = useState(false);
     const [connected, setConnected] = useState(false);
+    const [loading, setLoading] = useState(false);
     
     /**
      * @brief Initialise Bluetooth device search
@@ -37,8 +38,10 @@ export const BTConnection = () => {
     const BTInit = async() => {
         const enable = await BluetoothSerial.requestEnable();
         const lista = await BluetoothSerial.list();
+        const connected =  await BluetoothSerial.isConnected();
         setLista(lista);
         setBolEnableBlu(enable);
+        setConnected(connected);
         console.log(lista);
     };
     
@@ -57,11 +60,16 @@ export const BTConnection = () => {
      */
     const EnableBT = async () => {
         try{
-            await BluetoothSerial.requestEnable();
-            const lista = await BluetoothSerial.list();
-            await BluetoothSerial.stopScanning();
-            setBolEnableBlu(true);
-            setLista(lista);
+            if(loading == false){
+                setLoading(true);
+                await BluetoothSerial.requestEnable();
+                const lista = await BluetoothSerial.list();
+                await BluetoothSerial.stopScanning();
+                setBolEnableBlu(true);
+                setLista(lista);
+                setLoading(false);
+            }
+            
         } catch (error) {
             console.log(error);
         }
@@ -73,11 +81,15 @@ export const BTConnection = () => {
      */
     const DisableBT = async () => {
         try{
-            await BluetoothSerial.disconnectAll();
-            await BluetoothSerial.disable();
-            await BluetoothSerial.stopScanning();
-            setBolEnableBlu(false);
-            setLista([]);
+            if(loading == false){
+                setLoading(true);
+                await BluetoothSerial.disconnectAll();
+                await BluetoothSerial.disable();
+                await BluetoothSerial.stopScanning();
+                setBolEnableBlu(false);
+                setLista([]);
+                setLoading(false);
+            }
         } catch (error) {
             console.log(error);
         }
@@ -91,10 +103,11 @@ export const BTConnection = () => {
      */
     const BTLogin = async (device) => { 
         try{
-            setConnected(true);
             await BluetoothSerial.connect(device.id);
             console.log(`Connected to device ${device.name}`);  
             ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
+            const connected =  await BluetoothSerial.isConnected();
+            setConnected(connected);
         } catch(error){
             console.log(error);
         } 
