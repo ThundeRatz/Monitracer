@@ -22,8 +22,7 @@ import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCe
 import {PrimaryButton, SecondaryButton} from './components/button'
 import {SmallModal} from './components/modal'
 import {BTPostData} from './bt_communication/bt_data_sender'
-
-import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
+import {BTGetDataContinuous,BTGetData} from "./bt_communication/bt_data_receiver"
 
 const HomePage = (props) => {
   const [inputValue, setInputValue] = React.useState('');
@@ -96,7 +95,7 @@ const HomePage = (props) => {
         </CellTitleContainer>
       </VBox>
       <CellContainer>
-          <BTReadButton title={"iniciar leitura bluetooth"}/>
+          <PrimaryButton onPress={BTGetDataContinuous} title={"iniciar leitura bluetooth"}/>
       </CellContainer>
       <VSeparator half/>
       <VBox>

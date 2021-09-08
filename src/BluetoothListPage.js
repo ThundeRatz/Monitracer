@@ -25,63 +25,25 @@ import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
 import {BTList, BluetoothEnableButton} from './components/bluetooth_list/BTList'
 
-import BluetoothSerial from 'react-native-bluetooth-serial-next'
+import {BTConnection} from "./bt_communication/bt_connection"
 
 export const BluetoothListPage = () => {
-
-  const [lista, setLista] = useState([]);
-  const [bolEnableBlu, setBolEnableBlu]= useState(false);
+  const [BTInit, BTRemove,EnableBT,DisableBT,lista,bolEnableBlu] = BTConnection();
 
   useEffect(()=>{
-
-    async function init(){
-        const enable = await BluetoothSerial.requestEnable();
-        const lista = await BluetoothSerial.list();
-        setLista(lista);
-        setBolEnableBlu(enable);
-        console.log(lista);
-    }
     
-    init();
+    BTInit();
 
     return() => {
-        async function remove(){
-            await BluetoothSerial.stopScanning();
-            console.log("Termino scanner");
-        }
-
-        remove();
+        BTRemove();
     }
   }, [])
 
-  const enableBluetooth = async () => {
-    try{
-        await BluetoothSerial.requestEnable();
-        const lista = await BluetoothSerial.list();
-        await BluetoothSerial.stopScanning();
-        setBolEnableBlu(true);
-        setLista(lista);
-    } catch (error) {
-        console.log(error);
-    }
-  };
-
-  const disableBluetooth = async () => {
-    try{
-        await BluetoothSerial.disable();
-        await BluetoothSerial.stopScanning();
-        setBolEnableBlu(false);
-        setLista([]);
-    } catch (error) {
-        console.log(error);
-    }
-};
-
   const toggleBluetooth = () => {
     if(!bolEnableBlu) {
-      enableBluetooth();
+      EnableBT();
     }
-      disableBluetooth();
+      DisableBT();
   };
       
   return (
