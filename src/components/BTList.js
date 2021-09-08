@@ -8,10 +8,10 @@ import {
     ToastAndroid
 } from 'react-native';
 
-import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from '../cell'
-import {H1,H2,H3,Body,BodySecondary} from '../typography'
-import {PrimaryButton, SecondaryButton} from '../button'
-import {BTConnection} from "../../bt_communication/bt_connection"
+import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from './cell'
+import {H1,H2,H3,Body,BodySecondary} from './typography'
+import {PrimaryButton, SecondaryButton} from './button'
+import {BTConnection} from "../bt_communication/bt_connection"
 
 export const BTList = (props) => {
 
@@ -59,13 +59,6 @@ export const BTList = (props) => {
 }
 
 export const BluetoothEnableButton = (props) =>{
-
-  const [bolEnable, setbolEnable] = useState(false);
-
-  const toggleBluetooth = (props) => {
-    setbolEnable(!bolEnable)
-    console.log("O bluetooth está ", props.props.value? "ligado":"desligado")
-  }
 
   return(
     <View style={styles.enable}>

@@ -17,7 +17,7 @@ export const BTConnection = () => {
 
     const [lista, setLista] = useState([]);
     const [bolEnableBlu, setBolEnableBlu] = useState(false);
-    const [connecting, setConnecting] = useState(false);
+    const [connected, setConnected] = useState(false);
     
     const BTInit = async() => {
         const enable = await BluetoothSerial.requestEnable();
@@ -57,7 +57,7 @@ export const BTConnection = () => {
 
     const BTLogin = async (device) => { 
         try{
-            setConnecting(true);
+            setConnected(true);
             await BluetoothSerial.connect(device.id);
             console.log(`Connected to device ${device.name}`);  
             ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
