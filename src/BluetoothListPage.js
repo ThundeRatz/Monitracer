@@ -12,7 +12,7 @@
 import React,{useEffect,useState} from 'react';
 import { SafeAreaView } from 'react-native';
 
-import {H1,H2,H3,Body,BodySecondary} from './components/typography'
+import {H1, H2, H3, Body, BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
 import {BTList, BluetoothEnableButton} from './components/BTList'
 

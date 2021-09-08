@@ -48,8 +48,6 @@ export const ListSeparator = () => {
     )
 }
 
-
-
 const styles = StyleSheet.create({
     header : {
         padding: 16,
@@ -92,4 +90,3 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     }
   });
-  
