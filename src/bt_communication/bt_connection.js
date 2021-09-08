@@ -9,6 +9,7 @@
  */
 
 import React,{useEffect,useState} from 'react';
+import { ToastAndroid } from 'react-native';
  
 import BluetoothSerial from 'react-native-bluetooth-serial-next';
 
@@ -16,6 +17,7 @@ export const BTConnection = () => {
 
     const [lista, setLista] = useState([]);
     const [bolEnableBlu, setBolEnableBlu] = useState(false);
+    const [connecting, setConnecting] = useState(false);
     
     const BTInit = async() => {
         const enable = await BluetoothSerial.requestEnable();
@@ -53,5 +55,16 @@ export const BTConnection = () => {
         }
     };
 
-    return [BTInit,BTRemove,EnableBT,DisableBT,lista,bolEnableBlu];
+    const BTLogin = async (device) => { 
+        try{
+            setConnecting(true);
+            await BluetoothSerial.connect(device.id);
+            console.log(`Connected to device ${device.name}`);  
+            ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
+        } catch(error){
+            console.log(error);
+        } 
+      }
+
+    return [BTInit,BTRemove,EnableBT,DisableBT,BTLogin,lista,bolEnableBlu];
 }
