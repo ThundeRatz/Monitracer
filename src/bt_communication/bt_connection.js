@@ -1,24 +1,39 @@
 /**
  * @file bt_connection.js
  *
- * @brief 
+ * @brief Implementation of Bluetooth Device Connection
  *
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
- *
+ * 
  * @date 09/2021
  */
 
+/**
+ * @docs https://www.npmjs.com/package/react-native-bluetooth-serial-next
+ */
+import BluetoothSerial from 'react-native-bluetooth-serial-next';
 import React,{useEffect,useState} from 'react';
 import { ToastAndroid } from 'react-native';
- 
-import BluetoothSerial from 'react-native-bluetooth-serial-next';
 
+
+/*****************************************
+ * Public Functions
+ *****************************************/
+
+/**
+ * @brief Implemntations of all Bluetooth Conection Functions
+ * 
+ */
 export const BTConnection = () => {
 
     const [lista, setLista] = useState([]);
     const [bolEnableBlu, setBolEnableBlu] = useState(false);
     const [connected, setConnected] = useState(false);
     
+    /**
+     * @brief Initialise Bluetooth device search
+     * 
+     */
     const BTInit = async() => {
         const enable = await BluetoothSerial.requestEnable();
         const lista = await BluetoothSerial.list();
@@ -27,11 +42,19 @@ export const BTConnection = () => {
         console.log(lista);
     };
     
+    /**
+     * @brief Stop Bluetooth device search
+     * 
+     */
     const BTRemove = async() => {
         await BluetoothSerial.stopScanning();
         console.log("Termino scanner");
     };
     
+    /**
+     * @brief Enable Bluetooth Device Search (pretty similar to BTInit)
+     * 
+     */
     const EnableBT = async () => {
         try{
             await BluetoothSerial.requestEnable();
@@ -44,8 +67,13 @@ export const BTConnection = () => {
         }
     };
     
+    /**
+     * @brief Disable Bluetooth Device Search
+     * 
+     */
     const DisableBT = async () => {
         try{
+            await BluetoothSerial.disconnectAll();
             await BluetoothSerial.disable();
             await BluetoothSerial.stopScanning();
             setBolEnableBlu(false);
@@ -55,6 +83,12 @@ export const BTConnection = () => {
         }
     };
 
+    /**
+     * @brief Implementatio of Device Connection
+     * 
+     * @param device device to be connect
+     * 
+     */
     const BTLogin = async (device) => { 
         try{
             setConnected(true);

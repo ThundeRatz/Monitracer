@@ -1,3 +1,14 @@
+/**
+ * @file bt_connection.js
+ *
+ * @brief Implementation of Bluetooth Device Connection
+ *
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 09/2021
+ */
+
 import React, {useState} from 'react';
 import {
     FlatList,
@@ -12,6 +23,7 @@ import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparat
 import {H1,H2,H3,Body,BodySecondary} from './typography'
 import {PrimaryButton, SecondaryButton} from './button'
 import {BTConnection} from "../bt_communication/bt_connection"
+
 
 export const BTList = (props) => {
 
@@ -31,7 +43,7 @@ export const BTList = (props) => {
         ) 
       }
 
-    //se quiser que a função receba o id do item mudar o atributo onPress da função renderItem
+
     const conectPress = async (device) => { 
       BTLogin(device);
     }
