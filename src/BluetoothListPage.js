@@ -10,7 +10,7 @@
  */
 
 import React,{useEffect,useState} from 'react';
-import { SafeAreaView } from 'react-native';
+import {SafeAreaView} from 'react-native';
 
 import {H1, H2, H3, Body, BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
@@ -42,10 +42,10 @@ export const BluetoothListPage = () => {
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton value = {bolEnableBlu} onValueChange={toggleBluetooth}/>
+        <BluetoothEnableButton value={bolEnableBlu} onValueChange={toggleBluetooth}/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
-      <BTList data = {lista}/>
+      <BTList data={lista}/>
     </SafeAreaView>
   );
 }

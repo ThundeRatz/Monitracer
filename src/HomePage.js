@@ -15,14 +15,14 @@ import {
   
 } from 'react-native';
 
-import { Navigation } from "react-native-navigation";
+import {Navigation} from "react-native-navigation";
 
 import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './components/cell'
 import {PrimaryButton, SecondaryButton} from './components/button'
 import {SmallModal} from './components/modal'
 import {BTPostData} from './bt_communication/bt_data_sender'
-import {BTGetDataContinuous,BTGetData} from "./bt_communication/bt_data_receiver"
+import {BTGetDataContinuous,BTGetData} from './bt_communication/bt_data_receiver'
 
 const HomePage = (props) => {
   const [inputValue, setInputValue] = React.useState('');

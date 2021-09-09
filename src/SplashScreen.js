@@ -9,11 +9,11 @@
  */
 
 import React, {Component} from 'react' 
-import { View, StatusBar, StyleSheet } from 'react-native'
+import {View, StatusBar, StyleSheet} from 'react-native'
 import * as Animatable from 'react-native-animatable'
-import { imageBackgroundStyle } from './components/general'
+import {imageBackgroundStyle} from './components/general'
 
-import { Navigation } from "react-native-navigation";
+import {Navigation} from 'react-native-navigation';
 
 const SplashScreen = (props) => {
 

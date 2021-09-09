@@ -2,7 +2,7 @@
  * @format
  */
 
-import { Navigation } from "react-native-navigation";
+import {Navigation} from 'react-native-navigation';
 import HomePage from './src/HomePage';
 import {BluetoothListPage} from './src/BluetoothListPage';
 import SplashScreen from './src/SplashScreen';

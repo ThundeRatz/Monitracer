@@ -13,7 +13,7 @@
  * @docs https://www.npmjs.com/package/react-native-bluetooth-serial-next
  */
 import BluetoothSerial from 'react-native-bluetooth-serial-next'
-import { ToastAndroid } from 'react-native';
+import {ToastAndroid} from 'react-native';
 
 
 /*****************************************

@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import {StyleSheet} from 'react-native'
 
 const imageBackgroundStyle = StyleSheet.create({
     image: {
@@ -10,4 +10,4 @@ const imageBackgroundStyle = StyleSheet.create({
     }
 })
 
-export { imageBackgroundStyle }
+export {imageBackgroundStyle}

@@ -13,7 +13,7 @@
  */
 import BluetoothSerial from 'react-native-bluetooth-serial-next';
 import React,{useEffect,useState} from 'react';
-import { ToastAndroid } from 'react-native';
+import {ToastAndroid} from 'react-native';
 
 
 /*****************************************
