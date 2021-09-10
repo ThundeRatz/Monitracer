@@ -42,13 +42,11 @@ export const TextInputCell = (props) => {
 
 export const ListSeparator = () => {
     return (
-        <View style = {styles.list}>
+        <View style={styles.list}>
             <View style={styles.ListSeparator}></View>
         </View>
     )
 }
-
-
 
 const styles = StyleSheet.create({
     header : {

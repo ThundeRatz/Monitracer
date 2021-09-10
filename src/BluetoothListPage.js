@@ -1,65 +1,51 @@
+/**
+ * @file BluetoothListPage.js
+ *
+ * @brief Page to bluetooth List 
+ *
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 06/2021
+ */
 
-import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-  FlatList
-} from 'react-native';
+import React,{useEffect,useState} from 'react';
+import {SafeAreaView} from 'react-native';
 
-import {H1,H2,H3,Body,BodySecondary} from './components/typography'
+import {H1, H2, H3, Body, BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
 import {BTList, BluetoothEnableButton} from './components/BTList'
 
+import {BTConnection} from "./bt_communication/bt_connection"
+
 export const BluetoothListPage = () => {
-  
-  const deviceList = [ //lista que vai ser obtida via bluetooth
-    {
-      name:'dispositivo 1',
-      id: 'id do dispositivo 1'
-    },
-    {
-      name:'dispositivo 2',
-      id:'id do dispositivo 2'
-    },
-    {
-      name:'dispositivo 3',
-      id:'id do dispositivo 3'
-    },
-    {
-      name:'dispositivo 4',
-      id:'id do dispositivo 4'
-    },
-    {
-      name:'dispositivo 5',
-      id:'id do dispositivo 5'
-    },
-    {
-      name:'dispositivo 6',
-      id:'id do dispositivo 6'
-    },
-    {
-      name:'dispositivo 7',
-      id:'id do dispositivo 7'
-    },
-    {
-      name:'dispositivo 8',
-      id:'id do dispositivo 8'
+
+  const [BTInit,BTRemove,EnableBT,DisableBT,BTLogin,lista,bolEnableBlu] = BTConnection();
+
+  useEffect(()=>{
+    
+    BTInit();
+
+    return() => {
+        BTRemove();
     }
-  ];
-  
+  }, [])
+
+  const toggleBluetooth = () => {
+    if(!bolEnableBlu) {
+      EnableBT();
+    }
+      DisableBT();
+  };
+      
   return (
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton/>
+        <BluetoothEnableButton value={bolEnableBlu} onValueChange={toggleBluetooth}/>
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
-      <BTList data = {deviceList}/>
+      <BTList data={lista}/>
     </SafeAreaView>
   );
 }
