@@ -17,15 +17,14 @@ import {
   StatusBar,
 } from 'react-native';
 
-import { Navigation } from "react-native-navigation";
+import {Navigation} from "react-native-navigation";
 
 import {H1,H2,H3,Body,BodySecondary} from './components/typography'
 import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, TextInputCell} from './components/cell'
 import {PrimaryButton, SecondaryButton,DataSenderButton, DataReceiverButton} from './components/button'
 import {SmallModal} from './components/modal'
-
-import {BTReadButton} from './components/bluetooth_list/bluetooth_read_button'
-import BluetoothSerial from 'react-native-bluetooth-serial-next'
+import {BTPostData} from './bt_communication/bt_data_sender'
+import {BTGetDataContinuous,BTGetData} from './bt_communication/bt_data_receiver'
 
 const HomePage = (props) => {
   const [inputValue, setInputValue] = React.useState('');
@@ -39,28 +38,12 @@ const HomePage = (props) => {
   const [inputtime, setInputtime] = React.useState('');
 
   const handleSimpleTestPress = async () => {
-    try{
-      console.log("Press simple signal!");
-      await BluetoothSerial.write("1");
-      //console.log(res);
-      console.log('Successfuly wrote to device');
-      //connected = true;
-    } catch(error){
-        console.log(error);
-    }
-  }
+    BTPostData("1");
+  };
 
   const handleComplexTestPress = async () => {
-    try{
-        console.log("sinal: " + inputValue)
-        await BluetoothSerial.write(inputValue);
-        //console.log(res);
-        console.log('Successfuly wrote to device');
-        //connected = true;
-    } catch(error){
-        console.log(error);
-    }
-  }
+    BTPostData(inputValue);
+  };
 
   const handleComplexTestPressToServer = async () => {
     try{
@@ -168,16 +151,23 @@ const HomePage = (props) => {
           <DataReceiverButton title={"Receber constantes"}/>
         </CellContainer>
         <VSeparator half/>
-        <VBox>
-          <CellTitleContainer>
-            <H3>Configurações</H3>
-          </CellTitleContainer>
-        </VBox>
-        <CellContainer>
-          <SecondaryButton onPress={handleBluetoothPress} title="Configurar bluetooth" />
-        </CellContainer>
-        <SmallModal message={"O sinal recebido foi: "} handleClose={handleCloseModal} visible={modalVisible}/>
-      </ScrollView>
+        <CellTitleContainer>
+          <H3>Teste leitura bluetooth</H3>
+        </CellTitleContainer>
+      </VBox>
+      <CellContainer>
+          <PrimaryButton onPress={BTGetDataContinuous} title={"iniciar leitura bluetooth"}/>
+      </CellContainer>
+      <VSeparator half/>
+      <VBox>
+        <CellTitleContainer>
+          <H3>Configurações</H3>
+        </CellTitleContainer>
+      </VBox>
+      <CellContainer>
+        <SecondaryButton onPress={handleBluetoothPress} title="Configurar bluetooth" />
+      </CellContainer>
+      <SmallModal message={"O sinal recebido foi: "} handleClose={handleCloseModal} visible={modalVisible}/>
     </SafeAreaView>
   );
 };

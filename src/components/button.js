@@ -1,5 +1,7 @@
-import React from "react";
-import { StyleSheet, TouchableOpacity,View } from "react-native";
+
+import React from 'react';
+import {StyleSheet, TouchableOpacity} from 'react-native';
+
 import {Body} from './typography'
 
 import {PostData} from "../server_communication/data_sender"

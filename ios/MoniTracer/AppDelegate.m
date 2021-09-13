@@ -33,7 +33,6 @@ static void InitializeFlipper(UIApplication *application) {
 
   [ReactNativeNavigation bootstrapWithDelegate:self launchOptions:launchOptions];
   
-
   return YES;
 }
 

@@ -1,19 +1,33 @@
+/**
+ * @file bt_connection.js
+ *
+ * @brief Implementation of Bluetooth Device Connection
+ *
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ *
+ * @date 09/2021
+ */
+
 import React, {useState} from 'react';
 import {
     FlatList,
     View,
     Text,
     StyleSheet,
-    Switch
+    Switch,
+    ToastAndroid
 } from 'react-native';
 
-import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from '../cell'
-import {H1,H2,H3,Body,BodySecondary} from '../typography'
-import {PrimaryButton, SecondaryButton} from '../button'
+import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator} from './cell'
+import {H1,H2,H3,Body,BodySecondary} from './typography'
+import {PrimaryButton, SecondaryButton} from './button'
+import {BTConnection} from "../bt_communication/bt_connection"
 
-import BluetoothSerial from 'react-native-bluetooth-serial-next'
 
 export const BTList = (props) => {
+
+    const [BTInit,BTRemove,EnableBT,DisableBT,BTLogin,lista,bolEnableBlu] = BTConnection();
 
     const _renderItem = ({item}) => {
          return(
@@ -29,16 +43,9 @@ export const BTList = (props) => {
         ) 
       }
 
-    //se quiser que a função receba o id do item mudar o atributo onPress da função renderItem
+
     const conectPress = async (device) => { 
-      try{
-        connecting = true;
-        await BluetoothSerial.connect(device.id);
-        console.log(`Connected to device ${device.name}`);  
-        ToastAndroid.show(`Connected to device ${device.name}`, ToastAndroid.SHORT);
-      } catch{
-          console.log((err.message));
-      } 
+      BTLogin(device);
     }
 
     const renderEmpty = () => {
@@ -64,14 +71,6 @@ export const BTList = (props) => {
 }
 
 export const BluetoothEnableButton = (props) =>{
-
-  const [bolEnable, setbolEnable] = useState(false);
-
-  const toggleBluetooth = (props) => {
-    setbolEnable(!bolEnable)
-    console.log("O bluetooth está ", props.props.value? "ligado":"desligado")
-  }
-
 
   return(
     <View style={styles.enable}>
