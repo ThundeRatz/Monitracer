@@ -48,4 +48,4 @@ export const BluetoothListPage = () => {
       <BTList data={lista}/>
     </SafeAreaView>
   );
-}
+};

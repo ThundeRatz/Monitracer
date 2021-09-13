@@ -1,5 +1,5 @@
 /**
- * @file SplashScreen.js
+ * @file SplashPage.js
  *
  * @brief Splash screen
  *
@@ -15,7 +15,7 @@ import {imageBackgroundStyle} from './components/general'
 
 import {Navigation} from 'react-native-navigation';
 
-const SplashScreen = (props) => {
+export const SplashPage = (props) => {
 
     const GoToScreen = () =>{
         Navigation.push(props.componentId, {
@@ -61,5 +61,3 @@ const styles= StyleSheet.create({
         margin:100,
     }
 });
-
-export default SplashScreen;
