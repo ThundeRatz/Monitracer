@@ -11,17 +11,38 @@
 
 import axios from 'axios'
 
-import {api,api_get,api_webhook} from './api_config.js'
+import {api, api_key} from './api_config.js'
 
-export const GetData = async (props) =>{
-    let link = api_get;
-    
+/*****************************************
+ * Public Functions
+ *****************************************/
+
+/**
+ * @brief Get data from server.
+ *
+ * @param endpoint_name Title to the data location in the API.
+ * 
+ * @returns Data received from server.
+ */
+
+
+export const GetData = async (endpoint_name) =>{
+    let link = api + "/" + endpoint_name;
+
+    let headers = {
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "x-api-key": api_key
+        }
+    };
+
     try {
-        let res = await axios.get(link);
-        console.log(res.data);
+        let res = await axios.get(link, headers);
         return(res.data)
     } catch(error) {
         console.log(error);
         console.log("FAILED TO GET DATA")
     }
 };
+

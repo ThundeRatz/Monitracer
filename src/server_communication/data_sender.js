@@ -4,11 +4,12 @@
  * @brief data sender function
  *
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
- *
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org> 
+ * 
  * @date 07/2021
  */
 
-import {api,api_webhook,api_key} from './api_config';
+import {api,api_key} from './api_config.js';
 import axios from 'axios';
 
 /*****************************************
@@ -18,15 +19,13 @@ import axios from 'axios';
 /**
  * @brief Send data to server.
  *
- * @param name title to identify constants
- * @param kp kp from PID
- * @param kd kd from PID
- * @param ki ki from PID
- * @param lap_time time of one lap
- * 
+ * @param endpoint_name Title to the data location in the API.
+ * @param data Data to be sent to the server. Must be in the correct format.
  */
 
-export const PostData = async (name,kp,kd,ki,lap_time) => {
+export const PostData = async (endpoint_name, data) => {
+    let link = api + "/" + endpoint_name;
+    
     let headers = {
         headers: {
             "Accept": "application/json",
@@ -35,20 +34,9 @@ export const PostData = async (name,kp,kd,ki,lap_time) => {
         }
     };
 
-    let data = {
-        "name": name,
-        "values":{
-            "1":parseFloat(kp),
-            "2":parseFloat(kd),
-            "3":parseFloat(ki)
-        },
-    };
-
     try{
-        console.log("sinal server: " + kp + kd + ki + lap_time)
-        const res = await axios.post(api, data, headers);
-        console.log(res.data);
+        const res = await axios.post(link, data, headers);
     } catch(error){
-        console.log(error);
+        console.log(error.response);
     }
 };
