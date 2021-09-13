@@ -11,9 +11,12 @@
 
  import React,{useEffect} from 'react';
  import {
-   SafeAreaView,
-   
- } from 'react-native';
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  StatusBar,
+  View
+} from 'react-native';
  
  import {Navigation} from "react-native-navigation";
  
@@ -50,6 +53,21 @@
        }
      }
    )}
+
+   const handleTestServer = () => {
+    Navigation.push(props.componentId, {
+      component: {
+        name: 'TestServer',
+        options: {
+          topBar: {
+            title: {
+              text: 'test server page'
+            }
+          }
+        }
+      }
+    }
+  )}
  
    const handleReceiveSignal = () => {
      setModalVisible(true);
@@ -60,57 +78,71 @@
    }
  
    return (
-     <SafeAreaView>
+    <SafeAreaView style={styles.container}>
        <Header>
          <H1>Monitracer</H1>
          <Body>Versão para testes de desenvolvimento</Body>
        </Header>
-       <VSeparator half/>
-       <VBox>
-         <CellTitleContainer>
-           <H3>Teste Simples</H3>
-         </CellTitleContainer>
-       </VBox>
-       <CellContainer>
-         <PrimaryButton onPress={handleSimpleTestPress} title={"Enviar sinal simples"}/>
-       </CellContainer>
-       <VBox>
-         <VSeparator half/>
-         <CellTitleContainer>
-           <H3>Teste Complexo</H3>
-         </CellTitleContainer>
-       </VBox>
-       <CellContainer>
-         <TextInputCell 
-           placeholder={"Insira aqui o valor a enviar via bluetooth"}
-           onChangeText={setInputValue}
-           value={inputValue}
-         />
-         <PrimaryButton onPress={handleComplexTestPress} title={"Enviar sinal complexo"}/>
-       </CellContainer>
-       <VBox>
-         <VSeparator half/>
-         <CellTitleContainer>
-           <H3>Teste leitura bluetooth</H3>
-         </CellTitleContainer>
-       </VBox>
-       <CellContainer>
-           <PrimaryButton onPress={BTGetDataContinuous} title={"iniciar leitura bluetooth"}/>
-       </CellContainer>
-       <VSeparator half/>
-       <VBox>
-         <CellTitleContainer>
-           <H3>Configurações</H3>
-         </CellTitleContainer>
-       </VBox>
-       <CellContainer>
-         <SecondaryButton onPress={handleBluetoothPress} title="Configurar bluetooth" />
-       </CellContainer>
-       <SmallModal message={"O sinal recebido foi: "} handleClose={handleCloseModal} visible={modalVisible}/>
-     </SafeAreaView>
+       <ScrollView>
+        <VSeparator half/>
+        <VBox>
+          <CellTitleContainer>
+            <H3>Teste Simples</H3>
+          </CellTitleContainer>
+        </VBox>
+        <CellContainer>
+          <PrimaryButton onPress={handleSimpleTestPress} title={"Enviar sinal simples"}/>
+        </CellContainer>
+        <VBox>
+          <VSeparator half/>
+          <CellTitleContainer>
+            <H3>Teste Complexo</H3>
+          </CellTitleContainer>
+        </VBox>
+        <CellContainer>
+          <TextInputCell 
+            placeholder={"Insira aqui o valor a enviar via bluetooth"}
+            onChangeText={setInputValue}
+            value={inputValue}
+          />
+          <PrimaryButton onPress={handleComplexTestPress} title={"Enviar sinal complexo"}/>
+        </CellContainer>
+        <VBox>
+          <VSeparator half/>
+          <CellTitleContainer>
+            <H3>Teste leitura bluetooth</H3>
+          </CellTitleContainer>
+        </VBox>
+        <CellContainer>
+            <PrimaryButton onPress={BTGetDataContinuous} title={"iniciar leitura bluetooth"}/>
+        </CellContainer>
+        <VSeparator half/>
+        <VBox>
+          <CellTitleContainer>
+            <H3>Configurações</H3>
+          </CellTitleContainer>
+        </VBox>
+        <CellContainer>
+          <SecondaryButton onPress={handleBluetoothPress} title="Configurar bluetooth" />
+        </CellContainer>
+        
+        <VBox>
+          <CellTitleContainer>
+            <H3>Página Inicial</H3>
+          </CellTitleContainer>
+        </VBox>
+        <CellContainer>
+          <SecondaryButton onPress={handleTestServer} title="Página Inicial" />
+        </CellContainer>      
+       </ScrollView>
+    </SafeAreaView>
    );
  };
  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    }
+  });
  
  export default HomePage;
- 
