@@ -8,7 +8,7 @@
  * @date 07/2021
  */
 
-import {api,api_webhook} from './api_config';
+import {api,api_webhook,api_key} from './api_config';
 import axios from 'axios';
 
 /*****************************************
@@ -30,7 +30,8 @@ export const PostData = async (name,kp,kd,ki,lap_time) => {
     let headers = {
         headers: {
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-api-key": api_key
         }
     };
 
