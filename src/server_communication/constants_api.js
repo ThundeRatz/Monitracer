@@ -28,6 +28,7 @@ import { GetData } from './data_receiver.js'
  */
 
 const PostConstants = (name, kp, ki, kd, lap_time) => {
+    //lap_time ainda não é guardado no servidor
     let data = {
         "name": name,
         "values":{
@@ -36,7 +37,7 @@ const PostConstants = (name, kp, ki, kd, lap_time) => {
             "3":parseFloat(ki),
         },
     };
-    PostData("constants", data)
+    PostData("constants", data);
 }
 
 
@@ -47,7 +48,7 @@ const PostConstants = (name, kp, ki, kd, lap_time) => {
  */
 
 const GetConstantsList = async () => {
-    return await GetData("constants")
+    return await GetData("constants");
 }
 
 /**
@@ -57,7 +58,7 @@ const GetConstantsList = async () => {
  */
 
 const GetConstants = async (constant_name) => {
-    return await GetData("constants/" + constant_name)
+    return await GetData("constants/" + constant_name);
 }
 
 export {PostConstants, GetConstants, GetConstantsList}

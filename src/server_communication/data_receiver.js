@@ -39,10 +39,11 @@ export const GetData = async (endpoint_name) =>{
 
     try {
         let res = await axios.get(link, headers);
-        return(res.data)
+        console.log(res.data);
+        return(res.data);
     } catch(error) {
         console.log(error);
-        console.log("FAILED TO GET DATA")
+        console.log("FAILED TO GET DATA");
     }
 };
 
