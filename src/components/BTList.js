@@ -43,13 +43,13 @@ export const BTList = props => {
           <BodySecondary> {item.id}</BodySecondary>
         </View>
         <View>
-          <PrimaryButton title="conectar" onPress={() => conectPress(item)} />
+          <PrimaryButton title="conectar" onPress={() => connectPress(item)} />
         </View>
       </View>
     );
   };
 
-  const conectPress = async device => {
+  const connectPress = device => {
     BTLogin(device);
   };
 
