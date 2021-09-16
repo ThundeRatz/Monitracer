@@ -95,7 +95,7 @@ export const BTConnection = () => {
   /**
    * @brief Implementatio of Device Connection
    *
-   * @param device device to be connect
+   * @param device Device to be connect
    *
    */
   const BTLogin = async device => {

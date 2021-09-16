@@ -6,7 +6,7 @@
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  *
- * @date 06/2021
+ * @date 09/2021
  */
 
 import {PrimaryButton, SecondaryButton} from './components/button';
