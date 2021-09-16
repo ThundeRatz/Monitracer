@@ -22,10 +22,8 @@ import {GetData} from './data_receiver.js';
  * @param kp kp from PID
  * @param ki ki from PID
  * @param kd kd from PID
- * @param lap_time time taken for a lap.
  */
 const PostConstants = (name, kp, ki, kd) => {
-  //lap_time ainda não é guardado no servidor
   let data = {
     name: name,
     values: {
@@ -34,7 +32,6 @@ const PostConstants = (name, kp, ki, kd) => {
       3: parseFloat(kd),
     },
   };
-
   PostData('constants', data);
 };
 
@@ -43,7 +40,6 @@ const PostConstants = (name, kp, ki, kd) => {
  *
  * @returns List of constants existing on server.
  */
-
 const GetConstantsList = async () => {
   return await GetData('constants');
 };
@@ -51,16 +47,41 @@ const GetConstantsList = async () => {
 /**
  * @brief Get a specific set of constants.
  *
- * @returns Set of constants required, with their values, name and lap time.
+ * @param constant_name Name of the set of constants
+ * 
+ * @returns Constants values.
  */
-
-const GetConstants = async constant_name => {
+const GetConstantsByName = async constant_name => {
   return await GetData('constants/' + constant_name);
 };
 
-const GetConstantId = constant_name => {
-  return GetConstants(constant_name);
+/**
+ * @brief Get the ID of a set of constants based on the name.
+ *
+ * @param constant_name Name of the set of constants
+ * 
+ * @returns Constants ID.
+ */
+const GetConstantsId = async constant_name => {
+  let constant_list = await GetConstantsList();
+  for (var i in constant_list) {
+    if (constant_list[i]["name"] == constant_name) {  
+      return constant_list[i]["id"]
+    }
+  }
+  return undefined;
 };
 
-(async () => await console.log(GetConstantId('neru')))();
-export {PostConstants, GetConstants, GetConstantsList};
+const GetConstantsById = async constant_id => {
+  let constant_list = await GetConstantsList();
+  for (var i in constant_list) {
+    if (constant_list[i]["id"] == constant_id) {
+      return await GetConstantsByName(constant_list[i]["name"])
+    }
+  }
+  return undefined;
+}
+
+//(async ()=>console.log(await GetConstantsById("3")))()
+
+export {PostConstants, GetConstantsByName, GetConstantsList, GetConstantsId, GetConstantsById};
