@@ -3,7 +3,7 @@
  */
 
 import {Navigation} from 'react-native-navigation';
-import {SplashPage} from './src/SplashPage';
+import {SplashScreen} from './src/SplashScreen';
 import {HomePage} from './src/HomePage.js';
 import {BluetoothListPage} from './src/BluetoothListPage';
 import {HistoryPage} from './src/HistoryPage';
@@ -11,7 +11,7 @@ import {EvaluationPage} from './src/EvaluationPage';
 import {ConstantsPage} from './src/ConstantsPage';
 import {ControlPage} from './src/ControlPage';
 
-Navigation.registerComponent('SplashPage', () => SplashPage);
+Navigation.registerComponent('SplashScreen', () => SplashScreen);
 Navigation.registerComponent('HomePage', () => HomePage);
 Navigation.registerComponent('BluetoothListPage', () => BluetoothListPage);
 Navigation.registerComponent('HistoryPage', () => HistoryPage);
@@ -25,11 +25,11 @@ Navigation.events().registerAppLaunchedListener(() => {
         children: [
           {
             component: {
-              name: 'SplashPage',
+              name: 'SplashScreen',
               options: {
                 topBar: {
                   title: {
-                    text: 'SplashPage',
+                    text: 'SplashScreen',
                   },
                 },
               },
