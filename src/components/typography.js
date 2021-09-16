@@ -1,25 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text} from 'react-native';
 
-export const H1 = props => {
-  return <Text style={styles.h1}>{props.children}</Text>;
-};
+export const H1 = props => (<Text style={styles.h1}>{props.children}</Text>);
 
-export const H2 = props => {
-  return <Text style={styles.h2}>{props.children}</Text>;
-};
+export const H2 = props => (<Text style={styles.h2}>{props.children}</Text>);
 
-export const H3 = props => {
-  return <Text style={styles.h3}>{props.children}</Text>;
-};
+export const H3 = props => (<Text style={styles.h3}>{props.children}</Text>);
 
-export const Body = props => {
-  return <Text style={styles.body}>{props.children}</Text>;
-};
+export const Body = props => (<Text style={styles.body}>{props.children}</Text>);
 
-export const BodySecondary = props => {
-  return <Text style={styles.bodySecondary}>{props.children}</Text>;
-};
+export const BodySecondary = props => (<Text style={styles.bodySecondary}>{props.children}</Text>);
 
 const styles = StyleSheet.create({
   h1: {
