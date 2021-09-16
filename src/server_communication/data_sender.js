@@ -4,12 +4,12 @@
  * @brief data sender function
  *
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
- * @author Lucas Guedes <lucas.guedes@thunderatz.org> 
- * 
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org>
+ *
  * @date 07/2021
  */
 
-import {api,api_key} from './api_config.js';
+import {api, api_key} from './api_config.js';
 import axios from 'axios';
 
 /*****************************************
@@ -24,21 +24,21 @@ import axios from 'axios';
  */
 
 export const PostData = async (endpoint_name, data) => {
-    let link = api + "/" + endpoint_name;
-    
-    let headers = {
-        headers: {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-            "x-api-key": api_key
-        }
-    };
+  let link = api + '/' + endpoint_name;
 
-    try{
-        const res = await axios.post(link, data, headers);
-        console.log("data sender: ");
-        console.log(data);
-    } catch(error){
-        console.log(error.response);
-    }
+  let headers = {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      'x-api-key': api_key,
+    },
+  };
+
+  try {
+    const res = await axios.post(link, data, headers);
+    console.log('data sender: ');
+    console.log(data);
+  } catch (error) {
+    console.log(error.response);
+  }
 };

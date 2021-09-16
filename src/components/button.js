@@ -1,8 +1,10 @@
-
 import React from 'react';
-import {StyleSheet, TouchableOpacity,View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {Body} from './typography';
-import {PostConstants, GetConstantsList} from "../server_communication/constants_api"
+import {
+  PostConstants,
+  GetConstantsList,
+} from '../server_communication/constants_api';
 
 export const PrimaryButton = props => {
   return (
@@ -20,21 +22,35 @@ export const SecondaryButton = props => {
   );
 };
 
-export const DataSenderButton = (props) => {
-    return(
-        <View>
-            <PrimaryButton onPress={() => PostConstants(props.name,props.kp,props.kd,props.ki,props.lap_time)} title={props.title}/>
-        </View>
-    );
-}
+export const DataSenderButton = props => {
+  return (
+    <View>
+      <PrimaryButton
+        onPress={() =>
+          PostConstants(
+            props.name,
+            props.kp,
+            props.kd,
+            props.ki,
+            props.lap_time,
+          )
+        }
+        title={props.title}
+      />
+    </View>
+  );
+};
 
-export const DataReceiverButton = (props) => {
-    return(
-        <View>
-            <PrimaryButton onPress={() => GetConstantsList(props)} title={props.title}/>
-        </View>
-    );
-}
+export const DataReceiverButton = props => {
+  return (
+    <View>
+      <PrimaryButton
+        onPress={() => GetConstantsList(props)}
+        title={props.title}
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   primaryButton: {

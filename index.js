@@ -19,7 +19,7 @@ Navigation.registerComponent('HistoryPage', () => HistoryPage);
 Navigation.registerComponent('ControlPage', () => ControlPage);
 Navigation.registerComponent('EvaluationPage', () => EvaluationPage);
 Navigation.registerComponent('ConstantsPage', () => ConstantsPage);
-Navigation.registerComponent('TestServer', ()=> TestServer);
+Navigation.registerComponent('TestServer', () => TestServer);
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
