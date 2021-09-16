@@ -1,7 +1,7 @@
 /**
- * @file bt_connection.js
+ * @file BTList.js
  *
- * @brief Implementation of Bluetooth Device Connection
+ * @brief Implementation of Bluetooth list
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
