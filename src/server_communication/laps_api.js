@@ -11,7 +11,12 @@
 
 import {PostData} from './data_sender.js';
 import {GetData} from './data_receiver.js';
-import {PostConstants, GetConstantsId, GetConstantsById, GetConstantsList} from './constants_api.js';
+import {
+  PostConstants,
+  GetConstantsId,
+  GetConstantsById,
+  GetConstantsList,
+} from './constants_api.js';
 
 /*****************************************
  * Public Functions
@@ -24,7 +29,7 @@ import {PostConstants, GetConstantsId, GetConstantsById, GetConstantsList} from 
  * @param name Lap name
  * @param lap_time Lap duration em ms
  */
-const PostLapTime = (id, name, lap_time) => {
+export const PostLapTime = (id, name, lap_time) => {
   let data = {
     constant_group_id: id,
     name: name,
@@ -35,11 +40,11 @@ const PostLapTime = (id, name, lap_time) => {
 };
 
 /**
- * @brief Get a lap from server.
+ * @brief Get all laps from server.
  *
  * @returns List of laps existing on server.
  */
-const GetLapsList = async () => {
+export const GetLapsList = async () => {
   return await GetData('laps');
 };
 
@@ -52,7 +57,7 @@ const GetLapsList = async () => {
  * @param kd kd from PID
  * @param lap_time time taken for a lap
  */
-const PostLap = async (name, kp, ki, kd, lap_time) => {
+export const PostLap = async (name, kp, ki, kd, lap_time) => {
   let new_constants_name = name + '_consts';
   PostConstants(new_constants_name, kp, ki, kd);
   var consts_id = await GetConstantsId(new_constants_name);
@@ -60,42 +65,42 @@ const PostLap = async (name, kp, ki, kd, lap_time) => {
 };
 
 /**
- * @brief Send a "Lap" to the server.
+ * @brief Get the lap id by the lab name.
  *
- * @param name lap name
- * @param kp kp from PID
- * @param ki ki from PID
- * @param kd kd from PID
- * @param lap_time time taken for a lap
+ * @param lap_name name of the lap
  */
-const GetLapByName = async lap_name => {
+export const GetLapByName = async lap_name => {
   let laps_list = await GetLapsList();
   for (var i in laps_list) {
-    if (laps_list[i]["name"] == lap_name) {
-      var constants = await GetConstantsById(laps_list[i]["id"]);
-      laps_list[i]["constants"] = constants["values"];
-      return await laps_list[i]
+    if (laps_list[i]['name'] == lap_name) {
+      var constants = await GetConstantsById(laps_list[i]['id']);
+      laps_list[i]['constants'] = constants['values'];
+      return await laps_list[i];
     }
   }
   return undefined;
-}
+};
 
-
-const GetLapById = async lap_id => {
+/**
+ * @brief Get the lap name by the lab id.
+ *
+ * @param lap_id id of the lap
+ */
+export const GetLapById = async lap_id => {
   let laps_list = await GetLapsList();
   for (var i in laps_list) {
-    if (laps_list[i]["id"] == lap_id) {
-      return GetLapByName(laps_list[i]["name"])
+    if (laps_list[i]['id'] == lap_id) {
+      return GetLapByName(laps_list[i]['name']);
     }
   }
   return undefined;
-}
+};
 
-
-//(async ()=>console.log(await GetConstantsById(33)))();
-
-PostLap("volta_teste10", 1, 2, 3, 123321);
+/*
+//teste
+PostLap("volta_teste13", 1, 2, 3, 123321);
 console.log("-----------------------------");
 GetConstantsList();
 console.log("-----------------------------");
 GetLapsList();
+*/

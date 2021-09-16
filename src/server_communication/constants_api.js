@@ -4,6 +4,7 @@
  * @brief constants Get and Post funcions
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
+ * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  *
  * @date 09/2021
  */
@@ -23,7 +24,7 @@ import {GetData} from './data_receiver.js';
  * @param ki ki from PID
  * @param kd kd from PID
  */
-const PostConstants = (name, kp, ki, kd) => {
+export const PostConstants = (name, kp, ki, kd) => {
   let data = {
     name: name,
     values: {
@@ -40,7 +41,7 @@ const PostConstants = (name, kp, ki, kd) => {
  *
  * @returns List of constants existing on server.
  */
-const GetConstantsList = async () => {
+export const GetConstantsList = async () => {
   return await GetData('constants');
 };
 
@@ -48,10 +49,10 @@ const GetConstantsList = async () => {
  * @brief Get a specific set of constants.
  *
  * @param constant_name Name of the set of constants
- * 
+ *
  * @returns Constants values.
  */
-const GetConstantsByName = async constant_name => {
+export const GetConstantsByName = async constant_name => {
   return await GetData('constants/' + constant_name);
 };
 
@@ -59,29 +60,30 @@ const GetConstantsByName = async constant_name => {
  * @brief Get the ID of a set of constants based on the name.
  *
  * @param constant_name Name of the set of constants
- * 
+ *
  * @returns Constants ID.
  */
-const GetConstantsId = async constant_name => {
+export const GetConstantsId = async constant_name => {
   let constant_list = await GetConstantsList();
   for (var i in constant_list) {
-    if (constant_list[i]["name"] == constant_name) {  
-      return constant_list[i]["id"]
+    if (constant_list[i]['name'] == constant_name) {
+      return constant_list[i]['id'];
     }
   }
   return undefined;
 };
 
-const GetConstantsById = async constant_id => {
+/**
+ * @brief Get the constant name by the constant id.
+ *
+ * @param constant_id id of the constant group.
+ */
+export const GetConstantsById = async constant_id => {
   let constant_list = await GetConstantsList();
   for (var i in constant_list) {
-    if (constant_list[i]["id"] == constant_id) {
-      return await GetConstantsByName(constant_list[i]["name"])
+    if (constant_list[i]['id'] == constant_id) {
+      return await GetConstantsByName(constant_list[i]['name']);
     }
   }
   return undefined;
-}
-
-//(async ()=>console.log(await GetConstantsById("3")))()
-
-export {PostConstants, GetConstantsByName, GetConstantsList, GetConstantsId, GetConstantsById};
+};
