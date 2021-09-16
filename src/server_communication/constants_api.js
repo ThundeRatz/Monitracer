@@ -5,7 +5,7 @@
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  *
- * @date 07/2021
+ * @date 09/2021
  */
 
 import {PostData} from './data_sender.js';
@@ -24,17 +24,17 @@ import {GetData} from './data_receiver.js';
  * @param kd kd from PID
  * @param lap_time time taken for a lap.
  */
-
-const PostConstants = (name, kp, ki, kd, lap_time) => {
+const PostConstants = (name, kp, ki, kd) => {
   //lap_time ainda não é guardado no servidor
   let data = {
     name: name,
     values: {
       1: parseFloat(kp),
-      2: parseFloat(kd),
-      3: parseFloat(ki),
+      2: parseFloat(ki),
+      3: parseFloat(kd),
     },
   };
+
   PostData('constants', data);
 };
 
@@ -58,4 +58,9 @@ const GetConstants = async constant_name => {
   return await GetData('constants/' + constant_name);
 };
 
+const GetConstantId = constant_name => {
+  return GetConstants(constant_name);
+};
+
+(async () => await console.log(GetConstantId('neru')))();
 export {PostConstants, GetConstants, GetConstantsList};

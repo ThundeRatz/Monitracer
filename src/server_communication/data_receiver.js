@@ -24,7 +24,6 @@ import {api, api_key} from './api_config.js';
  *
  * @returns Data received from server.
  */
-
 export const GetData = async endpoint_name => {
   let link = api + '/' + endpoint_name;
 

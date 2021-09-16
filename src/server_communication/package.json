@@ -1,3 +1,4 @@
 {
-  "name": "@data_communication"
+  "name": "@data_communication",
+  "type": "module"
 }
