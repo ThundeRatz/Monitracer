@@ -16,6 +16,7 @@ import {
   GetConstantsId,
   GetConstantsById,
   GetConstantsList,
+  GetConstantsByName,
 } from './constants_api.js';
 
 /*****************************************
@@ -61,19 +62,21 @@ export const PostLap = async (name, kp, ki, kd, lap_time) => {
   let new_constants_name = name + '_consts';
   PostConstants(new_constants_name, kp, ki, kd);
   var consts_id = await GetConstantsId(new_constants_name);
-  PostLapTime(consts_id, name, lap_time);
+  PostLapTime(await consts_id, name, lap_time);
 };
 
 /**
  * @brief Get the lap id by the lab name.
  *
  * @param lap_name name of the lap
+ * 
+ * @returns Lap with the id Name. Undefined if it doesn't exists
  */
 export const GetLapByName = async lap_name => {
   let laps_list = await GetLapsList();
   for (var i in laps_list) {
     if (laps_list[i]['name'] == lap_name) {
-      var constants = await GetConstantsById(laps_list[i]['id']);
+      var constants = await GetConstantsById(laps_list[i]['constants']);
       laps_list[i]['constants'] = constants['values'];
       return await laps_list[i];
     }
@@ -85,6 +88,8 @@ export const GetLapByName = async lap_name => {
  * @brief Get the lap name by the lab id.
  *
  * @param lap_id id of the lap
+ * 
+ * @returns Lap with the id indicated. Undefined if it doesn't exists
  */
 export const GetLapById = async lap_id => {
   let laps_list = await GetLapsList();
@@ -95,12 +100,3 @@ export const GetLapById = async lap_id => {
   }
   return undefined;
 };
-
-/*
-//teste
-PostLap("volta_teste13", 1, 2, 3, 123321);
-console.log("-----------------------------");
-GetConstantsList();
-console.log("-----------------------------");
-GetLapsList();
-*/
