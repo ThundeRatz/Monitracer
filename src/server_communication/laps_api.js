@@ -29,14 +29,14 @@ import {
  * @param name Lap name
  * @param lap_time Lap duration em ms
  */
-export const PostLapTime = (id, name, lap_time) => {
+export const PostLapTime = async (id, name, lap_time) => {
   let data = {
     constant_group_id: id,
     name: name,
     duration: lap_time,
   };
 
-  PostData('laps', data);
+  await PostData('laps', data);
 };
 
 /**
@@ -59,9 +59,9 @@ export const GetLapsList = async () => {
  */
 export const PostLap = async (name, kp, ki, kd, lap_time) => {
   let new_constants_name = name + '_consts';
-  PostConstants(new_constants_name, kp, ki, kd);
-  var consts_id = await GetConstantsId(new_constants_name);
-  PostLapTime(consts_id, name, lap_time);
+  await PostConstants(new_constants_name, kp, ki, kd);
+  let consts_id = await GetConstantsId(new_constants_name);
+  await PostLapTime(consts_id, name, lap_time);
 };
 
 /**
@@ -96,11 +96,9 @@ export const GetLapById = async lap_id => {
   return undefined;
 };
 
-/*
 //teste
-PostLap("volta_teste13", 1, 2, 3, 123321);
-console.log("-----------------------------");
-GetConstantsList();
-console.log("-----------------------------");
-GetLapsList();
-*/
+//PostLap("volta_teste34", 1, 2, 3, 123321);
+//console.log("-----------------------------");
+//GetConstantsList();
+//console.log("-----------------------------");
+//GetLapsList();

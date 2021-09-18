@@ -5,6 +5,7 @@ import {
   PostConstants,
   GetConstantsList,
 } from '../server_communication/constants_api';
+import {PostLap} from "../server_communication/laps_api"
 
 export const PrimaryButton = props => {
   return (
@@ -27,12 +28,12 @@ export const DataSenderButton = props => {
     <View>
       <PrimaryButton
         onPress={() =>
-          PostConstants(
+          PostLap(
             props.name,
-            props.kp,
-            props.kd,
-            props.ki,
-            props.lap_time,
+            parseFloat(props.kp),
+            parseFloat(props.kd),
+            parseFloat(props.ki),
+            parseInt(props.lap_time),
           )
         }
         title={props.title}

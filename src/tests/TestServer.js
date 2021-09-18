@@ -37,15 +37,7 @@ import {
 } from '../components/button';
 import {SmallModal} from '../components/modal';
 
-import {BTPostData} from '../bt_communication/bt_data_sender';
-import {
-  BTGetDataContinuous,
-  BTGetData,
-} from '../bt_communication/bt_data_receiver';
-
 const TestServer = props => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [modalVisible, setModalVisible] = React.useState(false);
 
   //server variables
   const [inputname, setInputname] = React.useState('');
@@ -53,40 +45,6 @@ const TestServer = props => {
   const [inputkd, setInputkd] = React.useState('');
   const [inputki, setInputki] = React.useState('');
   const [inputtime, setInputtime] = React.useState('');
-
-  const handleBluetoothPress = () => {
-    Navigation.push(props.componentId, {
-      component: {
-        name: 'BluetoothListPage',
-        options: {
-          topBar: {
-            title: {
-              text: 'Bluetooth List Page',
-            },
-          },
-        },
-      },
-    });
-  };
-
-  const handleHomePage = () => {
-    Navigation.push(props.componentId, {
-      component: {
-        name: 'HomePage',
-        options: {
-          topBar: {
-            title: {
-              text: 'Home page',
-            },
-          },
-        },
-      },
-    });
-  };
-
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
 
   return (
     <SafeAreaView style={styles.container}>

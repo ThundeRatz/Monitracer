@@ -24,7 +24,7 @@ import {GetData} from './data_receiver.js';
  * @param ki ki from PID
  * @param kd kd from PID
  */
-export const PostConstants = (name, kp, ki, kd) => {
+export const PostConstants = async (name, kp, ki, kd) => {
   let data = {
     name: name,
     values: {
@@ -33,7 +33,7 @@ export const PostConstants = (name, kp, ki, kd) => {
       3: parseFloat(kd),
     },
   };
-  PostData('constants', data);
+  await PostData('constants', data);
 };
 
 /**
@@ -70,6 +70,7 @@ export const GetConstantsId = async constant_name => {
       return constant_list[i]['id'];
     }
   }
+  console.log('Id não encontrado - GetConstantsId\n');
   return undefined;
 };
 
