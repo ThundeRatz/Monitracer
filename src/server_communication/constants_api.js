@@ -20,9 +20,9 @@ import {GetData} from './data_receiver.js';
  * @brief Send constants to server.
  *
  * @param name Brief description of the set of constants.
- * @param kp kp from PID
- * @param ki ki from PID
- * @param kd kd from PID
+ * @param kp kp from PID.
+ * @param ki ki from PID.
+ * @param kd kd from PID.
  */
 export const PostConstants = async (name, kp, ki, kd) => {
   let data = {
@@ -59,7 +59,7 @@ export const GetConstantsByName = async constant_name => {
 /**
  * @brief Get the ID of a set of constants based on the name.
  *
- * @param constant_name Name of the set of constants
+ * @param constant_name Name of the set of constants.
  *
  * @returns Constants ID.
  */
@@ -78,6 +78,8 @@ export const GetConstantsId = async constant_name => {
  * @brief Get the constant name by the constant id.
  *
  * @param constant_id id of the constant group.
+ * 
+ * @returns Set of constants with the id indicated. Undefined if it doesn't exists.
  */
 export const GetConstantsById = async constant_id => {
   let constant_list = await GetConstantsList();
