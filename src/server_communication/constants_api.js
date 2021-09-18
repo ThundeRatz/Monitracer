@@ -53,7 +53,12 @@ export const GetConstantsList = async () => {
  * @returns Constants values.
  */
 export const GetConstantsByName = async constant_name => {
-  return await GetData('constants/' + constant_name);
+  let constants_list = await GetConstantsList();
+  for (var i in constants_list) {
+    if (constants_list[i]['name'] == constant_name) {
+      return constants_list[i]['values']
+    }
+  }
 };
 
 /**
