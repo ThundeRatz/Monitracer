@@ -10,7 +10,7 @@ import {HistoryPage} from './src/HistoryPage';
 import {EvaluationPage} from './src/EvaluationPage';
 import {ConstantsPage} from './src/ConstantsPage';
 import {ControlPage} from './src/ControlPage';
-import TestServer from './src/tests/TestServer';
+import TestServer from './src/tests/TestServerPage';
 
 Navigation.registerComponent('SplashScreen', () => SplashScreen);
 Navigation.registerComponent('HomePage', () => HomePage);
