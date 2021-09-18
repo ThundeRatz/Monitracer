@@ -100,10 +100,3 @@ export const GetLapById = async lap_id => {
   }
   return undefined;
 };
-
-//teste
-//PostLap("volta_teste34", 1, 2, 3, 123321);
-//console.log("-----------------------------");
-//GetConstantsList();
-//console.log("-----------------------------");
-//GetLapsList();
