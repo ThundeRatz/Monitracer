@@ -35,11 +35,11 @@ export const HomePage = props => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const handleSimpleTestPress = async () => {
-    BTPostData('1');
+    await BTPostData('1');
   };
 
   const handleComplexTestPress = async () => {
-    BTPostData(inputValue);
+    await BTPostData(inputValue);
   };
 
   const handleReceiveSignal = () => {

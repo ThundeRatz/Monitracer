@@ -49,8 +49,8 @@ export const BTList = props => {
     );
   };
 
-  const connectPress = device => {
-    BTLogin(device);
+  const connectPress = async device => {
+    await BTLogin(device);
   };
 
   const renderEmpty = () => {
