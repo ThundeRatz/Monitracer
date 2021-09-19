@@ -8,7 +8,7 @@ export const SmallModal = props => {
       transparent={true}
       visible={props.visible}
       onRequestClose={() => {
-        props.handleClose;
+        props.handleClose();
       }}
     >
       <View style={styles.centeredView}>
