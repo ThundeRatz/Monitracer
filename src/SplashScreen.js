@@ -9,38 +9,23 @@
  */
 
 import React, {Component} from 'react';
-import {View, StatusBar, StyleSheet} from 'react-native';
+import {View, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {imageBackgroundStyle} from './components/general';
-
-import {Navigation} from 'react-native-navigation';
+import {GoToPage} from './utils/nav';
 
 export const SplashScreen = props => {
-  const GoToScreen = () => {
-    Navigation.push(props.componentId, {
-      component: {
-        name: 'HomePage',
-        options: {
-          topBar: {
-            title: {
-              text: 'HomePage',
-            },
-          },
-        },
-      },
-    });
-  };
-
+ 
   const componentDidMount = () => {
     setTimeout(() => {
-      GoToScreen();
+      GoToPage(props.componentId, 'HomePage');
     }, 5000);
   };
 
   componentDidMount();
 
   return (
-    <View style={imageBackgroundStyle.image}>
+    <TouchableOpacity style={imageBackgroundStyle.image} onPress = {()=> GoToPage(props.componentId, 'HomePage')}>
       <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
       <Animatable.Image
         animation="pulse"
@@ -49,7 +34,7 @@ export const SplashScreen = props => {
         style={styles.image}
         source={require('@img/LogoTR-Vertical_Amarelo.png')}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 
