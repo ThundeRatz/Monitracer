@@ -1,7 +1,7 @@
 /**
  * @file BluetoothListPage.js
  *
- * @brief Page to bluetooth List 
+ * @brief Page to bluetooth List
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
@@ -9,43 +9,61 @@
  * @date 06/2021
  */
 
-import React,{useEffect,useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native';
 
-import {H1, H2, H3, Body, BodySecondary} from './components/typography'
-import {Header, CellContainer, CellTitleContainer, VBox, VSeparator, ListSeparator, ListCell} from './components/cell'
-import {BTList, BluetoothEnableButton} from './components/BTList'
+import {H1, H2, H3, Body, BodySecondary} from './components/typography';
+import {
+  Header,
+  CellContainer,
+  CellTitleContainer,
+  VBox,
+  VSeparator,
+  ListSeparator,
+  ListCell,
+} from './components/cell';
+import {BTList, BluetoothEnableButton} from './components/BTList';
 
-import {BTConnection} from "./bt_communication/bt_connection"
+import {BTConnection} from './bt_communication/bt_connection';
 
 export const BluetoothListPage = () => {
+  const [
+    BTInit,
+    BTRemove,
+    EnableBT,
+    DisableBT,
+    BTLogin,
+    lista,
+    bolEnableBlu,
+  ] = BTConnection();
 
-  const [BTInit,BTRemove,EnableBT,DisableBT,BTLogin,lista,bolEnableBlu] = BTConnection();
-
-  useEffect(()=>{
-    
+  useEffect(() => {
     BTInit();
 
-    return() => {
-        BTRemove();
-    }
-  }, [])
+    return () => {
+      BTRemove();
+    };
+  }, []);
 
   const toggleBluetooth = () => {
-    if(!bolEnableBlu) {
+    if (!bolEnableBlu) {
       EnableBT();
-    }
+    } else {
       DisableBT();
+    }
   };
-      
+
   return (
     <SafeAreaView>
       <Header>
         <H1>Bluetooth</H1>
-        <BluetoothEnableButton value={bolEnableBlu} onValueChange={toggleBluetooth}/>
+        <BluetoothEnableButton
+          value={bolEnableBlu}
+          onValueChange={toggleBluetooth}
+        />
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
-      <BTList data={lista}/>
+      <BTList data={lista} />
     </SafeAreaView>
   );
-}
+};
