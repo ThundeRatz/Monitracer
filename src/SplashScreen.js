@@ -15,7 +15,6 @@ import {imageBackgroundStyle} from './components/general';
 import {GoToPage} from './utils/nav';
 
 export const SplashScreen = props => {
- 
   const componentDidMount = () => {
     setTimeout(() => {
       GoToPage(props.componentId, 'HomePage');
@@ -25,7 +24,9 @@ export const SplashScreen = props => {
   componentDidMount();
 
   return (
-    <TouchableOpacity style={imageBackgroundStyle.image} onPress = {()=> GoToPage(props.componentId, 'HomePage')}>
+    <TouchableOpacity
+      style={imageBackgroundStyle.image}
+      onPress={() => GoToPage(props.componentId, 'HomePage')}>
       <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
       <Animatable.Image
         animation="pulse"
