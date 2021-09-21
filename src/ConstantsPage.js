@@ -31,30 +31,35 @@ export const ConstantsPage = props => {
           title="Home"
         />
       </CellContainer>
+
       <CellContainer>
         <SecondaryButton
           onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
           title="Configurar bluetooth"
         />
       </CellContainer>
+
       <CellContainer>
         <SecondaryButton
           onPress={() => GoToPage(props.componentId, 'HistoryPage')}
           title="Página de Históricos"
         />
       </CellContainer>
+
       <CellContainer>
         <SecondaryButton
           onPress={() => GoToPage(props.componentId, 'ConstantsPage')}
           title="Página de Constantes"
         />
       </CellContainer>
+
       <CellContainer>
         <SecondaryButton
           onPress={() => GoToPage(props.componentId, 'EvaluationPage')}
           title="Página de testes"
         />
       </CellContainer>
+
       <CellContainer>
         <SecondaryButton
           onPress={() => GoToPage(props.componentId, 'ControlPage')}

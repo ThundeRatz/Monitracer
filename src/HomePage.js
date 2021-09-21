@@ -35,11 +35,11 @@ export const HomePage = props => {
   const [modalVisible, setModalVisible] = React.useState(false);
 
   const handleSimpleTestPress = async () => {
-    BTPostData('1');
+    await BTPostData('1');
   };
 
   const handleComplexTestPress = async () => {
-    BTPostData(inputValue);
+    await BTPostData(inputValue);
   };
 
   const handleReceiveSignal = () => {
@@ -58,23 +58,28 @@ export const HomePage = props => {
       </Header>
       <ScrollView>
         <VSeparator half />
+
         <VBox>
           <CellTitleContainer>
             <H3>Teste Simples</H3>
           </CellTitleContainer>
         </VBox>
+
         <CellContainer>
           <PrimaryButton
             onPress={handleSimpleTestPress}
             title={'Enviar sinal simples'}
           />
         </CellContainer>
+
+        <VSeparator half />
+
         <VBox>
-          <VSeparator half />
           <CellTitleContainer>
             <H3>Teste Complexo</H3>
           </CellTitleContainer>
         </VBox>
+
         <CellContainer>
           <TextInputCell
             placeholder={'Insira aqui o valor a enviar via bluetooth'}
@@ -86,60 +91,72 @@ export const HomePage = props => {
             title={'Enviar sinal complexo'}
           />
         </CellContainer>
+
+        <VSeparator half />
+
         <VBox>
-          <VSeparator half />
           <CellTitleContainer>
             <H3>Teste leitura bluetooth</H3>
           </CellTitleContainer>
         </VBox>
+
         <CellContainer>
           <PrimaryButton
             onPress={BTGetDataContinuous}
             title={'iniciar leitura bluetooth'}
           />
         </CellContainer>
+
         <VSeparator half />
+
         <VBox>
           <CellTitleContainer>
             <H3>Páginas</H3>
           </CellTitleContainer>
         </VBox>
+
         <CellContainer>
           <SecondaryButton
             onPress={() => GoToPage(props.componentId, 'HomePage')}
             title="Home"
           />
         </CellContainer>
+
         <CellContainer>
           <SecondaryButton
             onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
             title="Configurar bluetooth"
           />
         </CellContainer>
+
         <CellContainer>
           <SecondaryButton
             onPress={() => GoToPage(props.componentId, 'HistoryPage')}
             title="Página de Históricos"
           />
         </CellContainer>
+
         <CellContainer>
           <SecondaryButton
             onPress={() => GoToPage(props.componentId, 'ConstantsPage')}
             title="Página de Constantes"
           />
         </CellContainer>
+
         <CellContainer>
           <SecondaryButton
             onPress={() => GoToPage(props.componentId, 'EvaluationPage')}
             title="Página de testes"
           />
         </CellContainer>
+
         <CellContainer>
           <SecondaryButton
             onPress={() => GoToPage(props.componentId, 'ControlPage')}
             title="Página para controlar o Tracer"
           />
         </CellContainer>
+
         <SmallModal
           message={'O sinal recebido foi: '}
           handleClose={handleCloseModal}

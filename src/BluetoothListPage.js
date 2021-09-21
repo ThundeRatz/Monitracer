@@ -27,8 +27,15 @@ import {BTList, BluetoothEnableButton} from './components/BTList';
 import {BTConnection} from './bt_communication/bt_connection';
 
 export const BluetoothListPage = () => {
-  const [BTInit, BTRemove, EnableBT, DisableBT, BTLogin, lista, bolEnableBlu] =
-    BTConnection();
+  const [
+    BTInit,
+    BTRemove,
+    EnableBT,
+    DisableBT,
+    BTLogin,
+    lista,
+    bolEnableBlu,
+  ] = BTConnection();
 
   useEffect(() => {
     BTInit();
@@ -41,8 +48,9 @@ export const BluetoothListPage = () => {
   const toggleBluetooth = () => {
     if (!bolEnableBlu) {
       EnableBT();
+    } else {
+      DisableBT();
     }
-    DisableBT();
   };
 
   return (

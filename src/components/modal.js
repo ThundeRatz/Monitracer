@@ -8,16 +8,14 @@ export const SmallModal = props => {
       transparent={true}
       visible={props.visible}
       onRequestClose={() => {
-        props.handleClose;
-      }}
-    >
+        props.handleClose();
+      }}>
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.modalText}>{props.message}</Text>
           <Pressable
             style={[styles.button, styles.buttonClose]}
-            onPress={props.handleClose}
-          >
+            onPress={props.handleClose}>
             <Text style={styles.textStyle}>Ok</Text>
           </Pressable>
         </View>

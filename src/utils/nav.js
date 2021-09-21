@@ -8,14 +8,14 @@
 
 import {Navigation} from 'react-native-navigation';
 
-export const GoToPage = (componentId, LandingPage) => {
+export const GoToPage = (componentId, pageName) => {
   Navigation.push(componentId, {
     component: {
-      name: LandingPage,
+      name: pageName,
       options: {
         topBar: {
           title: {
-            text: LandingPage,
+            text: pageName,
           },
         },
       },
