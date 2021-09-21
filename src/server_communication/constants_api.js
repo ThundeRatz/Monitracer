@@ -56,7 +56,7 @@ export const GetConstantsByName = async constant_name => {
   let constants_list = await GetConstantsList();
   for (var i in constants_list) {
     if (constants_list[i]['name'] == constant_name) {
-      return constants_list[i]['values']
+      return constants_list[i]['values'];
     }
   }
 };
@@ -83,7 +83,7 @@ export const GetConstantsId = async constant_name => {
  * @brief Get the constant name by the constant id.
  *
  * @param constant_id id of the constant group.
- * 
+ *
  * @returns Set of constants with the id indicated. Undefined if it doesn't exists.
  */
 export const GetConstantsById = async constant_id => {

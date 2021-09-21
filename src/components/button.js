@@ -5,7 +5,7 @@ import {
   PostConstants,
   GetConstantsList,
 } from '../server_communication/constants_api';
-import {PostLap} from "../server_communication/laps_api"
+import {PostLap} from '../server_communication/laps_api';
 
 export const PrimaryButton = props => {
   return (

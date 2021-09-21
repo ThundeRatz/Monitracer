@@ -26,7 +26,8 @@ export const SplashScreen = props => {
   return (
     <TouchableOpacity
       style={imageBackgroundStyle.image}
-      onPress={() => GoToPage(props.componentId, 'HomePage')}>
+      onPress={() => GoToPage(props.componentId, 'HomePage')}
+    >
       <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
       <Animatable.Image
         animation="pulse"

@@ -38,7 +38,6 @@ import {
 import {SmallModal} from '../components/modal';
 
 const TestServer = props => {
-
   //server variables
   const [inputname, setInputname] = React.useState('');
   const [inputkp, setInputkp] = React.useState('');
