@@ -10,7 +10,9 @@ import {ControlPage} from './src/ControlPage';
 import {EvaluationPage} from './src/EvaluationPage';
 import {HistoryPage} from './src/HistoryPage';
 import {HomePage} from './src/HomePage.js';
+import {AppPage} from './src/AppPage.js';
 
+Navigation.registerComponent('AppPage', () => AppPage);
 Navigation.registerComponent('BluetoothListPage', () => BluetoothListPage);
 Navigation.registerComponent('ConstantsPage', () => ConstantsPage);
 Navigation.registerComponent('ControlPage', () => ControlPage);
