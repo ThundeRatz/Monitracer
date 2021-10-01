@@ -7,36 +7,48 @@ export const H2 = props => <Text style={styles.h2}>{props.children}</Text>;
 
 export const H3 = props => <Text style={styles.h3}>{props.children}</Text>;
 
+export const H4 = props => <Text style={styles.h4}>{props.children}</Text>;
+
 export const Body = props => <Text style={styles.body}>{props.children}</Text>;
 
-export const BodySecondary = props => (
-  <Text style={styles.bodySecondary}>{props.children}</Text>
-);
+export const BodySecondary = props => <Text style={styles.bodySecondary}>{props.children}</Text>;
+
+export const Input = props => <Text style={styles.input}>{props.children}</Text>;
 
 const styles = StyleSheet.create({
   h1: {
-    fontSize: 42,
-    fontWeight: 'bold',
-    color: '#333333',
+    fontFamily: 'Oswald-Regular',
+    fontSize: 64,
+    color: "#000000",
   },
   h2: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333333',
+    fontFamily: 'Oswald-Regular',
+    fontSize: 48,
+    color: "#000000",
   },
   h3: {
+    fontFamily: 'Oswald-Regular',
+    fontSize: 36,
+    color: "#000000",
+  },
+  h4: {
+    fontFamily: 'Oswald-Regular',
     fontSize: 24,
-    fontWeight: 'bold',
-    color: '#333333',
+    color: "#000000",
   },
   body: {
+    fontFamily: 'Montserrat-Regular',
     fontSize: 18,
-    fontWeight: 'normal',
-    color: '#333333',
+    color: "#000000",
   },
   bodySecondary: {
-    fontSize: 16,
-    fontWeight: 'normal',
-    color: '#525252',
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 18,
+    color: "#333333",
+  },
+  input: {
+    fontFamily: 'Montserrat-Regular',
+    fontSize: 18,
+    color: "#828282",
   },
 });
