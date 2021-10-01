@@ -1,5 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text} from 'react-native';
+import { StyleSheet, Text } from 'react-native';
+import { COLORS } from './colors.js';
 
 export const H1 = props => <Text style={styles.h1}>{props.children}</Text>;
 
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   h1: {
     fontFamily: 'Oswald-Regular',
     fontSize: 64,
-    color: "#000000",
+    color: COLORS.thunderBlack,
   },
   h2: {
     fontFamily: 'Oswald-Regular',
