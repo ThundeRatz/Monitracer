@@ -8,11 +8,11 @@
  * @date 09/2021
  */
 
-import React, {Component} from 'react';
-import {View, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import React from 'react';
+import { StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import {imageBackgroundStyle} from './components/general';
-import {GoToPage} from './utils/nav';
+import { imageBackgroundStyle } from './components/general';
+import { GoToPage } from './utils/nav';
 
 export const SplashScreen = props => {
   const componentDidMount = () => {

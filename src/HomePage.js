@@ -9,26 +9,24 @@
  * @date 06/2021
  */
 
-import React, {useEffect} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
+import React from 'react';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 
-import {H1, H2, H3, Body, BodySecondary} from './components/typography';
+import { H1, H3, Body } from './components/typography';
+import { VSeparator, VBox } from './components/grid';
 import {
   Header,
   CellContainer,
   CellTitleContainer,
-  VBox,
-  VSeparator,
   TextInputCell,
 } from './components/cell';
-import {PrimaryButton, SecondaryButton} from './components/button';
-import {SmallModal} from './components/modal';
-import {BTPostData} from './bt_communication/bt_data_sender';
+import { PrimaryButton, SecondaryButton } from './components/button';
+import { SmallModal } from './components/modal';
+import { BTPostData } from './bt_communication/bt_data_sender';
 import {
   BTGetDataContinuous,
-  BTGetData,
 } from './bt_communication/bt_data_receiver';
-import {GoToPage} from './utils/nav';
+import { GoToPage } from './utils/nav';
 
 export const HomePage = props => {
   const [inputValue, setInputValue] = React.useState('');
