@@ -38,10 +38,9 @@ export const GetData = async endpoint_name => {
   try {
     let res = await axios.get(link, headers);
     return res.data;
-    return true;
   } catch (error) {
     console.log(error);
     console.log('FAILED TO GET DATA');
-    return false;
   }
+  return null;
 };

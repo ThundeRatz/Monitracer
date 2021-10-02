@@ -38,9 +38,9 @@ export const PostData = async (endpoint_name, data) => {
     const res = await axios.post(link, data, headers);
     console.log('data sender: ');
     console.log(data);
-    return true;
+    return res;
   } catch (error) {
     console.log(error.response);
-    return false;
   }
+  return null
 };

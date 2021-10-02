@@ -73,7 +73,7 @@ export const GetConstantsId = async constant_name => {
     }
 }
   console.log('Id não encontrado - GetConstantsId\n');
-  return undefined;
+  return null;
 };
 
 /**

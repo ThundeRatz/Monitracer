@@ -1,3 +1,11 @@
+/**
+ * @file api_config.js
+ *
+ * @brief api configurations
+ *
+ * @date 09/2021
+ */
+
 /*****************************************
  * Public Constants
  *****************************************/
