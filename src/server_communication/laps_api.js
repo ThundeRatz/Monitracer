@@ -18,6 +18,7 @@ import {
   GetConstantsList,
   GetConstantsByName,
 } from './constants_api.js';
+import { endpoints } from './constants_config.js';
 
 /*****************************************
  * Public Functions
@@ -37,7 +38,7 @@ export const PostLapTime = async (id, name, lap_time) => {
     duration: lap_time,
   };
 
-  await PostData('laps', data);
+  await PostData(endpoints.LAPS, data);
 };
 
 /**
@@ -46,7 +47,7 @@ export const PostLapTime = async (id, name, lap_time) => {
  * @returns List of laps existing on server.
  */
 export const GetLapsList = async () => {
-  return await GetData('laps');
+  return await GetData(endpoints.LAPS);
 };
 
 /**
@@ -74,14 +75,14 @@ export const PostLap = async (name, kp, ki, kd, lap_time) => {
  */
 export const GetLapByName = async lap_name => {
   let laps_list = await GetLapsList();
-  for (var i in laps_list) {
-    if (laps_list[i]['name'] == lap_name) {
-      var constants = await GetConstantsById(laps_list[i]['constants']);
-      laps_list[i]['constants'] = constants['values'];
-      return await laps_list[i];
+  for (const lap of laps_list) {
+    if (lap.name === lap_name) {
+      let constants = await GetConstantsById(lap.constants);
+      lap.constants = constants;
+      return lap;
     }
   }
-  return undefined;
+  return [];
 };
 
 /**
@@ -93,10 +94,12 @@ export const GetLapByName = async lap_name => {
  */
 export const GetLapById = async lap_id => {
   let laps_list = await GetLapsList();
-  for (var i in laps_list) {
-    if (laps_list[i]['id'] == lap_id) {
-      return GetLapByName(laps_list[i]['name']);
+  for (const lap of laps_list) {
+    if (lap.id === lap_id) {
+      return GetLapByName(lap.name);
     }
   }
-  return undefined;
+  return [];
 };
+
+//(async () => console.log(await GetLapByName("208")))();

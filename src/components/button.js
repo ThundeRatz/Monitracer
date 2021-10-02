@@ -27,8 +27,8 @@ export const DataSenderButton = props => {
   return (
     <View>
       <PrimaryButton
-        onPress={() =>
-          PostLap(
+        onPress={async () =>
+          await PostLap(
             props.name,
             parseFloat(props.kp),
             parseFloat(props.kd),
@@ -46,7 +46,7 @@ export const DataReceiverButton = props => {
   return (
     <View>
       <PrimaryButton
-        onPress={() => GetConstantsList(props)}
+        onPress={async () => await GetConstantsList()}
         title={props.title}
       />
     </View>
