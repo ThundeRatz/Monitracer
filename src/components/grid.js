@@ -13,16 +13,16 @@ export const VSeparator = props => {
     }
 };
 
-export const Spacing = { xSmall: 8, small: 16, medium: 24, large: 32, xLarge: 48 };
+export const SPACING = { xSmall: 8, small: 16, medium: 24, large: 32, xLarge: 48 };
 
 const styles = StyleSheet.create({
     vbox: {
-        marginHorizontal: Spacing.medium,
+        marginHorizontal: SPACING.medium,
     },
     vSeparator: {
-        height: Spacing.medium,
+        height: SPACING.medium,
     },
     vSeparatorHalf: {
-        height: Spacing.medium / 2,
+        height: SPACING.medium / 2,
     },
 });
