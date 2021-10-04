@@ -50,6 +50,12 @@ function MyTabs() {
         initialRouteName = "Home"
         //Dont show "Home" in the bottom tabs, but it is still possible to navigate to it:
         screenOptions={({ route }) => ({
+          
+          tabBarActiveBackgroundColor: '#047FF0', //thunderazul sucesso
+          tabBarInactiveBackgroundColor: '#011749', //thunderazul
+          tabBarActiveTintColor: 'white',
+          tabBarInactiveTintColor: 'gray',
+
           tabBarButton: [
             "Home"
           ].includes(route.name)
@@ -74,8 +80,7 @@ function MyTabs() {
               }
               // You can return any component that you like here!
               return <Ionicons name={iconName} size={size} color={color} />;
-            },
-  
+            },      
         })}>
 
         <Tab.Screen name="Constants" component={ConstantsPage} />
