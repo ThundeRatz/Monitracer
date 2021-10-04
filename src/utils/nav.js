@@ -14,10 +14,8 @@ export const GoToPage = (componentId, pageName) => {
       name: pageName,
       options: {
         topBar: {
-          title: {
-            text: pageName,
-          },
-        },
+          visible: false
+        } 
       },
     },
   });

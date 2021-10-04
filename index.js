@@ -30,10 +30,8 @@ Navigation.events().registerAppLaunchedListener(() => {
               name: 'SplashScreen',
               options: {
                 topBar: {
-                  title: {
-                    text: 'SplashScreen',
-                  },
-                },
+                  visible: false
+                } 
               },
             },
           },
