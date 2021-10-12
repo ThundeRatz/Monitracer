@@ -27,42 +27,42 @@ export const ControlPage = props => {
     <SafeAreaView>
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'HomePage')}
+          onPress={() => props.navigation.navigate('HomePage')}
           title="Home"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
+          //onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
           title="Configurar bluetooth"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'HistoryPage')}
+          onPress={() => props.navigation.navigate('HistoryPage')}
           title="Página de Históricos"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'ConstantsPage')}
+          onPress={() => props.navigation.navigate('ConstantsPage')}
           title="Página de Constantes"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'EvaluationPage')}
+          onPress={() => props.navigation.navigate('EvaluationPage')}
           title="Página de testes"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'ControlPage')}
+          onPress={() => props.navigation.navigate('ControlPage')}
           title="Página para controlar o Tracer"
         />
       </CellContainer>

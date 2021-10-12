@@ -8,12 +8,13 @@ export const HeaderComponent = (props) => {
     return (
         <View style = {styles.header}>
           <TouchableOpacity>
-
             <Ionicons name={"square"} color={"white"} size={30}/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
+
+          <TouchableOpacity onPress={() => props.navigation.navigate('HomePage')}>
             <Image style = {styles.icon} source = {require('../icons/logo.png')}/>
           </TouchableOpacity>
+          
           <TouchableOpacity>
             <Ionicons name={"bluetooth"} color={"white"} size={30}/>
           </TouchableOpacity>
