@@ -1,17 +1,21 @@
 import * as React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
-export const HeaderComponent = props => {
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+
+export const HeaderComponent = (props) => {
     return (
         <View style = {styles.header}>
           <TouchableOpacity>
-            <Image style = {styles.icon} source = {require('../icons/bluetooth.png')}/>
+
+            <Ionicons name={"square"} color={"white"} size={30}/>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
             <Image style = {styles.icon} source = {require('../icons/logo.png')}/>
           </TouchableOpacity>
           <TouchableOpacity>
-            <Image style = {styles.icon} source = {require('../icons/stop.png')}/>
+            <Ionicons name={"bluetooth"} color={"white"} size={30}/>
           </TouchableOpacity>
         </View>
     );
@@ -19,10 +23,12 @@ export const HeaderComponent = props => {
 
 const styles = StyleSheet.create({
   header: {
+    backgroundColor: '#011749',
     alignItems: 'center',
     flex : 1,
     flexDirection: 'row',
     justifyContent: 'space-evenly'
+    
   },
   icon: {
     flex: 1,

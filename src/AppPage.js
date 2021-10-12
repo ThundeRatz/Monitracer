@@ -7,7 +7,7 @@ import {ControlPage} from './ControlPage';
 import { EvaluationPage } from './EvaluationPage';
 import { HeaderComponent } from './components/Header'
 
-import { PrimaryButton } from './components/button';
+
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
@@ -24,24 +24,20 @@ export const AppPage = () => {
           <Stack.Screen
             name="Screen"
             component={MyTabs}
+            
             options={{
-              title: 'My home',
               headerStyle: {
                 backgroundColor: '#011749',
               },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-
               headerTitle: () => (
                 <HeaderComponent/>
-              )   
+              ),
+              headerShown: false
             }}
             />
         </Stack.Navigator>
       </NavigationContainer>
-    );
+    ); 
 }
 
 function MyTabs() {
@@ -49,8 +45,25 @@ function MyTabs() {
       <Tab.Navigator 
         initialRouteName = "Home"
         //Dont show "Home" in the bottom tabs, but it is still possible to navigate to it:
-        screenOptions={({ route }) => ({
+        
+        screenOptions={({ route, navigation }) => ({         
+          headerTitle: () => (
+            <HeaderComponent navigation={navigation}/>
+          ),   
+          //headerTitleAlign: 'center',
+            
+          headerStyle: {
+            backgroundColor: '#011749',
+          },
           
+          headerTitleContainerStyle: {
+            backgroundColor: 'green',
+            alignItems: 'center',
+            flex : 200,  // ???
+            flexDirection: 'row',
+            justifyContent: 'space-evenly'
+          },
+
           tabBarActiveBackgroundColor: '#047FF0', //thunderazul sucesso
           tabBarInactiveBackgroundColor: '#011749', //thunderazul
           tabBarActiveTintColor: 'white',
@@ -63,8 +76,6 @@ function MyTabs() {
                 return null;
               }
             : undefined,
-
-            headerShown: false,
 
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
