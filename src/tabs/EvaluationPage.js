@@ -9,7 +9,7 @@
  * @date 09/2021
  */
 
-import {PrimaryButton, SecondaryButton} from './components/button';
+import {PrimaryButton, SecondaryButton} from '../components/button';
 import {
   Header,
   CellContainer,
@@ -17,10 +17,10 @@ import {
   VBox,
   VSeparator,
   TextInputCell,
-} from './components/cell';
+} from '../components/cell';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage} from './utils/nav';
+import {GoToPage} from '../utils/nav';
 
 export const EvaluationPage = props => {
   return (

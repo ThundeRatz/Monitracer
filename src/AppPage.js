@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import {HistoryPage} from './HistoryPage';
-import {HomePage} from './HomePage';
-import {ConstantsPage} from './ConstantsPage';
-import {ControlPage} from './ControlPage';
-import { EvaluationPage } from './EvaluationPage';
+import {HistoryPage} from './tabs/HistoryPage';
+import {HomePage} from './tabs/HomePage';
+import {ConstantsPage} from './tabs/ConstantsPage';
+import {ControlPage} from './tabs/ControlPage';
+import { EvaluationPage } from './tabs/EvaluationPage';
 import { HeaderComponent } from './components/Header'
 
 import { NavigationContainer } from '@react-navigation/native';

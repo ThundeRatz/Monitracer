@@ -1,7 +1,7 @@
 /**
- * @file HistoryPage.js
+ * @file ControlPage.js
  *
- * @brief page to review previous Tracer performances
+ * @brief Page to send commands to Tracer
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
@@ -9,7 +9,7 @@
  * @date 09/2021
  */
 
-import {PrimaryButton, SecondaryButton} from './components/button';
+import {PrimaryButton, SecondaryButton} from '../components/button';
 import {
   Header,
   CellContainer,
@@ -17,12 +17,12 @@ import {
   VBox,
   VSeparator,
   TextInputCell,
-} from './components/cell';
+} from '../components/cell';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage} from './utils/nav';
+import {GoToPage} from '../utils/nav';
 
-export const HistoryPage = props => {
+export const ControlPage = props => {
   return (
     <SafeAreaView>
       <CellContainer>

@@ -12,7 +12,7 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native';
 
-import {H1, H2, H3, Body, BodySecondary} from './components/typography';
+import {H1, H2, H3, Body, BodySecondary} from '../components/typography';
 import {
   Header,
   CellContainer,
@@ -21,10 +21,10 @@ import {
   VSeparator,
   ListSeparator,
   ListCell,
-} from './components/cell';
-import {BTList, BluetoothEnableButton} from './components/BTList';
+} from '../components/cell';
+import {BTList, BluetoothEnableButton} from '../components/BTList';
 
-import {BTConnection} from './bt_communication/bt_connection';
+import {BTConnection} from '../bt_communication/bt_connection';
 
 export const BluetoothListPage = () => {
   const [

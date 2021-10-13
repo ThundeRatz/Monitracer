@@ -1,7 +1,7 @@
 /**
- * @file ConstantsPage.js
+ * @file HistoryPage.js
  *
- * @brief Page to send and receive constants
+ * @brief page to review previous Tracer performances
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
@@ -9,7 +9,7 @@
  * @date 09/2021
  */
 
-import {PrimaryButton, SecondaryButton} from './components/button';
+import {PrimaryButton, SecondaryButton} from '../components/button';
 import {
   Header,
   CellContainer,
@@ -17,12 +17,12 @@ import {
   VBox,
   VSeparator,
   TextInputCell,
-} from './components/cell';
+} from '../components/cell';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage} from './utils/nav';
+import {GoToPage} from '../utils/nav';
 
-export const ConstantsPage = props => {
+export const HistoryPage = props => {
   return (
     <SafeAreaView>
       <CellContainer>

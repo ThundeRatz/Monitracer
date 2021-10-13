@@ -15,7 +15,7 @@ import {imageBackgroundStyle} from './components/general';
 import {GoToPage} from './utils/nav';
 
 export const SplashScreen = props => {
-  const navigationTimeOut = setTimeout(() => GoToPage(props.componentId, 'AppPage') , 5000);
+  const navigationTimeOut = setTimeout(() => GoToPage(props.componentId, 'AppPage') , 2000);
   
   return (
     <TouchableOpacity

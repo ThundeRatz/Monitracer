@@ -4,12 +4,12 @@
 
 import {Navigation} from 'react-native-navigation';
 import {SplashScreen} from './src/SplashScreen';
-import {BluetoothListPage} from './src/BluetoothListPage';
-import {ConstantsPage} from './src/ConstantsPage';
-import {ControlPage} from './src/ControlPage';
-import {EvaluationPage} from './src/EvaluationPage';
-import {HistoryPage} from './src/HistoryPage';
-import {HomePage} from './src/HomePage.js';
+import {BluetoothListPage} from './src/tabs/BluetoothListPage';
+import {ConstantsPage} from './src/tabs/ConstantsPage';
+import {ControlPage} from './src/tabs/ControlPage';
+import {EvaluationPage} from './src/tabs/EvaluationPage';
+import {HistoryPage} from './src/tabs/HistoryPage';
+import {HomePage} from './src/tabs/HomePage.js';
 import {AppPage} from './src/AppPage.js';
 
 Navigation.registerComponent('AppPage', () => AppPage);
