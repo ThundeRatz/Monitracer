@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import {GoToPage, GoToTab} from '../utils/nav';
+import {GoToTab} from '../utils/nav';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {GoToDinoTracer} from '../utils/DinoTracer';
 

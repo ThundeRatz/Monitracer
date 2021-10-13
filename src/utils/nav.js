@@ -9,7 +9,7 @@
 
 import {Navigation} from 'react-native-navigation';
 
-var nav = 0;
+var nav;
 
 export const GoToPage = (componentId, pageName) => {
   Navigation.push(componentId, {
