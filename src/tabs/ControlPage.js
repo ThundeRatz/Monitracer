@@ -27,7 +27,7 @@ export const ControlPage = props => {
     <SafeAreaView>
       <CellContainer>
         <SecondaryButton
-          onPress={() => props.navigation.navigate('HomePage')}
+          onPress={() => GoToTab('HomePage')}
           title="Home"
         />
       </CellContainer>
@@ -41,28 +41,28 @@ export const ControlPage = props => {
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => props.navigation.navigate('HistoryPage')}
+          onPress={() => GoToTab('HistoryPage')}
           title="Página de Históricos"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => props.navigation.navigate('ConstantsPage')}
+          onPress={() => GoToTab('ConstantsPage')}
           title="Página de Constantes"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => props.navigation.navigate('EvaluationPage')}
+          onPress={() => GoToTab('EvaluationPage')}
           title="Página de testes"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => props.navigation.navigate('ControlPage')}
+          onPress={() => GoToTab('ControlPage')}
           title="Página para controlar o Tracer"
         />
       </CellContainer>

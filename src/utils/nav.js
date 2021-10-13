@@ -6,7 +6,10 @@
  * @date 09/2021
  */
 
+
 import {Navigation} from 'react-native-navigation';
+
+var nav = 0;
 
 export const GoToPage = (componentId, pageName) => {
   Navigation.push(componentId, {
@@ -19,4 +22,12 @@ export const GoToPage = (componentId, pageName) => {
       },
     },
   });
+};
+
+export const GoToTabInit = (navigation) => {
+  nav = navigation;
+};
+
+export const GoToTab = (tabName) => {
+  nav.navigate(tabName);
 };

@@ -5,7 +5,9 @@ import {HomePage} from './tabs/HomePage';
 import {ConstantsPage} from './tabs/ConstantsPage';
 import {ControlPage} from './tabs/ControlPage';
 import { EvaluationPage } from './tabs/EvaluationPage';
-import { HeaderComponent } from './components/Header'
+import { BluetoothListPage } from './tabs/BluetoothListPage';
+import { HeaderComponent } from './components/Header';
+import { GoToTabInit} from './utils/nav';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator, BottomTabBar } from '@react-navigation/bottom-tabs';
@@ -14,6 +16,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createNativeStackNavigator();
+
+const Tab = createBottomTabNavigator();
 
 export const AppPage = () => {
     return (
@@ -37,7 +41,7 @@ function MyTabs() {
         initialRouteName = "HomePage"
         //Dont show "Home" in the bottom tabs, but it is still possible to navigate to it:
         
-        screenOptions={({ route, navigation }) => ({         
+        screenOptions={({ route, navigation }) => ({ 
           headerTitle: () => (
             <HeaderComponent navigation={navigation}/>
           ),   
@@ -60,7 +64,7 @@ function MyTabs() {
           tabBarInactiveTintColor: 'gray',
 
           tabBarButton: [
-            "HomePage"
+            "HomePage","BluetoothListPage"
           ].includes(route.name)
             ? () => {
                 return null;
@@ -68,6 +72,7 @@ function MyTabs() {
             : undefined,
 
             tabBarIcon: ({ focused, color, size }) => {
+              GoToTabInit(navigation);
               let iconName;
   
               if (route.name === 'ConstantsPage') {
@@ -76,11 +81,14 @@ function MyTabs() {
                 iconName = "list";
               } else if (route.name === 'ControlPage') {
                 iconName = "game-controller"
-              } else {
+              } else  {
                 iconName = "cog"
               }
               // You can return any component that you like here!
-              return <Ionicons name={iconName} size={size} color={color} />;
+              if (!(route.name === 'BluetoothListPage')) {
+                return <Ionicons name={iconName} size={size} color={color} />;
+              }
+              
             },      
         })}>
 
@@ -88,10 +96,10 @@ function MyTabs() {
         <Tab.Screen name="HistoryPage" component={HistoryPage} />
         <Tab.Screen name="ControlPage" component={ControlPage} />
         <Tab.Screen name="EvaluationPage" component={EvaluationPage} />
+        <Tab.Screen name="BluetoothListPage" component={BluetoothListPage} />
         <Tab.Screen name="HomePage" component={HomePage} />
       </Tab.Navigator>
     );
   }
  
 
-const Tab = createBottomTabNavigator();
