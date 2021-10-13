@@ -6,7 +6,7 @@ import {ConstantsPage} from './tabs/ConstantsPage';
 import {ControlPage} from './tabs/ControlPage';
 import { EvaluationPage } from './tabs/EvaluationPage';
 import { BluetoothListPage } from './tabs/BluetoothListPage';
-import { HeaderComponent } from './components/Header';
+import { HeaderComponent } from './components/header';
 import { GoToTabInit} from './utils/nav';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -84,11 +84,8 @@ function MyTabs() {
               } else  {
                 iconName = "cog"
               }
-              // You can return any component that you like here!
-              if (!(route.name === 'BluetoothListPage')) {
-                return <Ionicons name={iconName} size={size} color={color} />;
-              }
-              
+
+              return <Ionicons name={iconName} size={size} color={color} />;
             },      
         })}>
 

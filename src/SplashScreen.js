@@ -18,29 +18,38 @@ export const SplashScreen = props => {
   const navigationTimeOut = setTimeout(() => GoToPage(props.componentId, 'AppPage') , 2000);
   
   return (
-    <TouchableOpacity
-      style={imageBackgroundStyle.image}
-      onPress={
-        () => {
-          clearTimeout(navigationTimeOut);
-          GoToPage(props.componentId, 'AppPage');
-        }}>
-      <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
-      <Animatable.Image
-        animation="pulse"
-        easing="ease-out"
-        iterationCount="infinite"
-        style={styles.image}
-        source={require('@img/LogoTR-Vertical_Amarelo.png')}
-      />
-    </TouchableOpacity>
+    <View style={styles.container}>
+        <TouchableOpacity
+          style={imageBackgroundStyle.image}
+          onPress={
+            () => {
+              clearTimeout(navigationTimeOut);
+              GoToPage(props.componentId, 'AppPage');
+            }}>
+          <StatusBar translucent backgroundColor="rgba(1, 23, 73, 1)" />
+          <Animatable.Image
+            animation="pulse"
+            easing="ease-out"
+            iterationCount="infinite"
+            style={styles.image}
+            source={require('@img/Tracer-2.png')}
+          />
+        </TouchableOpacity>
+    </View> 
   );
 };
 
 const styles = StyleSheet.create({
   image: {
-    width: 350,
-    height: 200,
+    position: 'absolute',
+    width: 150,
+    height: 260,
     margin: 100,
+  },
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: "center",
+    backgroundColor:'#011749'
   },
 });
