@@ -34,7 +34,7 @@ export const ConstantsPage = props => {
 
       <CellContainer>
         <SecondaryButton
-          //onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
+          onPress={() => GoToTab('BluetoothListPage')}
           title="Configurar bluetooth"
         />
       </CellContainer>

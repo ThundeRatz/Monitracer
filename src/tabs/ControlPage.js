@@ -20,7 +20,7 @@ import {
 } from '../components/cell';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage} from '../utils/nav';
+import {GoToPage,GoToTab} from '../utils/nav';
 
 export const ControlPage = props => {
   return (
@@ -34,7 +34,7 @@ export const ControlPage = props => {
 
       <CellContainer>
         <SecondaryButton
-          //onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
+          onPress={() => GoToTab('BluetoothListPage')}
           title="Configurar bluetooth"
         />
       </CellContainer>

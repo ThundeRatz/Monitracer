@@ -7,16 +7,16 @@ import {GoToDinoTracer} from '../utils/DinoTracer';
 export const HeaderComponent = (props) => {
     return (
         <View style = {styles.header}>
-          <TouchableOpacity>
-            <Ionicons name={"square"} color={"white"} size={30}/>
+          <TouchableOpacity onPress={() => GoToTab('BluetoothListPage')}>
+            <Ionicons name={"bluetooth"} color={"white"} size={30}/>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={() => GoToTab('HomePage')} onLongPress = {() => GoToDinoTracer()}>
             <Image style = {styles.icon} source = {require('../../assets/img/logo.png')}/>
           </TouchableOpacity>
           
-          <TouchableOpacity onPress={() => GoToTab('BluetoothListPage')}>
-            <Ionicons name={"bluetooth"} color={"white"} size={30}/>
+          <TouchableOpacity>
+            <Ionicons name={"square"} color={"white"} size={30}/>
           </TouchableOpacity>
         </View>
     );
