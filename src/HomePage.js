@@ -10,7 +10,7 @@
  */
 
 import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 
 import { H1, H3, Body } from './components/typography';
 import { VSeparator, VBox } from './components/grid';
@@ -20,7 +20,7 @@ import {
   CellTitleContainer,
   TextInputCell,
 } from './components/cell';
-import { PrimaryButton, SecondaryButton, ActionButton } from './components/button';
+import { PrimaryButton, SecondaryButton } from './components/button';
 import { SmallModal } from './components/modal';
 import { BTPostData } from './bt_communication/bt_data_sender';
 import {
@@ -66,7 +66,7 @@ export const HomePage = props => {
         <CellContainer>
           <PrimaryButton
             onPress={handleSimpleTestPress}
-            title={'ENVIAR SINAL'}
+            title={'Enviar sinal simples'}
           />
         </CellContainer>
 
@@ -84,7 +84,7 @@ export const HomePage = props => {
             onChangeText={setInputValue}
             value={inputValue}
           />
-          <ActionButton
+          <PrimaryButton
             onPress={handleComplexTestPress}
             title={'Enviar sinal complexo'}
           />
@@ -101,7 +101,7 @@ export const HomePage = props => {
         <CellContainer>
           <PrimaryButton
             onPress={BTGetDataContinuous}
-            title={'INICIAR'}
+            title={'iniciar leitura bluetooth'}
           />
         </CellContainer>
 
