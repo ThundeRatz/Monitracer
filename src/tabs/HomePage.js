@@ -115,17 +115,46 @@ export const HomePage = props => {
             <H3>Testes</H3>
           </CellTitleContainer>
         </VBox>
+        </CellContainer>
+
         <CellContainer>
           <SecondaryButton
-            onPress={() => GoToPage(props.componentId, 'TestServer')}
-            title="teste servidor"
+            onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
+            title="CONFIGURAR"
+          />
+        </CellContainer>
+
+        <CellContainer>
+          <SecondaryButton
+            onPress={() => GoToPage(props.componentId, 'HistoryPage')}
+            title="HISTÓRICOS"
+          />
+        </CellContainer>
+
+        <CellContainer>
+          <SecondaryButton
+            onPress={() => GoToPage(props.componentId, 'ConstantsPage')}
+            title="CONSTANTES"
+          />
+        </CellContainer>
+
+        <CellContainer>
+          <SecondaryButton
+            onPress={() => GoToPage(props.componentId, 'EvaluationPage')}
+            title="TESTES"
+          />
+        </CellContainer>
+
+        <CellContainer>
+          <SecondaryButton
+            onPress={() => GoToPage(props.componentId, 'ControlPage')}
+            title="CONTROLE"
           />
         </CellContainer>
       </ScrollView>
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
