@@ -39,11 +39,11 @@ import {SmallModal} from '../components/modal';
 
 const TestServer = props => {
   //server variables
-  const [inputname, setInputname] = React.useState('');
-  const [inputkp, setInputkp] = React.useState('');
-  const [inputkd, setInputkd] = React.useState('');
-  const [inputki, setInputki] = React.useState('');
-  const [inputtime, setInputtime] = React.useState('');
+  const [input_name, setInputName] = React.useState('');
+  const [input_kp, setInputKp] = React.useState('');
+  const [input_kd, setInputKd] = React.useState('');
+  const [input_ki, setInputKi] = React.useState('');
+  const [input_time, setInputTime] = React.useState('');
 
   return (
     <SafeAreaView style={styles.container}>
@@ -61,36 +61,36 @@ const TestServer = props => {
         <CellContainer>
           <TextInputCell
             placeholder={'Insira aqui o nome do teste'}
-            onChangeText={setInputname}
-            value={inputname}
+            onChangeText={setInputName}
+            value={input_name}
           />
           <TextInputCell
             placeholder={'Insira aqui o valor de kp'}
-            onChangeText={setInputkp}
-            value={inputkp}
+            onChangeText={setInputKp}
+            value={input_kp}
           />
           <TextInputCell
             placeholder={'Insira aqui o valor de kd'}
-            onChangeText={setInputkd}
-            value={inputkd}
+            onChangeText={setInputKd}
+            value={input_kd}
           />
           <TextInputCell
             placeholder={'Insira aqui o valor de ki'}
-            onChangeText={setInputki}
-            value={inputki}
+            onChangeText={setInputKi}
+            value={input_ki}
           />
           <TextInputCell
             placeholder={'Insira tempo de volta'}
-            onChangeText={setInputtime}
-            value={inputtime}
+            onChangeText={setInputTime}
+            value={input_time}
           />
           <DataSenderButton
             title={'Enviar constantes'}
-            name={inputname}
-            kp={inputkp}
-            kd={inputkd}
-            ki={inputki}
-            lap_time={inputtime}
+            name={input_name}
+            kp={input_kp}
+            kd={input_kd}
+            ki={input_ki}
+            lap_time={input_time}
           />
           <DataReceiverButton title={'Receber constantes'} />
         </CellContainer>

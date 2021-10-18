@@ -42,5 +42,5 @@ export const PostData = async (endpoint_name, data) => {
   } catch (error) {
     console.log(error.response);
   }
-  return null
+  return null;
 };

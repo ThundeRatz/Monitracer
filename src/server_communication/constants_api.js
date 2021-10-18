@@ -11,7 +11,7 @@
 
 import {PostData} from './data_sender.js';
 import {GetData} from './data_receiver.js';
-import { endpoints } from './constants_config.js';
+import {endpoints, constant_types} from './constants_config.js';
 
 /*****************************************
  * Public Functions
@@ -54,7 +54,9 @@ export const GetConstantsList = async () => {
  * @returns Constants values.
  */
 export const GetConstantsByName = async constant_name => {
-  let constants_values = await GetData(endpoints.CONSTANTS+"/"+constant_name);
+  let constants_values = await GetData(
+    endpoints.CONSTANTS + '/' + constant_name,
+  );
   return constants_values.values;
 };
 
@@ -71,7 +73,7 @@ export const GetConstantsId = async constant_name => {
     if (constant.name === constant_name) {
       return constant.id;
     }
-}
+  }
   console.log('Id não encontrado - GetConstantsId\n');
   return null;
 };

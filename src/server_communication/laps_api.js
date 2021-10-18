@@ -15,10 +15,8 @@ import {
   PostConstants,
   GetConstantsId,
   GetConstantsById,
-  GetConstantsList,
-  GetConstantsByName,
 } from './constants_api.js';
-import { endpoints } from './constants_config.js';
+import {endpoints} from './constants_config.js';
 
 /*****************************************
  * Public Functions
