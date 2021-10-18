@@ -27,15 +27,13 @@ export const DataSenderButton = props => {
   return (
     <View>
       <PrimaryButton
-        onPress={async () =>
+        onPress={async () => {
           await PostLap(
             props.name,
-            parseFloat(props.kp),
-            parseFloat(props.kd),
-            parseFloat(props.ki),
+            props.constant_values,
             parseInt(props.lap_time),
-          )
-        }
+          );
+        }}
         title={props.title}
       />
     </View>

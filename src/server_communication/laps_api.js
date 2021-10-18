@@ -52,14 +52,12 @@ export const GetLapsList = async () => {
  * @brief Send a lap to the server.
  *
  * @param name lap name
- * @param kp kp from PID
- * @param ki ki from PID
- * @param kd kd from PID
+ * @param constant_values constant values array
  * @param lap_time time taken for a lap
  */
-export const PostLap = async (name, kp, ki, kd, lap_time) => {
+export const PostLap = async (name, constant_values, lap_time) => {
   let new_constants_name = name + '_consts';
-  await PostConstants(new_constants_name, kp, ki, kd);
+  await PostConstants(new_constants_name, constant_values);
   let consts_id = await GetConstantsId(new_constants_name);
   await PostLapTime(consts_id, name, lap_time);
 };
@@ -99,5 +97,3 @@ export const GetLapById = async lap_id => {
   }
   return [];
 };
-
-//(async () => console.log(await GetLapByName("208")))();

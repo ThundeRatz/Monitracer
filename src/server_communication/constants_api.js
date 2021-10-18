@@ -21,19 +21,20 @@ import {endpoints, constant_types} from './constants_config.js';
  * @brief Send constants to server.
  *
  * @param name Brief description of the set of constants.
- * @param kp kp from PID.
- * @param ki ki from PID.
- * @param kd kd from PID.
+ * @param constants_values constant values array
  */
-export const PostConstants = async (name, kp, ki, kd) => {
+export const PostConstants = async (name, constant_values) => {
+  let value = {};
+
+  for (let i = 0; i < constant_values.length; i++) {
+    value[i + 1] = parseFloat(constant_values[i]);
+  }
+
   let data = {
     name: name,
-    values: {
-      1: parseFloat(kp),
-      2: parseFloat(ki),
-      3: parseFloat(kd),
-    },
+    values: value,
   };
+
   await PostData(endpoints.CONSTANTS, data);
 };
 
@@ -94,5 +95,3 @@ export const GetConstantsById = async constant_id => {
   }
   return [];
 };
-
-//(async () => console.log(await GetConstantsById(118)))();

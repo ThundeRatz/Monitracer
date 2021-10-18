@@ -87,9 +87,7 @@ const TestServer = props => {
           <DataSenderButton
             title={'Enviar constantes'}
             name={input_name}
-            kp={input_kp}
-            kd={input_kd}
-            ki={input_ki}
+            constant_values={[input_kp, input_ki, input_kd]}
             lap_time={input_time}
           />
           <DataReceiverButton title={'Receber constantes'} />
