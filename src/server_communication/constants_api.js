@@ -11,7 +11,7 @@
 
 import {PostData} from './data_sender.js';
 import {GetData} from './data_receiver.js';
-import {endpoints, constant_types} from './constants_config.js';
+import {endpoints} from './constants_config.js';
 
 /*****************************************
  * Public Functions
@@ -94,4 +94,13 @@ export const GetConstantsById = async constant_id => {
     }
   }
   return [];
+};
+
+/**
+ * @brief Get the constants list expected from the app.
+ *
+ * @returns Label list for the expected constants.
+ */
+ export const GetConstantsLabels = async () => {
+  return await GetData(endpoints.CONSTANTS_LABELS);
 };
