@@ -10,5 +10,5 @@ export const endpoints = {
   CONSTANTS: 'constants',
   LAPS: 'laps',
   CONSTANTS_LABELS: 'constant_types',
-  RULES: 'rules'
+  RULES: 'rules',
 };
