@@ -32,15 +32,8 @@ import {PrimaryButton, SecondaryButton} from './button';
 import {BTConnection} from '../bt_communication/bt_connection';
 
 export const BTList = props => {
-  const [
-    BTInit,
-    BTRemove,
-    EnableBT,
-    DisableBT,
-    BTLogin,
-    lista,
-    bolEnableBlu,
-  ] = BTConnection();
+  const [BTInit, BTRemove, EnableBT, DisableBT, BTLogin, lista, bolEnableBlu] =
+    BTConnection();
 
   const _renderItem = ({item}) => {
     return (
@@ -77,7 +70,8 @@ export const BTList = props => {
       ListFooterComponent={ListSeparator}
       ListHeaderComponent={ListSeparator}
       keyExtractor={item => item.id}
-      renderItem={item => _renderItem(item)}></FlatList>
+      renderItem={item => _renderItem(item)}
+    ></FlatList>
   );
 };
 

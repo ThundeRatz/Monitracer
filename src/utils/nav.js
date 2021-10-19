@@ -6,7 +6,6 @@
  * @date 09/2021
  */
 
-
 import {Navigation} from 'react-native-navigation';
 
 var nav;
@@ -17,17 +16,17 @@ export const GoToPage = (componentId, pageName) => {
       name: pageName,
       options: {
         topBar: {
-          visible: false
-        } 
+          visible: false,
+        },
       },
     },
   });
 };
 
-export const GoToTabInit = (navigation) => {
+export const GoToTabInit = navigation => {
   nav = navigation;
 };
 
-export const GoToTab = (tabName) => {
+export const GoToTab = tabName => {
   nav.navigate(tabName);
 };

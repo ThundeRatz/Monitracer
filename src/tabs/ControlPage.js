@@ -20,16 +20,13 @@ import {
 } from '../components/cell';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage,GoToTab} from '../utils/nav';
+import {GoToPage, GoToTab} from '../utils/nav';
 
 export const ControlPage = props => {
   return (
     <SafeAreaView>
       <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToTab('HomePage')}
-          title="Home"
-        />
+        <SecondaryButton onPress={() => GoToTab('HomePage')} title="Home" />
       </CellContainer>
 
       <CellContainer>

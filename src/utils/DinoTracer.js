@@ -12,5 +12,5 @@ import {DinoTracerUrl} from '../config';
 import {Linking} from 'react-native';
 
 export const GoToDinoTracer = () => {
-    Linking.openURL(DinoTracerUrl);
-}
+  Linking.openURL(DinoTracerUrl);
+};
