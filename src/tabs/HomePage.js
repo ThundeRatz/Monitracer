@@ -28,7 +28,6 @@ import {
   BTGetDataContinuous,
   BTGetData,
 } from '../bt_communication/bt_data_receiver';
-import {GoToPage} from '../utils/nav';
 
 export const HomePage = props => {
   const [inputValue, setInputValue] = React.useState('');

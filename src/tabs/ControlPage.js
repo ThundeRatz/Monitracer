@@ -20,7 +20,7 @@ import {
 } from '../components/cell';
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage, GoToTab} from '../utils/nav';
+import {GoToTab} from '../utils/nav';
 
 export const ControlPage = props => {
   return (

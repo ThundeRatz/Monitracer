@@ -22,13 +22,7 @@ export const SplashScreen = props => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity
-        style={imageBackgroundStyle.image}
-        onPress={() => {
-          clearTimeout(navigationTimeOut);
-          GoToPage(props.componentId, 'AppPage');
-        }}
-      >
+      <View style={imageBackgroundStyle.image}>
         <StatusBar translucent backgroundColor="rgba(1, 23, 73, 1)" />
         <Animatable.Image
           animation="pulse"
@@ -37,7 +31,7 @@ export const SplashScreen = props => {
           style={styles.image}
           source={require('@img/Tracer-2.png')}
         />
-      </TouchableOpacity>
+      </View>
     </View>
   );
 };
