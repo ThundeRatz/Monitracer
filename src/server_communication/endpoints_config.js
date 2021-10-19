@@ -1,7 +1,7 @@
 /**
- * @file constants_config.js
+ * @file endpoints_config.js
  *
- * @brief constants configurations
+ * @brief api endpoints configurations
  *
  * @date 10/2021
  */
