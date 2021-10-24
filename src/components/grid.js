@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export const VBox = props => {
     return <View style={styles.vbox}>{props.children}</View>;

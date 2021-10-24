@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { COLORS } from './colors.js';
+import {StyleSheet, Text} from 'react-native';
+import {COLORS} from './colors.js';
 
 export const H1 = props => <Text style={styles(props.color).h1}>{props.children}</Text>;
 

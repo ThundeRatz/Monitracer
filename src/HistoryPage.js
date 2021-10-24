@@ -9,11 +9,11 @@
  * @date 09/2021
  */
 
-import { SecondaryButton } from './components/button';
-import { CellContainer } from './components/cell';
+import {SecondaryButton} from './components/button';
+import {CellContainer} from './components/cell';
 import React from 'react';
-import { SafeAreaView } from 'react-native';
-import { GoToPage } from './utils/nav';
+import {SafeAreaView} from 'react-native';
+import {GoToPage} from './utils/nav';
 
 export const HistoryPage = props => {
   return (

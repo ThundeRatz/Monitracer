@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
+import {StyleSheet, View, TextInput} from 'react-native';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
