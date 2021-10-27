@@ -6,11 +6,8 @@ export const VBox = props => {
 };
 
 export const VSeparator = props => {
-    if (props.half) {
-        return <View style={styles.vSeparatorHalf}>{props.children}</View>;
-    } else {
-        return <View style={styles.vSeparator}>{props.children}</View>;
-    }
+return props.half ? (<View style={styles.vSeparatorHalf}>{props.children}</View>) : 
+                              (<View style={styles.vSeparator}>{props.children}</View>)
 };
 
 export const SPACING = { xSmall: 8, small: 16, medium: 24, large: 32, xLarge: 48 };
