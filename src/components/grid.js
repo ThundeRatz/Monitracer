@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Dimensions} from 'react-native';
 
 export const VBox = props => {
     return <View style={styles.vbox}>{props.children}</View>;
@@ -11,6 +11,8 @@ return props.half ? (<View style={styles.vSeparatorHalf}>{props.children}</View>
 };
 
 export const SPACING = { xSmall: 8, small: 16, medium: 24, large: 32, xLarge: 48 };
+
+export const DIMENSIONS = {width: Dimensions.get('window').width, height: Dimensions.get('window').height };
 
 const styles = StyleSheet.create({
     vbox: {

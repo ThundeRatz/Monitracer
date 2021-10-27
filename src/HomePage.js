@@ -6,29 +6,16 @@
  * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
- * @author Henrique <>
+ * @author Henrique D'Amaral <>
  * 
  * @date 10/2021
  */
 
 import React, {useEffect} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
-
-import {H1, H3, Body} from './components/typography';
-import {VSeparator, VBox} from './components/grid';
-import {
-  Header,
-  CellContainer,
-  CellTitleContainer,
-  TextInputCell,
-} from './components/cell';
-import {PrimaryButton, SecondaryButton} from './components/button';
-import {SmallModal} from './components/modal';
-import {BTPostData} from './bt_communication/bt_data_sender';
-import {
-  BTGetDataContinuous,
-} from './bt_communication/bt_data_receiver';
-import {GoToPage} from './utils/nav';
+import {SafeAreaView, ScrollView, StyleSheet, View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
+import {COLORS} from './components/colors';
+import {SPACING} from './components/grid';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const HomePage = props => {
 
@@ -36,18 +23,28 @@ export const HomePage = props => {
     return (
       <TouchableOpacity
       style={styles.roundButton1}>
-        <Text>I'm a button</Text>
+        {/* <Ionicons name='alert-outline' size={50} color="white" /> */}
+        <Ionicons name='bluetooth' color='white' size={30} />
       </TouchableOpacity>
-    
     );
   }
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        
+      <View style={styles.blueBackground}>
+        <Image
+          style={styles.image}
+          source={require('@img/Tracer-2.png')}
+        />
       </View>
-      <View>
+      <View style = {styles.triangleCorner}/>
+      <View style={styles.buttonContainer}>
+      <Image
+        style={styles.logoTypo}
+        source={require('@img/Tracer_typo.png')}
+      />
+      </View>
+      <View style={styles.buttonContainer}>
         {build_fab_button()}
       </View>
       
@@ -59,23 +56,41 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  roundButton1: {
-    width: 100,
-    height: 100,
+  triangleCorner: {
+    width: 0,
+    height: 0,
+    backgroundColor: "transparent",
+    borderStyle: "solid",
+    borderRightWidth: Dimensions.get('window').width ,
+    borderTopWidth: Dimensions.get('window').width * 0.15, //width * tan(8.5°)
+    borderRightColor: "transparent",
+    borderTopColor: COLORS.thunderBlue,
+  },
+  roundButton1: { 
+    width: 64,
+    height: 64,   //dimensions from figma
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
+    padding: SPACING.small,
     borderRadius: 100,
-    backgroundColor: 'blue',
+    backgroundColor: COLORS.thunderBlue,
   },
   blueBackground: {
-    width: 100,
-    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 10,
-    borderRadius: 100,
-    backgroundColor: 'blue',
+    backgroundColor: COLORS.thunderBlue,
   },
-
+  logoTypo: {
+    height: 50,
+    margin: 10,
+    resizeMode: "center",
+  },
+  image: {
+    height: 313,
+    margin: 5,
+    resizeMode: "center",
+  },
+  buttonContainer: {
+    alignItems: 'center',
+  },
 });

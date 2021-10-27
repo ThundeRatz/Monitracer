@@ -33,7 +33,7 @@ export const SplashScreen = props => {
         easing="ease-out"
         iterationCount="infinite"
         style={styles.image}
-        source={require('@img/LogoTR-Vertical_Amarelo.png')}
+        source={require('@img/Tracer-2.png')}
       />
     </TouchableOpacity>
   );
