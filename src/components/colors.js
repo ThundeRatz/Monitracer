@@ -12,8 +12,8 @@ export const COLORS = {
     controllButton02: "#FF0000",
     thunderBlack: "#000000",
 
-    /* Allert */
-    thunderAllert: "#E10000",
+    /* Alert */
+    thunderAlert: "#E10000",
 
     /* Error */
     thunderError: "#AB1212",
