@@ -8,7 +8,7 @@ export const HeaderComponent = props => {
   return (
     <View style={styles.header}>
       <TouchableOpacity onPress={() => GoToTab('BluetoothListPage')}>
-        <Ionicons name='bluetooth' color='white' size={30} />
+        <Ionicons name="bluetooth" color="white" size={30} />
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -22,7 +22,7 @@ export const HeaderComponent = props => {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <Ionicons name='square' color='white' size={30} />
+        <Ionicons name="square" color="white" size={30} />
       </TouchableOpacity>
     </View>
   );

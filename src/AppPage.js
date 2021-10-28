@@ -36,6 +36,29 @@ export const AppPage = () => {
 };
 
 function MyTabs() {
+  pagesArray = [
+    {
+      pageComponent: ConstantsPage,
+      screenName: 'ConstantsPage',
+      tabBarLabel: 'Constantes',
+    },
+    {
+      pageComponent: HistoryPage,
+      screenName: 'HistoryPage',
+      tabBarLabel: 'Histórico',
+    },
+    {
+      pageComponent: ControlPage,
+      screenName: 'ControlPage',
+      tabBarLabel: 'Controle',
+    },
+    {
+      pageComponent: EvaluationPage,
+      screenName: 'EvaluationPage',
+      tabBarLabel: 'Testes',
+    },
+  ];
+
   return (
     <Tab.Navigator
       initialRouteName="HomePage"
@@ -71,41 +94,28 @@ function MyTabs() {
           GoToTabInit(navigation);
           let iconName;
 
-          if (route.name === 'ConstantsPage') {
-            iconName = 'add-circle-outline';
-          } else if (route.name === 'HistoryPage') {
-            iconName = 'list';
-          } else if (route.name === 'ControlPage') {
-            iconName = 'game-controller';
-          } else {
-            iconName = 'cog';
-          }
+          const iconMap = {
+            ConstantsPage: 'add-circle-outline',
+            HistoryPage: 'list',
+            ControlPage: 'game-controller',
+            EvaluationPage: 'cog',
+          };
+
+          iconName = iconMap[route.name];
+
           return <Ionicons name={iconName} size={size} color={color} />;
         },
       })}
     >
-      <Tab.Screen
-        name="ConstantsPage"
-        component={ConstantsPage}
-        options={{tabBarLabel: 'Constantes'}}
-      />
-      <Tab.Screen
-        name="HistoryPage"
-        component={HistoryPage}
-        options={{tabBarLabel: 'Histórico'}}
-      />
-      <Tab.Screen
-        name="ControlPage"
-        component={ControlPage}
-        options={{tabBarLabel: 'Controle'}}
-      />
-      <Tab.Screen
-        name="EvaluationPage"
-        component={EvaluationPage}
-        options={{tabBarLabel: 'Testes'}}
-      />
-      <Tab.Screen name="BluetoothListPage" component={BluetoothListPage} />
-      <Tab.Screen name="HomePage" component={HomePage} />
+      {pagesArray.map((element, index) => {
+        return (
+          <Tab.Screen
+            name={element.screenName}
+            component={element.pageComponent}
+            options={{tabBarLabel: element.tabBarLabel}}
+          />
+        );
+      })}
     </Tab.Navigator>
   );
 }
