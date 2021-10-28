@@ -8,25 +8,26 @@
 
 import {Navigation} from 'react-native-navigation';
 
-var nav;
 
-export const GoToPage = (componentId, pageName) => {
-  Navigation.push(componentId, {
-    component: {
-      name: pageName,
-      options: {
-        topBar: {
-          visible: false,
+export class NavigationManager {
+  static GoToPage(componentId, pageName){
+    Navigation.push(componentId, {
+      component: {
+        name: pageName,
+        options: {
+          topBar: {
+            visible: false,
+          },
         },
       },
-    },
-  });
-};
+    });
+  };
 
-export const GoToTabInit = navigation => {
-  nav = navigation;
-};
+  static initTabNavigation(nav){
+    this.nav = nav;
+  }
 
-export const GoToTab = tabName => {
-  nav.navigate(tabName);
-};
+  static GoToTab(tabName) {
+    this.nav.navigate(tabName)
+  }
+}

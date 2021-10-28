@@ -7,7 +7,7 @@ import {ControlPage} from './tabs/ControlPage';
 import {EvaluationPage} from './tabs/EvaluationPage';
 import {BluetoothListPage} from './tabs/BluetoothListPage';
 import {HeaderComponent} from './components/header';
-import {GoToTabInit} from './utils/nav';
+import {NavigationManager} from './utils/nav';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -38,6 +38,16 @@ export const AppPage = () => {
 function MyTabs() {
   pagesArray = [
     {
+      pageComponent: HomePage,
+      screenName: 'HomePage',
+      tabBarLabel: 'HomePage',
+    },
+    {
+      pageComponent: BluetoothListPage,
+      screenName: 'BluetoothListPage',
+      tabBarLabel: 'BluetoothListPage',
+    },
+    {
       pageComponent: ConstantsPage,
       screenName: 'ConstantsPage',
       tabBarLabel: 'Constantes',
@@ -65,7 +75,7 @@ function MyTabs() {
       screenOptions={({route, navigation}) => ({
         // Header configurations
         headerTitle: () => <HeaderComponent navigation={navigation} />,
-
+        
         headerStyle: {
           backgroundColor: '#011749',
         },
@@ -79,11 +89,13 @@ function MyTabs() {
         },
 
         // tab bar configurations
+        tabBarHideOnKeyboard: true,
+
         tabBarActiveBackgroundColor: '#047FF0', //thunderazul sucesso
         tabBarInactiveBackgroundColor: '#011749', //thunderazul
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: 'gray',
-
+        
         tabBarButton: ['HomePage', 'BluetoothListPage'].includes(route.name)
           ? () => {
               return null; //Dont show "Home" and "BluetoothListPage" in the bottom tabs (but it is still possible to navigate to them):
@@ -91,7 +103,7 @@ function MyTabs() {
           : undefined,
 
         tabBarIcon: ({color, size}) => {
-          GoToTabInit(navigation);
+          NavigationManager.initTabNavigation(navigation);
           let iconName;
 
           const iconMap = {
@@ -100,8 +112,8 @@ function MyTabs() {
             ControlPage: 'game-controller',
             EvaluationPage: 'cog',
           };
-
-          iconName = iconMap[route.name];
+          
+          iconName = iconMap[route.name] ?? 'help-outline';
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
@@ -110,6 +122,7 @@ function MyTabs() {
       {pagesArray.map((element, index) => {
         return (
           <Tab.Screen
+            key={index}
             name={element.screenName}
             component={element.pageComponent}
             options={{tabBarLabel: element.tabBarLabel}}

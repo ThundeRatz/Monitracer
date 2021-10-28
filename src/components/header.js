@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
-import {GoToTab} from '../utils/nav';
+import {NavigationManager} from '../utils/nav';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {GoToDinoTracer} from '../utils/DinoTracer';
 
 export const HeaderComponent = props => {
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => GoToTab('BluetoothListPage')}>
+      <TouchableOpacity onPress={() => NavigationManager.GoToTab('BluetoothListPage')}>
         <Ionicons name="bluetooth" color="white" size={30} />
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => GoToTab('HomePage')}
+        onPress={() => NavigationManager.GoToTab('HomePage')}
         onLongPress={() => GoToDinoTracer()}
       >
         <Image
