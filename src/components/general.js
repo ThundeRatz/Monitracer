@@ -1,4 +1,5 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';;
+import {COLORS} from '../components/colors';
 
 const imageBackgroundStyle = StyleSheet.create({
   image: {
@@ -6,7 +7,7 @@ const imageBackgroundStyle = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF',
+    backgroundColor: COLORS.thunderBlue,
   },
 });
 
