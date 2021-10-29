@@ -23,8 +23,7 @@ export const HomePage = props => {
     return (
       <TouchableOpacity
       style={styles.roundButton1}>
-        {/* <Ionicons name='alert-outline' size={50} color="white" /> */}
-        <Ionicons name='bluetooth' color='white' size={30} />
+        <Ionicons name='book-outline' size={35} color="white" />
       </TouchableOpacity>
     );
   }
@@ -39,10 +38,10 @@ export const HomePage = props => {
       </View>
       <View style = {styles.triangleCorner}/>
       <View style={styles.buttonContainer}>
-      <Image
-        style={styles.logoTypo}
-        source={require('@img/Tracer_typo.png')}
-      />
+        <Image
+          style={styles.logoTypo}
+          source={require('@img/Tracer_typo.png')}
+        />
       </View>
       <View style={styles.buttonContainer}>
         {build_fab_button()}
@@ -86,8 +85,8 @@ const styles = StyleSheet.create({
     resizeMode: "center",
   },
   image: {
-    height: 313,
-    margin: 5,
+    height: 220,
+    margin: 20,
     resizeMode: "center",
   },
   buttonContainer: {
