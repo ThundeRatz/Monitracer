@@ -11,15 +11,18 @@ import {EvaluationPage} from './src/tabs/EvaluationPage';
 import {HistoryPage} from './src/tabs/HistoryPage';
 import {HomePage} from './src/tabs/HomePage.js';
 import {AppPage} from './src/AppPage.js';
+import TestServer from './src/tests/TestServerPage';
 
 Navigation.registerComponent('AppPage', () => AppPage);
+Navigation.registerComponent('SplashScreen', () => SplashScreen);
 Navigation.registerComponent('BluetoothListPage', () => BluetoothListPage);
 Navigation.registerComponent('ConstantsPage', () => ConstantsPage);
 Navigation.registerComponent('ControlPage', () => ControlPage);
 Navigation.registerComponent('EvaluationPage', () => EvaluationPage);
 Navigation.registerComponent('HistoryPage', () => HistoryPage);
 Navigation.registerComponent('HomePage', () => HomePage);
-Navigation.registerComponent('SplashScreen', () => SplashScreen);
+Navigation.registerComponent('TestServer', () => TestServer);
+
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {

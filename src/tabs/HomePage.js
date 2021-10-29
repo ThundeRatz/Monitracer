@@ -109,6 +109,18 @@ export const HomePage = props => {
           handleClose={handleCloseModal}
           visible={modalVisible}
         />
+        <VSeparator half />
+        <VBox>
+          <CellTitleContainer>
+            <H3>Testes</H3>
+          </CellTitleContainer>
+        </VBox>
+        <CellContainer>
+          <SecondaryButton
+            onPress={() => GoToPage(props.componentId, 'TestServer')}
+            title="teste servidor"
+          />
+        </CellContainer>
       </ScrollView>
     </SafeAreaView>
   );
