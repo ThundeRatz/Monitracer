@@ -9,7 +9,7 @@
  */
 
 import React from 'react';
-import {StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {COLORS} from './components/colors';
 import {imageBackgroundStyle} from './components/general';
