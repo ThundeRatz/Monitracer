@@ -8,9 +8,8 @@
 
 import {Navigation} from 'react-native-navigation';
 
-
 export class NavigationManager {
-  static GoToPage(componentId, pageName){
+  static GoToPage(componentId, pageName) {
     Navigation.push(componentId, {
       component: {
         name: pageName,
@@ -21,13 +20,13 @@ export class NavigationManager {
         },
       },
     });
-  };
+  }
 
-  static initTabNavigation(nav){
+  static initTabNavigation(nav) {
     this.nav = nav;
   }
 
   static GoToTab(tabName) {
-    this.nav.navigate(tabName)
+    this.nav.navigate(tabName);
   }
 }

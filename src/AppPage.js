@@ -75,7 +75,7 @@ function MyTabs() {
       screenOptions={({route, navigation}) => ({
         // Header configurations
         headerTitle: () => <HeaderComponent navigation={navigation} />,
-        
+
         headerStyle: {
           backgroundColor: '#011749',
         },
@@ -95,7 +95,7 @@ function MyTabs() {
         tabBarInactiveBackgroundColor: '#011749', //thunderazul
         tabBarActiveTintColor: 'white',
         tabBarInactiveTintColor: 'gray',
-        
+
         tabBarButton: ['HomePage', 'BluetoothListPage'].includes(route.name)
           ? () => {
               return null; //Dont show "Home" and "BluetoothListPage" in the bottom tabs (but it is still possible to navigate to them):
@@ -112,7 +112,7 @@ function MyTabs() {
             ControlPage: 'game-controller',
             EvaluationPage: 'cog',
           };
-          
+
           iconName = iconMap[route.name] ?? 'help-outline';
 
           return <Ionicons name={iconName} size={size} color={color} />;

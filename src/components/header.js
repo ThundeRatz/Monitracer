@@ -7,7 +7,9 @@ import {GoToDinoTracer} from '../utils/DinoTracer';
 export const HeaderComponent = props => {
   return (
     <View style={styles.header}>
-      <TouchableOpacity onPress={() => NavigationManager.GoToTab('BluetoothListPage')}>
+      <TouchableOpacity
+        onPress={() => NavigationManager.GoToTab('BluetoothListPage')}
+      >
         <Ionicons name="bluetooth" color="white" size={30} />
       </TouchableOpacity>
 
