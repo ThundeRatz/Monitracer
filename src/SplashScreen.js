@@ -8,8 +8,8 @@
  * @date 09/2021
  */
 
-import React, {Component} from 'react';
-import {View, StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import {imageBackgroundStyle} from './components/general';
 import {GoToPage} from './utils/nav';
@@ -26,7 +26,8 @@ export const SplashScreen = props => {
   return (
     <TouchableOpacity
       style={imageBackgroundStyle.image}
-      onPress={() => GoToPage(props.componentId, 'HomePage')}>
+      onPress={() => GoToPage(props.componentId, 'HomePage')}
+    >
       <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
       <Animatable.Image
         animation="pulse"

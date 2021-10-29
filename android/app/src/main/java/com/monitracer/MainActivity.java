@@ -1,4 +1,4 @@
-package com.monitracer;
+package org.thunderatz.monitracer;
 
 import com.reactnativenavigation.NavigationActivity;
 

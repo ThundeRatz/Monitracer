@@ -143,15 +143,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     borderWidth: 0.5,
   },
-  vbox: {
-    marginHorizontal: 16,
-  },
-  vSeparator: {
-    height: 32,
-  },
-  vSeparatorHalf: {
-    height: 16,
-  },
   ListSeparator: {
     height: 1,
     marginHorizontal: '10%',
