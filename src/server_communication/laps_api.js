@@ -67,7 +67,7 @@ export const PostLap = async (name, constant_values, lap_time) => {
  *
  * @param lap_name name of the lap
  *
- * @returns Lap with the id Name. Undefined if it doesn't exists
+ * @returns Lap with the id Name. [] if it doesn't exists
  */
 export const GetLapByName = async lap_name => {
   let laps_list = await GetLapsList();
@@ -86,7 +86,7 @@ export const GetLapByName = async lap_name => {
  *
  * @param lap_id id of the lap
  *
- * @returns Lap with the id indicated. Undefined if it doesn't exists
+ * @returns Lap with the id indicated. [] if it doesn't exists
  */
 export const GetLapById = async lap_id => {
   let laps_list = await GetLapsList();

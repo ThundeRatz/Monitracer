@@ -83,7 +83,7 @@ export const GetConstantsId = async constant_name => {
  *
  * @param constant_id id of the constant group.
  *
- * @returns Set of constants with the id indicated. Undefined if it doesn't exists.
+ * @returns Set of constants with the id indicated. [] if it doesn't exists.
  */
 export const GetConstantsById = async constant_id => {
   let constant_list = await GetConstantsList();

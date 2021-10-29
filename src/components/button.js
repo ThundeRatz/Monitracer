@@ -23,34 +23,6 @@ export const SecondaryButton = props => {
   );
 };
 
-export const DataSenderButton = props => {
-  return (
-    <View>
-      <PrimaryButton
-        onPress={async () => {
-          await PostLap(
-            props.name,
-            props.constant_values,
-            parseInt(props.lap_time),
-          );
-        }}
-        title={props.title}
-      />
-    </View>
-  );
-};
-
-export const DataReceiverButton = props => {
-  return (
-    <View>
-      <PrimaryButton
-        onPress={async () => await GetConstantsList()}
-        title={props.title}
-      />
-    </View>
-  );
-};
-
 const styles = StyleSheet.create({
   primaryButton: {
     alignItems: 'center',

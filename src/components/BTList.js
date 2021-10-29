@@ -56,7 +56,7 @@ export const BTList = props => {
       ListHeaderComponent={ListSeparator}
       keyExtractor={item => item.id}
       renderItem={item => _renderItem(item)}
-    ></FlatList>
+    />
   );
 };
 

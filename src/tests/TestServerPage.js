@@ -1,7 +1,7 @@
 /**
- * @file TestServer.js
+ * @file TestServerPage.js
  *
- * @brief Home page
+ * @brief Test Server page
  *
  * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
@@ -36,6 +36,8 @@ import {
   DataReceiverButton,
 } from '../components/button';
 import {SmallModal} from '../components/modal';
+import {PostLap} from '../server_communication/laps_api';
+import {GetConstantsList} from '../server_communication/constants_api';
 
 const TestServer = props => {
   //server variables
@@ -84,13 +86,20 @@ const TestServer = props => {
             onChangeText={setInputTime}
             value={input_time}
           />
-          <DataSenderButton
+          <PrimaryButton
+            onPress={async () => {
+              await PostLap(
+                input_name,
+                [input_kp, input_ki, input_kd],
+                parseInt(input_time),
+              );
+            }}
             title={'Enviar constantes'}
-            name={input_name}
-            constant_values={[input_kp, input_ki, input_kd]}
-            lap_time={input_time}
           />
-          <DataReceiverButton title={'Receber constantes'} />
+          <PrimaryButton
+            onPress={async () => await GetConstantsList()}
+            title={'receber constantes'}
+          />
         </CellContainer>
         <VSeparator half />
       </ScrollView>
