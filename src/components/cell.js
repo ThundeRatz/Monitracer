@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {StyleSheet, View, TextInput, TouchableOpacity, LayoutAnimation, UIManager} from 'react-native';
 import {H3} from './typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { COLORS } from './colors';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
@@ -46,8 +47,8 @@ export const PrimaryDropdownCell = props => {
           setExpanded(!expanded);
         }}
       >
-        <H3>{props.title}</H3>
-        <Ionicons name={expanded? 'chevron-up-outline': 'chevron-down-outline'} size={40} color={'black'} />
+        <H3 color={"white"}>{props.title}</H3>
+        <Ionicons name={expanded? 'chevron-up-outline': 'chevron-down-outline'} size={40} color={'white'} />
        
       </TouchableOpacity>
       {expanded && (
@@ -72,7 +73,7 @@ export const SecondaryDropdownCell = props => {
   return (
     <View >
       <TouchableOpacity
-        style={styles.primaryDropdown}
+        style={styles.secondaryDropdown}
         onPress={() => {
           LayoutAnimation.configureNext(LayoutAnimation.create(200, 'linear', 'opacity'));
           setExpanded(!expanded);
@@ -111,18 +112,18 @@ export const ListSeparator = () => {
 };
 
 const styles = StyleSheet.create({
-  SecondaryDropdown:{
+  secondaryDropdown:{
     alignItems:'center',
     flexDirection:'row',
     justifyContent:'space-between',
-    backgroundColor: 'lightgray',
+    backgroundColor: COLORS.gray4,
     padding: 16,
   },
   primaryDropdown: {
     alignItems:'center',
     flexDirection:'row',
     justifyContent:'space-between',
-    backgroundColor: 'lightgray',
+    backgroundColor: COLORS.thunderBlue,
     padding: 16,
   },
   dropdownContent:{
