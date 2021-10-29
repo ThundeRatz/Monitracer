@@ -27,9 +27,7 @@ export const VSeparator = props => {
   }
 };
 
-
-export const DropdownCell = props => {
-  
+export const PrimaryDropdownCell = props => {
   if (
     Platform.OS === "android" &&
     UIManager.setLayoutAnimationEnabledExperimental
@@ -42,7 +40,7 @@ export const DropdownCell = props => {
   return (
     <View >
       <TouchableOpacity
-        style={styles.dropdown}
+        style={styles.primaryDropdown}
         onPress={() => {
           LayoutAnimation.configureNext(LayoutAnimation.create(200, 'linear', 'opacity'));
           setExpanded(!expanded);
@@ -53,7 +51,39 @@ export const DropdownCell = props => {
        
       </TouchableOpacity>
       {expanded && (
-        <View style={styles.dropdown_content}>
+        <View style={styles.dropdownContent}>
+          {props.content}         
+        </View>
+      )}
+    </View>
+  );
+}
+
+export const SecondaryDropdownCell = props => {
+  if (
+    Platform.OS === "android" &&
+    UIManager.setLayoutAnimationEnabledExperimental
+  ) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+
+  const [expanded, setExpanded] = useState(false);
+  
+  return (
+    <View >
+      <TouchableOpacity
+        style={styles.primaryDropdown}
+        onPress={() => {
+          LayoutAnimation.configureNext(LayoutAnimation.create(200, 'linear', 'opacity'));
+          setExpanded(!expanded);
+        }}
+      >
+        <H3>{props.title}</H3>
+        <Ionicons name={expanded? 'chevron-up-outline': 'chevron-down-outline'} size={40} color={'black'} />
+       
+      </TouchableOpacity>
+      {expanded && (
+        <View style={styles.dropdownContent}>
           {props.content}         
         </View>
       )}
@@ -81,14 +111,21 @@ export const ListSeparator = () => {
 };
 
 const styles = StyleSheet.create({
-  dropdown: {
+  SecondaryDropdown:{
     alignItems:'center',
     flexDirection:'row',
     justifyContent:'space-between',
     backgroundColor: 'lightgray',
     padding: 16,
   },
-  dropdown_content:{
+  primaryDropdown: {
+    alignItems:'center',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    backgroundColor: 'lightgray',
+    padding: 16,
+  },
+  dropdownContent:{
     padding:16,
   },
   header: {
