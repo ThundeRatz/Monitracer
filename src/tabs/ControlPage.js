@@ -9,8 +9,8 @@
  * @date 09/2021
  */
 
-import {SecondaryButton} from './components/button';
-import {CellContainer} from './components/cell';
+import {SecondaryButton} from '../components/button';
+import {CellContainer} from '../components/cell';
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {GoToTab} from '../utils/nav';
