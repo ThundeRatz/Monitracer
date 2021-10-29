@@ -11,6 +11,7 @@
 import React from 'react';
 import {StatusBar, StyleSheet, TouchableOpacity} from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import {COLORS} from './components/colors';
 import {imageBackgroundStyle} from './components/general';
 import {NavigationManager} from './utils/nav';
 
@@ -47,6 +48,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#011749',
+    backgroundColor: COLORS.thunderBlue,
   },
 });

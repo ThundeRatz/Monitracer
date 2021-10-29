@@ -3,6 +3,7 @@ import {View, Image, TouchableOpacity, StyleSheet} from 'react-native';
 import {NavigationManager} from '../utils/nav';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {GoToDinoTracer} from '../utils/DinoTracer';
+import {COLORS} from './colors';
 
 export const HeaderComponent = props => {
   return (
@@ -10,7 +11,7 @@ export const HeaderComponent = props => {
       <TouchableOpacity
         onPress={() => NavigationManager.GoToTab('BluetoothListPage')}
       >
-        <Ionicons name="bluetooth" color="white" size={30} />
+        <Ionicons name="bluetooth" color={COLORS.thunderWhite} size={30} />
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -24,7 +25,7 @@ export const HeaderComponent = props => {
       </TouchableOpacity>
 
       <TouchableOpacity>
-        <Ionicons name="square" color="white" size={30} />
+        <Ionicons name="square" color={COLORS.thunderWhite} size={30} />
       </TouchableOpacity>
     </View>
   );
@@ -32,7 +33,7 @@ export const HeaderComponent = props => {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#011749',
+    backgroundColor: COLORS.thunderBlue,
     alignItems: 'center',
     flex: 1,
     flexDirection: 'row',

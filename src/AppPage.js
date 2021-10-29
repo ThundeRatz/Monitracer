@@ -14,6 +14,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {COLORS} from './components/colors';
 
 const Stack = createNativeStackNavigator();
 
@@ -77,11 +78,11 @@ function MyTabs() {
         headerTitle: () => <HeaderComponent navigation={navigation} />,
 
         headerStyle: {
-          backgroundColor: '#011749',
+          backgroundColor: COLORS.thunderBlue,
         },
 
         headerTitleContainerStyle: {
-          backgroundColor: 'green',
+          backgroundColor: COLORS.thunderSuccess,
           alignItems: 'center',
           flex: 200, // ???
           flexDirection: 'row',
@@ -91,10 +92,10 @@ function MyTabs() {
         // tab bar configurations
         tabBarHideOnKeyboard: true,
 
-        tabBarActiveBackgroundColor: '#047FF0', //thunderazul sucesso
-        tabBarInactiveBackgroundColor: '#011749', //thunderazul
-        tabBarActiveTintColor: 'white',
-        tabBarInactiveTintColor: 'gray',
+        tabBarActiveBackgroundColor: COLORS.thunderSuccess,
+        tabBarInactiveBackgroundColor: COLORS.thunderBlue,
+        tabBarActiveTintColor: COLORS.thunderWhite,
+        tabBarInactiveTintColor: COLORS.gray3,
 
         tabBarButton: ['HomePage', 'BluetoothListPage'].includes(route.name)
           ? () => {
