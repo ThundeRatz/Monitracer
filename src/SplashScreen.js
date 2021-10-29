@@ -25,24 +25,24 @@ export const SplashScreen = props => {
 
   return (
     <TouchableOpacity
-      style={imageBackgroundStyle.image}
-      onPress={() => GoToPage(props.componentId, 'HomePage')}>
-      <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
-      <Animatable.Image
-        animation="pulse"
-        easing="ease-out"
-        iterationCount="infinite"
-        style={styles.image}
-        source={require('@img/Tracer-2.png')}
-      />
+    style={imageBackgroundStyle.image}
+    onPress={() => GoToPage(props.componentId, 'HomePage')}>
+    <StatusBar translucent backgroundColor="rgba(0,0,0,0.2)" />
+    <Animatable.Image
+      animation="pulse"
+      easing="ease-out"
+      iterationCount="infinite"
+      style={styles.image}
+      source={require('@img/Tracer-2.png')}
+    />
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   image: {
-    width: 350,
-    height: 200,
+    height: 220,
     margin: 100,
+    resizeMode: "center",
   },
 });
