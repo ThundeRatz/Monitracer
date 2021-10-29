@@ -1,5 +1,7 @@
-import React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
+import React, { useState } from 'react';
+import {StyleSheet, View, TextInput, TouchableOpacity, LayoutAnimation, UIManager} from 'react-native';
+import {H3} from './typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
@@ -25,6 +27,40 @@ export const VSeparator = props => {
   }
 };
 
+
+export const DropdownCell = props => {
+  
+  if (
+    Platform.OS === "android" &&
+    UIManager.setLayoutAnimationEnabledExperimental
+  ) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+
+  const [expanded, setExpanded] = useState(false);
+  
+  return (
+    <View >
+      <TouchableOpacity
+        style={styles.dropdown}
+        onPress={() => {
+          LayoutAnimation.configureNext(LayoutAnimation.create(200, 'linear', 'opacity'));
+          setExpanded(!expanded);
+        }}
+      >
+        <H3>{props.title}</H3>
+        <Ionicons name={expanded? 'chevron-up-outline': 'chevron-down-outline'} size={40} color={'black'} />
+       
+      </TouchableOpacity>
+      {expanded && (
+        <View style={styles.dropdown_content}>
+          {props.content}         
+        </View>
+      )}
+    </View>
+  );
+}
+
 export const TextInputCell = props => {
   return (
     <TextInput
@@ -45,6 +81,16 @@ export const ListSeparator = () => {
 };
 
 const styles = StyleSheet.create({
+  dropdown: {
+    alignItems:'center',
+    flexDirection:'row',
+    justifyContent:'space-between',
+    backgroundColor: 'lightgray',
+    padding: 16,
+  },
+  dropdown_content:{
+    padding:16,
+  },
   header: {
     padding: 16,
     borderBottomLeftRadius: 12,
