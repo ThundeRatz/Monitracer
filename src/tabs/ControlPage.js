@@ -9,16 +9,9 @@
  * @date 09/2021
  */
 
-import {PrimaryButton, SecondaryButton} from '../components/button';
-import {
-  Header,
-  CellContainer,
-  CellTitleContainer,
-  VBox,
-  VSeparator,
-  TextInputCell,
-} from '../components/cell';
-import React, {useEffect} from 'react';
+import {SecondaryButton} from './components/button';
+import {CellContainer} from './components/cell';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
 import {GoToTab} from '../utils/nav';
 
