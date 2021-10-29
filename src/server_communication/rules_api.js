@@ -27,5 +27,5 @@ export const GetRulesList = async () => {
  * @returns rule.
  */
 export const GetRuleById = async rule_id => {
-  return await GetData(endpoints.RULES + '/' + rule_id);;
+  return await GetData(endpoints.RULES + '/' + rule_id);
 };

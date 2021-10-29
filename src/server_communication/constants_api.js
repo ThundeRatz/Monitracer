@@ -24,11 +24,10 @@ import {endpoints} from './endpoints_config.js';
  * @param constants_values constant values array
  */
 export const PostConstants = async (name, constant_values) => {
-  let value = {};
-
-  for (let i = 0; i < constant_values.length; i++) {
-    value[i + 1] = parseFloat(constant_values[i]);
-  }
+  const value = constant_values.reduce(
+    (acum, valor, i) => ({...acum, [i + 1]: parseFloat(valor)}),
+    {},
+  );
 
   let data = {
     name: name,
