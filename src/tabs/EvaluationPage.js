@@ -1,7 +1,7 @@
 /**
- * @file ConstantsPage.js
+ * @file TestPage.js
  *
- * @brief Page to send and receive constants
+ * @brief Page to send test commands to Tracer
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
@@ -9,60 +9,50 @@
  * @date 09/2021
  */
 
-import {PrimaryButton, SecondaryButton} from './components/button';
-import {
-  Header,
-  CellContainer,
-  CellTitleContainer,
-  VBox,
-  VSeparator,
-  TextInputCell,
-} from './components/cell';
-import React, {useEffect} from 'react';
+import {SecondaryButton} from './components/button';
+import {CellContainer} from './components/cell';
+import React from 'react';
 import {SafeAreaView} from 'react-native';
-import {GoToPage} from './utils/nav';
+import {GoToTab} from '../utils/nav';
 
-export const ConstantsPage = props => {
+export const EvaluationPage = props => {
   return (
     <SafeAreaView>
       <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'HomePage')}
-          title="Home"
-        />
+        <SecondaryButton onPress={() => GoToTab('HomePage')} title="Home" />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
+          onPress={() => GoToTab('BluetoothListPage')}
           title="Configurar bluetooth"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'HistoryPage')}
+          onPress={() => GoToTab('HistoryPage')}
           title="Página de Históricos"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'ConstantsPage')}
+          onPress={() => GoToTab('ConstantsPage')}
           title="Página de Constantes"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'EvaluationPage')}
+          onPress={() => GoToTab('EvaluationPage')}
           title="Página de testes"
         />
       </CellContainer>
 
       <CellContainer>
         <SecondaryButton
-          onPress={() => GoToPage(props.componentId, 'ControlPage')}
+          onPress={() => GoToTab('ControlPage')}
           title="Página para controlar o Tracer"
         />
       </CellContainer>

@@ -13,18 +13,6 @@ export const CellContainer = props => {
   return <View style={styles.cell}>{props.children}</View>;
 };
 
-export const VBox = props => {
-  return <View style={styles.vbox}>{props.children}</View>;
-};
-
-export const VSeparator = props => {
-  if (props.half) {
-    return <View style={styles.vSeparatorHalf}>{props.children}</View>;
-  } else {
-    return <View style={styles.vSeparator}>{props.children}</View>;
-  }
-};
-
 export const TextInputCell = props => {
   return (
     <TextInput
@@ -59,15 +47,6 @@ const styles = StyleSheet.create({
     borderColor: '#e3e3e3',
     backgroundColor: '#f2f2f2',
     borderWidth: 0.5,
-  },
-  vbox: {
-    marginHorizontal: 16,
-  },
-  vSeparator: {
-    height: 32,
-  },
-  vSeparatorHalf: {
-    height: 16,
   },
   ListSeparator: {
     height: 1,
