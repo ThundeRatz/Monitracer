@@ -12,13 +12,11 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 
-import {H1, Body} from './components/typography';
-import {
-  Header,
-} from './components/cell';
-import {BTList, BluetoothEnableButton} from './components/BTList';
+import {H1, Body} from '../components/typography';
+import {Header} from '../components/cell';
+import {BTList, BluetoothEnableButton} from '../components/BTList';
 
-import {BTConnection} from './bt_communication/bt_connection';
+import {BTConnection} from '../bt_communication/bt_connection';
 
 export const BluetoothListPage = () => {
   const [BTInit, BTRemove, EnableBT, DisableBT, , lista, bolEnableBlu] =
