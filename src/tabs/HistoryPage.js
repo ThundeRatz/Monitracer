@@ -10,7 +10,7 @@
  */
 
 import {SecondaryButton} from '../components/button';
-import {CellContainer} from '../components/cell';
+import {CellContainer, ListSeparator} from '../components/cell';
 import React from 'react';
 import {SafeAreaView, Text} from 'react-native';
 import {NavigationManager} from '../utils/nav';
@@ -23,7 +23,14 @@ import {
 export const HistoryPage = props => {
   return (
     <SafeAreaView>
-      <DeviceCell deviceName="Device 01" deviceId="AA:BB:CC:DD:EE:FF" />
+      <PrimaryDropdownCell
+        title="Arquivos na Nuvem"
+        content={<Text>Coisas na nuvem</Text>}
+      />
+      <SecondaryDropdownCell
+        title="Corrida 03"
+        content={<Text>Coisas da corrida 3</Text>}
+      />
       <CellContainer>
         <SecondaryButton
           onPress={() => NavigationManager.GoToTab('HomePage')}

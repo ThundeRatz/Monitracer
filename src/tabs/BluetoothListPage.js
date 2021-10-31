@@ -13,11 +13,11 @@ import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 
 import {H1, Body} from '../components/typography';
-import {Header} from '../components/cell';
+import {Header, ListSeparator} from '../components/cell';
 import {BTList, BluetoothEnableButton} from '../components/BTList';
 
 import {BTConnection} from '../bt_communication/bt_connection';
-import {PrimaryDropdownCell} from '../components/cell';
+import {DeviceCell} from '../components/cell';
 
 export const BluetoothListPage = () => {
   const [BTInit, BTRemove, EnableBT, DisableBT, , lista, bolEnableBlu] =
@@ -50,6 +50,7 @@ export const BluetoothListPage = () => {
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
       <BTList data={lista} />
+      <DeviceCell deviceName="device 01" deviceId="AA:BB:CC:DD:EE:FF" />
     </SafeAreaView>
   );
 };
