@@ -17,6 +17,7 @@ import {Header} from '../components/cell';
 import {BTList, BluetoothEnableButton} from '../components/BTList';
 
 import {BTConnection} from '../bt_communication/bt_connection';
+import {PrimaryDropdownCell} from '../components/cell';
 
 export const BluetoothListPage = () => {
   const [BTInit, BTRemove, EnableBT, DisableBT, , lista, bolEnableBlu] =

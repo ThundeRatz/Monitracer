@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
-import {StyleSheet, View, TextInput, TouchableOpacity, LayoutAnimation, UIManager} from 'react-native';
-import {H3} from './typography';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  LayoutAnimation,
+  UIManager,
+} from 'react-native';
+import {H3, Body, BodySecondary} from './typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { COLORS } from './colors';
+import {COLORS} from './colors';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
@@ -30,67 +37,80 @@ export const VSeparator = props => {
 
 export const PrimaryDropdownCell = props => {
   if (
-    Platform.OS === "android" &&
+    Platform.OS === 'android' &&
     UIManager.setLayoutAnimationEnabledExperimental
   ) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
   const [expanded, setExpanded] = useState(false);
-  
+
   return (
-    <View >
+    <View>
       <TouchableOpacity
         style={styles.primaryDropdown}
         onPress={() => {
-          LayoutAnimation.configureNext(LayoutAnimation.create(200, 'linear', 'opacity'));
+          LayoutAnimation.configureNext(
+            LayoutAnimation.create(200, 'linear', 'opacity'),
+          );
           setExpanded(!expanded);
         }}
       >
-        <H3 color={"white"}>{props.title}</H3>
-        <Ionicons name={expanded? 'chevron-up-outline': 'chevron-down-outline'} size={40} color={'white'} />
-       
+        <H3 color={'white'}>{props.title}</H3>
+        <Ionicons
+          name={expanded ? 'chevron-up-outline' : 'chevron-down-outline'}
+          size={40}
+          color={'white'}
+        />
       </TouchableOpacity>
-      {expanded && (
-        <View style={styles.dropdownContent}>
-          {props.content}         
-        </View>
-      )}
+      {expanded && <View style={styles.dropdownContent}>{props.content}</View>}
     </View>
   );
-}
+};
 
 export const SecondaryDropdownCell = props => {
   if (
-    Platform.OS === "android" &&
+    Platform.OS === 'android' &&
     UIManager.setLayoutAnimationEnabledExperimental
   ) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
 
   const [expanded, setExpanded] = useState(false);
-  
+
   return (
-    <View >
+    <View>
       <TouchableOpacity
         style={styles.secondaryDropdown}
         onPress={() => {
-          LayoutAnimation.configureNext(LayoutAnimation.create(200, 'linear', 'opacity'));
+          LayoutAnimation.configureNext(
+            LayoutAnimation.create(200, 'linear', 'opacity'),
+          );
           setExpanded(!expanded);
         }}
       >
         <H3>{props.title}</H3>
-        <Ionicons name={expanded? 'chevron-up-outline': 'chevron-down-outline'} size={40} color={'black'} />
-       
+        <Ionicons
+          name={expanded ? 'chevron-up-outline' : 'chevron-down-outline'}
+          size={40}
+          color={'black'}
+        />
       </TouchableOpacity>
-      {expanded && (
-        <View style={styles.dropdownContent}>
-          {props.content}         
-        </View>
-      )}
+      {expanded && <View style={styles.dropdownContent}>{props.content}</View>}
     </View>
   );
-}
+};
+
+export const DeviceCell = props => {
+  return (
+    <View style={{flexDirection: 'row'}}>
+      <View style={styles.deviceId}>
+        <Body>{props.deviceName}</Body>
+        <BodySecondary color={COLORS.gray3}>{props.deviceId}</BodySecondary>
+      </View>
+    </View>
+  );
+};
 
 export const TextInputCell = props => {
   return (
@@ -112,22 +132,26 @@ export const ListSeparator = () => {
 };
 
 const styles = StyleSheet.create({
-  secondaryDropdown:{
-    alignItems:'center',
-    flexDirection:'row',
-    justifyContent:'space-between',
+  deviceId: {
+    backgroundColor: COLORS.gray4,
+    flex: 0.8,
+  },
+  secondaryDropdown: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     backgroundColor: COLORS.gray4,
     padding: 16,
   },
   primaryDropdown: {
-    alignItems:'center',
-    flexDirection:'row',
-    justifyContent:'space-between',
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     backgroundColor: COLORS.thunderBlue,
     padding: 16,
   },
-  dropdownContent:{
-    padding:16,
+  dropdownContent: {
+    padding: 16,
   },
   header: {
     padding: 16,
