@@ -98,7 +98,8 @@ export const HomePage = props => {
         <CellContainer>
           <PrimaryButton
             onPress={BTGetDataContinuous}
-            title={'iniciar leitura bluetooth'}
+            title={'INICIAR'}
+            disable={true}
           />
         </CellContainer>
 
