@@ -1,3 +1,14 @@
+/**
+ * @file buttons.js
+ *
+ * @brief buttons models
+ *
+ * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
+ * @author Henrique D`Amaral <henrique.matheus@thunderatz.org>
+ *
+ * @date 10/2021
+ */
+
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { H3, H4, Body } from './typography';

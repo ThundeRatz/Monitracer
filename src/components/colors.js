@@ -1,3 +1,14 @@
+/**
+ * @file colors.js
+ *
+ * @brief Colors pallete
+ *
+ * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
+ * @author Henrique D`Amaral <henrique.matheus@thunderatz.org>
+ *
+ * @date 10/2021
+ */
+
 export const COLORS = {
     /* Primary */
     thunderBlue: "#011749",
