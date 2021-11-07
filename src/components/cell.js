@@ -10,6 +10,7 @@ import {
 import {H3, Body, BodySecondary} from './typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLORS} from './colors';
+import {SPACING} from './grid';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
@@ -141,20 +142,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: COLORS.gray4,
-    padding: 16,
+    padding: SPACING.small,
   },
   primaryDropdown: {
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
     backgroundColor: COLORS.thunderBlue,
-    padding: 16,
+    padding: SPACING.small,
   },
   dropdownContent: {
-    padding: 16,
+    padding: SPACING.small,
   },
   header: {
-    padding: 16,
+    padding: SPACING.small,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
     backgroundColor: '#f5d97d',
@@ -163,7 +164,7 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   cell: {
-    padding: 8,
+    padding: SPACING.xsmall,
     borderColor: '#e3e3e3',
     backgroundColor: '#f2f2f2',
     borderWidth: 0.5,
