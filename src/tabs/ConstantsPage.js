@@ -47,7 +47,7 @@ export const ConstantsPage = props => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.titleContainer}>
-       <H1 color="white">SETUP</H1>
+       <H1 color="white" >SETUP</H1>
       </View>
 
       <View style={styles.constantsInputContainer}>
@@ -133,11 +133,12 @@ const styles = StyleSheet.create({
     flex:2,
     flexDirection: 'row',
     paddingVertical: 10,
+    paddingHorizontal: 10
   },
   textInput: {
     backgroundColor:"white",
     borderRadius:8,
     flex:1,
-    height:30
+    height:35
   },
 });
