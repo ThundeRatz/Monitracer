@@ -13,8 +13,8 @@
 
 import React, {useEffect} from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
-import {COLORS} from './components/colors';
-import {SPACING} from './components/grid';
+import {COLORS} from '../components/colors';
+import {SPACING} from '../components/grid';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const HomePage = props => {
