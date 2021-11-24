@@ -9,38 +9,16 @@
  * @date 09/2021
  */
 
-import React, {useState} from 'react';
-import {
-  FlatList,
-  View,
-  Text,
-  StyleSheet,
-  Switch,
-  ToastAndroid,
-} from 'react-native';
+import React from 'react';
+import {FlatList, View, Text, StyleSheet, Switch} from 'react-native';
 
-import {
-  Header,
-  CellContainer,
-  CellTitleContainer,
-  VBox,
-  VSeparator,
-  ListSeparator,
-} from './cell';
-import {H1, H2, H3, Body, BodySecondary} from './typography';
-import {PrimaryButton, SecondaryButton} from './button';
+import {VBox, VSeparator, ListSeparator} from './cell';
+import {H1, H3, Body, BodySecondary} from './typography';
+import {PrimaryButton} from './button';
 import {BTConnection} from '../bt_communication/bt_connection';
 
 export const BTList = props => {
-  const [
-    BTInit,
-    BTRemove,
-    EnableBT,
-    DisableBT,
-    BTLogin,
-    lista,
-    bolEnableBlu,
-  ] = BTConnection();
+  const [, , , , BTLogin] = BTConnection();
 
   const _renderItem = ({item}) => {
     return (
@@ -77,7 +55,8 @@ export const BTList = props => {
       ListFooterComponent={ListSeparator}
       ListHeaderComponent={ListSeparator}
       keyExtractor={item => item.id}
-      renderItem={item => _renderItem(item)}></FlatList>
+      renderItem={item => _renderItem(item)}
+    />
   );
 };
 

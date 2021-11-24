@@ -12,38 +12,29 @@
 import React, {useEffect} from 'react';
 import {SafeAreaView} from 'react-native';
 
-import {H1, Body} from './components/typography';
-import {
-  Header,
-} from './components/cell';
-import {BTList, BluetoothEnableButton} from './components/BTList';
+import {H1, Body} from '../components/typography';
+import {Header} from '../components/cell';
+import {BTList, BluetoothEnableButton} from '../components/BTList';
 
-import {BTConnection} from './bt_communication/bt_connection';
+import {BTConnection} from '../bt_communication/bt_connection';
 
 export const BluetoothListPage = () => {
-  const [
-    BTInit,
-    BTRemove,
-    EnableBT,
-    DisableBT,
-    BTLogin,
-    lista,
-    bolEnableBlu,
-  ] = BTConnection();
+  const [BTInit, BTRemove, EnableBT, DisableBT, , lista, bolEnableBlu] =
+    BTConnection();
 
-  useEffect(() => {
-    BTInit();
+  useEffect(async () => {
+    await BTInit();
 
-    return () => {
-      BTRemove();
+    return async () => {
+      await BTRemove();
     };
   }, []);
 
-  const toggleBluetooth = () => {
+  const toggleBluetooth = async () => {
     if (!bolEnableBlu) {
-      EnableBT();
+      await EnableBT();
     } else {
-      DisableBT();
+      await DisableBT();
     }
   };
 
@@ -53,7 +44,7 @@ export const BluetoothListPage = () => {
         <H1>Bluetooth</H1>
         <BluetoothEnableButton
           value={bolEnableBlu}
-          onValueChange={toggleBluetooth}
+          onValueChange={async () => await toggleBluetooth()}
         />
         <Body>Lista de Dispositivos bluetooth para conexão</Body>
       </Header>
