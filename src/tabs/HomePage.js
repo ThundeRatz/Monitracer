@@ -37,7 +37,7 @@ export const HomePage = props => {
         />
       </View>
       <View style = {styles.triangleCorner}/>
-      <View style={styles.buttonContainer}>
+      <View style={styles.titleContainer}>
         <Image
           style={styles.logoTypo}
           source={require('@img/Tracer_typo.png')}
@@ -54,6 +54,7 @@ export const HomePage = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection:'column'
   },
   triangleCorner: {
     width: 0,
@@ -76,6 +77,7 @@ const styles = StyleSheet.create({
   },
   blueBackground: {
     justifyContent: 'center',
+    flex:3,
     alignItems: 'center',
     backgroundColor: COLORS.thunderBlue,
   },
@@ -90,6 +92,12 @@ const styles = StyleSheet.create({
     resizeMode: "center",
   },
   buttonContainer: {
+    flex:1.5,
+    justifyContent:'center',
+    alignItems: 'center',
+  },
+  titleContainer: {
+    flex:1,
     alignItems: 'center',
   },
 });
