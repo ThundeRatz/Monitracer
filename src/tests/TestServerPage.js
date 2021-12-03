@@ -39,7 +39,7 @@ import {SmallModal} from '../components/modal';
 import {PostLap} from '../server_communication/laps_api';
 import {GetConstantsList} from '../server_communication/constants_api';
 
-const TestServer = props => {
+export const TestServer = props => {
   //server variables
   const [input_name, setInputName] = React.useState('');
   const [input_kp, setInputKp] = React.useState('');
