@@ -176,8 +176,12 @@ const styles = StyleSheet.create({
     marginHorizontal: SPACING.medium,
     borderRadius: 5,
   },
+
+  mainButtonSmall: {
+    alignItems: 'center',
     alignSelf: 'flex-start',
     paddingVertical: SPACING.small,
+    paddingHorizontal: SPACING.large,
     top: - 38 - 2 * SPACING.small + SPACING.xSmall,
     marginBottom: -20 - 2 * SPACING.small,
     marginHorizontal: SPACING.medium,

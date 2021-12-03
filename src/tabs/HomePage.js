@@ -20,13 +20,13 @@ import {
   CellTitleContainer,
   TextInputCell,
 } from '../components/cell';
-import { PrimaryButton, SecondaryButton, PrimaryButtonSmall, TertiaryButton, ActionButton, RedActionButton, RegulationButton } from './components/button';
-import { SmallModal } from './components/modal';
-import { BTPostData } from './bt_communication/bt_data_sender';
+import { PrimaryButton, SecondaryButton, PrimaryButtonSmall, TertiaryButton, ActionButton, RedActionButton, RegulationButton } from '../components/button';
+import { SmallModal } from '../components/modal';
+import { BTPostData } from '../bt_communication/bt_data_sender';
 import {
   BTGetDataContinuous,
-} from './bt_communication/bt_data_receiver';
-import { GoToPage } from './utils/nav';
+} from '../bt_communication/bt_data_receiver';
+import { GoToPage } from '../utils/nav';
 
 export const HomePage = props => {
   const [inputValue, setInputValue] = React.useState('');
@@ -176,7 +176,6 @@ export const HomePage = props => {
             <H3>Testes</H3>
           </CellTitleContainer>
         </VBox>
-        </CellContainer>
 
         <CellContainer>
           <SecondaryButton
