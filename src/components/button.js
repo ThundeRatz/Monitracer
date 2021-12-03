@@ -14,6 +14,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { H3, H4, Body } from './typography';
 import { SPACING } from './grid';
 import { COLORS } from './colors.js';
+import { ROTATION } from './rotation.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const PrimaryButton = props => {
@@ -29,7 +30,7 @@ export const PrimaryButton = props => {
   return (<>
     <View style={{ height: props.title.length * 0.6 }} />
     <View>
-      <TouchableOpacity onPress={props.onPress} style={[{ transform: [{ rotate: "-14deg" }] }]}>
+      <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
         <View style={styles.BackgroundButton} backgroundColor={secondaryColor}>
           <H3 color={secondaryColor}>
             {props.title}
@@ -58,7 +59,7 @@ export const PrimaryButtonSmall = props => {
     );
   return (<>
     <View>
-      <TouchableOpacity onPress={props.onPress} style={[{ transform: [{ rotate: "-14deg" }] }]}>
+      <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
         <View style={styles.BackgroundButton} backgroundColor={secondaryColor}>
           <H4 color={secondaryColor}>
             {props.title}
@@ -89,7 +90,7 @@ export const SecondaryButton = props => {
   return (<>
     <View style={{ height: props.title.length * 0.6 }} />
     <View>
-      <TouchableOpacity onPress={props.onPress} style={[{ transform: [{ rotate: "-14deg" }] }]}>
+      <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
         <View style={styles.BackgroundButton} backgroundColor={secondaryColor}>
           <H3 color={secondaryColor}>
             {props.title}
@@ -111,7 +112,7 @@ export const TertiaryButton = props => {
 
   return (<>
     <View>
-      <TouchableOpacity onPress={props.onPress} style={[{ transform: [{ rotate: "-14deg" }] }]}>
+      <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
         <View style={styles.BackgroundButton}>
           <H3 color={textColor}>
             {props.title}
