@@ -6,7 +6,7 @@
  * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
  * @author Henrique D`Amaral <henrique.matheus@thunderatz.org>
  *
- * @date 10/2021
+ * @date 12/2021
  */
 
 import React from 'react';
