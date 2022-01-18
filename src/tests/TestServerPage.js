@@ -26,9 +26,11 @@ import {
   CellContainer,
   CellTitleContainer,
   VBox,
-  VSeparator,
   TextInputCell,
 } from '../components/cell';
+import {
+  VSeparator
+} from '../components/grid'
 import {
   PrimaryButton,
   SecondaryButton,

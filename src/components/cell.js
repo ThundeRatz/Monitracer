@@ -24,17 +24,7 @@ export const CellContainer = props => {
   return <View style={styles.cell}>{props.children}</View>;
 };
 
-export const VBox = props => {
-  return <View style={styles.vbox}>{props.children}</View>;
-};
 
-export const VSeparator = props => {
-  if (props.half) {
-    return <View style={styles.vSeparatorHalf}>{props.children}</View>;
-  } else {
-    return <View style={styles.vSeparator}>{props.children}</View>;
-  }
-};
 
 export const PrimaryDropdownCell = props => {
   if (
