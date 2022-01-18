@@ -9,14 +9,16 @@
  * @date 09/2021
  */
 
-import {SecondaryButton} from '../components/button';
 import {CellContainer} from '../components/cell';
 import React from 'react';
-import {SafeAreaView, ScrollView, Text, StyleSheet, View, TextInput} from 'react-native';
+import {SafeAreaView, ScrollView, Text, StyleSheet, View, TextInput, Dimensions, ColorPropType} from 'react-native';
 import {GoToTab} from '../utils/nav';
-import { Body,H1 } from '../components/typography';
+import { Body , H1 , H3} from '../components/typography';
 import { COLORS } from '../components/colors';
-import { PrimaryButton } from '../components/button';
+import { PrimaryButton , SecondaryButton, TertiaryButton, ActionButton, RedActionButton, GreenActionButton} from '../components/button';
+import { ROTATION } from '../components/rotation.js';
+import { SPACING } from '../components/grid.js';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export const ConstantsPage = props => {
 
@@ -46,10 +48,15 @@ export const ConstantsPage = props => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.titleContainer}>
-       <H1 color="white" >SETUP</H1>
-      </View>
 
+      <View backgroundColor={COLORS.gray4}>
+        <View style={ROTATION.OitoEMeia}>
+          <View style={styles.titleContainer} paddingLeft = {20}>
+            <H3 color="white">SETUP</H3>
+          </View>
+        </View>
+      </View>
+      
       <View style={styles.constantsInputContainer}>
         <ScrollView>
           {constantCouples.map((element, index) => {
@@ -81,16 +88,25 @@ export const ConstantsPage = props => {
         </ScrollView>
       </View>
 
-       {/* falta atualizar para os botões novos */}
       <View style={styles.buttonsContainer}>
-        <View style={{flex: 1}}>
-          <PrimaryButton title="Enviar" /> 
-          <PrimaryButton title="Salvar" /> 
-          <PrimaryButton title="Clear" />
+        <View style={styles.buttonRow}>
+          <View style = {styles.buttonCell}>  
+            <ActionButton title="Enviar" />
+          </View> 
+          <View style = {styles.buttonCell}>  
+            <GreenActionButton title="Salvar" />
+          </View> 
+          <View style = {styles.buttonCell}>  
+            <RedActionButton title="Clear" />
+          </View> 
         </View>
-        <View style={{flex:2}}>
-          <PrimaryButton title="Run"/>
-          <PrimaryButton title="Stop"/>
+        <View style={styles.buttonRow} >
+          <View style = {styles.buttonCell}>  
+            <PrimaryButton title="Run"/>
+          </View>
+          <View style = {styles.buttonCell}>  
+            <SecondaryButton title="Stop"/>
+          </View>
         </View> 
       </View>
     </SafeAreaView>
@@ -103,28 +119,44 @@ const styles = StyleSheet.create({
     flexDirection: "column"
   },
   constantsInputContainer: {
-    flex: 2, 
+    flex: 1.5, 
     backgroundColor: COLORS.gray4,
   },
   titleContainer: {
-    backgroundColor: COLORS.thunderBlue
+    backgroundColor: COLORS.thunderBlue,
+    width: Dimensions.get('window').width / 0.989, //width / cos(8.5°)
+    top: - Dimensions.get('window').width * 0.14945 / 2, // width * tg(8,5°) / 2
+    height: Dimensions.get('window').width * 0.148, //width / sen(8,5°)
+    left: - Dimensions.get('window').width * 0.148 * 0.14945 //width * sin(8.5°) * tan(8.5°)
   },
   buttonsContainer: {
     flex: 1,
     flexDirection:'column',
-    backgroundColor: COLORS.gray5
+    backgroundColor: COLORS.gray5,
+    
   },
   tableRow: {
     flexDirection : "row",
   },
+  buttonRow: {
+    flexDirection : "row",
+    paddingVertical: 10
+  },
   tableCell: {
     flexDirection : "row",
     flex: 1,
-    padding:1, 
+    padding:1,
     alignItems: 'center',
     borderLeftColor: COLORS.gray3,
     borderLeftWidth: 1,
-
+    paddingLeft: 5,
+    justifyContent: 'center',
+  },
+  buttonCell: {
+    flexDirection : "row",
+    flex: 1,
+    padding:1,
+    justifyContent: 'center',
   },
   textView: {
     flex:3,
@@ -132,13 +164,16 @@ const styles = StyleSheet.create({
   textInputView: {
     flex:2,
     flexDirection: 'row',
-    paddingVertical: 10,
+    paddingVertical: 5,
     paddingHorizontal: 10
   },
   textInput: {
     backgroundColor:"white",
     borderRadius:8,
     flex:1,
-    height:35
+    height:25,
+    fontSize:15,
+    paddingVertical: 0,
+    textAlign: 'center'
   },
 });
