@@ -13,4 +13,7 @@ export const ROTATION ={
     Ktorze: {
         transform: [{ rotate: "-14deg" }]
     },
+    OitoEMeia: {
+        transform: [{ rotate: "-8.5deg" }]
+    },
 };
