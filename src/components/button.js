@@ -138,7 +138,7 @@ export const ActionButton = props => {
 };
 
 export const RedActionButton = props => {
-  props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.thunderAllert;
+  props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.thunderAlert;
 
   return (
     <TouchableOpacity onPress={props.onPress}>
@@ -148,6 +148,19 @@ export const RedActionButton = props => {
     </TouchableOpacity>
   );
 };
+
+export const GreenActionButton = props => {
+  props.disable ? mainColor = COLORS.thunderError : mainColor = 'green';
+
+  return (
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={styles.actionButton} borderColor={mainColor}>
+        <H4 color={mainColor}>{props.title}</H4>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 export const RegulationButton = props => {
   return (
     <TouchableOpacity
@@ -161,9 +174,9 @@ const styles = StyleSheet.create({
   mainButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingVertical: SPACING.small,
+    paddingVertical: 0, //SPACING.small,
     paddingHorizontal: SPACING.large,
-    top: - 56 - 2 * SPACING.small + SPACING.xSmall,
+    top:- 56 + SPACING.xSmall,//- 56 - 2 * SPACING.small + SPACING.xSmall,
     marginBottom: -20 - 2 * SPACING.small,
     marginHorizontal: SPACING.medium,
     left: SPACING.xSmall,
@@ -172,7 +185,7 @@ const styles = StyleSheet.create({
   BackgroundButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingVertical: SPACING.small,
+    paddingVertical: 0, //SPACING.small,
     paddingHorizontal: SPACING.large,
     marginHorizontal: SPACING.medium,
     borderRadius: 5,
@@ -193,8 +206,8 @@ const styles = StyleSheet.create({
   actionButton: {
     alignItems: 'center',
     borderWidth: 5,
-    paddingVertical: SPACING.small,
-    paddingHorizontal: SPACING.large,
+    paddingVertical: 0, //SPACING.xSmall,
+    paddingHorizontal: SPACING.xSmall,
     borderRadius: 5,
   },
 
