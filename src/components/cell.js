@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   View,
@@ -24,17 +24,19 @@ export const CellContainer = props => {
   return <View style={styles.cell}>{props.children}</View>;
 };
 
-
-
-export const PrimaryDropdownCell = props => {
+const setAnimationCallback = () => {
   if (
     Platform.OS === 'android' &&
     UIManager.setLayoutAnimationEnabledExperimental
   ) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
+}
 
+
+export const PrimaryDropdownCell = props => {
   const [expanded, setExpanded] = useState(false);
+  useEffect(()=>setAnimationCallback());
 
   return (
     <View>
@@ -60,14 +62,8 @@ export const PrimaryDropdownCell = props => {
 };
 
 export const SecondaryDropdownCell = props => {
-  if (
-    Platform.OS === 'android' &&
-    UIManager.setLayoutAnimationEnabledExperimental
-  ) {
-    UIManager.setLayoutAnimationEnabledExperimental(true);
-  }
-
   const [expanded, setExpanded] = useState(false);
+  useEffect(()=>setAnimationCallback());
 
   return (
     <View>
