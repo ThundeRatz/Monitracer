@@ -33,7 +33,6 @@ const setAnimationCallback = () => {
   }
 }
 
-
 export const PrimaryDropdownCell = props => {
   const [expanded, setExpanded] = useState(false);
   useEffect(()=>setAnimationCallback());
