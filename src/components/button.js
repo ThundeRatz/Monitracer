@@ -174,9 +174,8 @@ const styles = StyleSheet.create({
   mainButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingVertical: 0, //SPACING.small,
-    paddingHorizontal: SPACING.large,
-    top:- 56 + SPACING.xSmall,//- 56 - 2 * SPACING.small + SPACING.xSmall,
+    paddingHorizontal: SPACING.medium,
+    top:- 56 + SPACING.xSmall,
     marginBottom: -20 - 2 * SPACING.small,
     marginHorizontal: SPACING.medium,
     left: SPACING.xSmall,
@@ -185,8 +184,7 @@ const styles = StyleSheet.create({
   BackgroundButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingVertical: 0, //SPACING.small,
-    paddingHorizontal: SPACING.large,
+    paddingHorizontal: SPACING.medium,
     marginHorizontal: SPACING.medium,
     borderRadius: 5,
   },
@@ -199,14 +197,12 @@ const styles = StyleSheet.create({
     top: - 38 - 2 * SPACING.small + SPACING.xSmall,
     marginBottom: -20 - 2 * SPACING.small,
     marginHorizontal: SPACING.medium,
-    left: SPACING.xSmall,
     borderRadius: 5,
   },
 
   actionButton: {
     alignItems: 'center',
     borderWidth: 5,
-    paddingVertical: 0, //SPACING.xSmall,
     paddingHorizontal: SPACING.xSmall,
     borderRadius: 5,
   },
