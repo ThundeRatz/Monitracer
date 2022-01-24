@@ -20,11 +20,11 @@ import { PROPOTION } from '../components/trigonometry';
 
 export const ConstantsPage = props => {
 
-  //Constantes que virão do servidor
+  //Server constants simulation
   let constantTypes = ["Kp reta", "Ki reta", "Kd reta", "Kp curva", "Ki curva", "Kd curva",
   "Kp Zi-Za", "Ki Zi-Za", "Kd Zi-Za", "Kp Velocity", "Ki Velocity", "Kd Velocity"];
 
-  //Arranja o array de labels em trios (matriz 3 x n/3) para dividir em 3 colunas na tela
+  //Arrange the array labels in threes (3 x n/3 matrix) to split between 3 columns on screen
   const arrayToMatrix = () => { 
     let constantCouples = [];
 
@@ -56,6 +56,7 @@ export const ConstantsPage = props => {
         </View>
       </View>
 
+      {/* Dinamic constants table*/}
       <View style={styles.constantsInputContainer}>
         <ScrollView>
           {constantCouples.map((element, index) => {
