@@ -150,7 +150,7 @@ export const RedActionButton = props => {
 };
 
 export const GreenActionButton = props => {
-  props.disable ? mainColor = COLORS.thunderError : mainColor = 'green';
+  props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.controllButton01;
 
   return (
     <TouchableOpacity onPress={props.onPress}>
