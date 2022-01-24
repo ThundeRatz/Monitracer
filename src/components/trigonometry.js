@@ -13,7 +13,7 @@
         return (screen_width / 0.989); // screen_width / cos(8,5°)
     },
     top(screen_width){
-        return (- screen_width * 0.14945 / 2) // screen_width * tg(8,5°) / 2
+        return (- screen_width * 0.148 / 2) // screen_width * sen(8,5°) / 2
     },
     height(screen_width){
         return (screen_width * 0.148) // screen_width * sen(8,5°)
