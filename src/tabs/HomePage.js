@@ -6,7 +6,7 @@
  * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
- * @author Henrique D'Amaral <>
+ * @author Henrique D'Amaral <henrique.matheus@thunderatz.org>
  * 
  * @date 10/2021
  */
