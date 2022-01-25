@@ -19,7 +19,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const HomePage = props => {
 
-  const build_fab_button = () => {
+  const FabButton = props => {
     return (
       <TouchableOpacity
       style={styles.roundButton1}>
@@ -44,7 +44,7 @@ export const HomePage = props => {
         />
       </View>
       <View style={styles.buttonContainer}>
-        {build_fab_button()}
+        <FabButton/>
       </View>
       
     </SafeAreaView>
