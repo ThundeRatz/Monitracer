@@ -1,11 +1,22 @@
-export const COLORS = {
-  /* Primary */
-  thunderBlue: '#011749',
-  lightThunderBlue: '#011749',
+/**
+ * @file colors.js
+ *
+ * @brief Colors pallete
+ *
+ * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
+ * @author Henrique D`Amaral <henrique.matheus@thunderatz.org>
+ *
+ * @date 10/2021
+ */
 
-  /* Secondary */
-  thunderYellow: '#FCE702',
-  lightThunderYellow: '#FCE702',
+export const COLORS = {
+    /* Primary */
+    thunderBlue: "#011749",
+    lightThunderBlue: "#535F7A",
+
+    /* Secondary */
+    thunderYellow: "#FCE702",
+    lightThunderYellow: "#F8ED7C",
 
   /* Appendant */
   controllButton01: '#008000',

@@ -50,7 +50,6 @@ export const HomePage = props => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
