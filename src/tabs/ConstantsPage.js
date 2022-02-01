@@ -9,7 +9,7 @@
  * @date 09/2021
  */
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {SafeAreaView, ScrollView, StyleSheet, View, TextInput, Dimensions} from 'react-native';
 import {GoToTab} from '../utils/nav';
 import { Body , H3} from '../components/typography';
@@ -17,15 +17,43 @@ import { COLORS } from '../components/colors';
 import { PrimaryButton , SecondaryButton, ActionButton, RedActionButton, GreenActionButton} from '../components/button';
 import { ROTATION } from '../components/rotation.js';
 import { PROPOTION } from '../components/trigonometry';
+import { GetConstantsList, GetConstantsLabels } from '../server_communication/constants_api';
 
 export const ConstantsPage = props => {
 
-  //Server constants simulation
-  let constantTypes = ["Kp reta", "Ki reta", "Kd reta", "Kp curva", "Ki curva", "Kd curva",
-  "Kp Zi-Za", "Ki Zi-Za", "Kd Zi-Za", "Kp Velocity", "Ki Velocity", "Kd Velocity"];
+  let teste =[
+    {
+      "id": 1,
+      "description": "teste1"
+    },
+    {
+      "id": 2,
+      "description": "teste2"
+    },
+    {
+      "id": 3,
+      "description": "teste3"
+    }
+  ];
 
+  const [constant, setConstant] = useState(teste);
+  useEffect(() => {
+    async function getConstant() {
+        const constant = await GetConstantsLabels();
+        setConstant(constant);
+    }
+    getConstant();
+  }, [])
+
+
+  //Server constants simulation
+  // let constantTypes = ["Kp reta", "Ki reta", "Kd reta", "Kp curva", "Ki curva", "Kd curva",
+  // "Kp Zi-Za", "Ki Zi-Za", "Kd Zi-Za", "Kp Velocity", "Ki Velocity", "Kd Velocity", "Teste"];
+  let constantTypes = constant
   //Arrange the array labels in threes (3 x n/3 matrix) to split between 3 columns on screen
-  const arrayToMatrix = () => { 
+
+  const arrayToMatrix = () => {
+
     let constantCouples = [];
 
     constantTypes.forEach( (element, index, array) => {
@@ -65,17 +93,17 @@ export const ConstantsPage = props => {
 
                 <View style = {styles.tableCell}>  
                   <View style = {styles.textView}>
-                    <Body>{element[0]}</Body>
+                    <Body>{element[0].description}</Body>
                   </View>
 
                   <View style = {styles.textInputView}>
-                    <TextInput style={styles.textInput}/>
+                    <TextInput style={styles.textInput} />
                   </View>
                 </View>
                 
                 <View style = {styles.tableCell}>  
                   <View style = {styles.textView}>
-                    <Body>{element[1]}</Body>
+                    <Body>{element[1].description}</Body>
                   </View>
                   
                   <View style = {styles.textInputView}>
@@ -85,7 +113,7 @@ export const ConstantsPage = props => {
 
                 <View style = {styles.tableCell}>  
                   <View style = {styles.textView}>
-                    <Body>{element[2]}</Body>
+                    <Body>{element[2].description}</Body>
                   </View>
                   
                   <View style = {styles.textInputView}>

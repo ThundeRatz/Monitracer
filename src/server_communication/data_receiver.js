@@ -30,7 +30,7 @@ export const GetData = async endpoint_name => {
   let headers = {
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      // 'Content-Type': 'application/json',
       'x-api-key': api_key,
     },
   };
