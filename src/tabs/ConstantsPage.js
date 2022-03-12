@@ -108,7 +108,7 @@ export const ConstantsPage = props => {
             <GreenActionButton title="Salvar" />
           </View> 
           <View style = {styles.buttonCell}>  
-            <RedActionButton title="Clear" />
+            <RedActionButton title="Limpar" />
           </View> 
         </View>
         <View style={styles.buttonRow} >
