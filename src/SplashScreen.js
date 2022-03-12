@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
     width: 150,
     height: 260,
     margin: 100,
+    resizeMode: "center",
   },
   container: {
     flex: 1,
