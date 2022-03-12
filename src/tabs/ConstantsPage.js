@@ -24,23 +24,27 @@ export const ConstantsPage = props => {
   let teste =[
     {
       "id": 1,
-      "description": "teste1"
+      "description": "teste1",
+      "value": "10"
     },
     {
       "id": 2,
-      "description": "teste2"
+      "description": "teste2",
+      "value": null
     },
     {
       "id": 3,
-      "description": "teste3"
+      "description": "teste3",
+      "value": null
     }
   ];
 
   const [constant, setConstant] = useState(teste);
+  
   useEffect(() => {
     async function getConstant() {
-        const constant = await GetConstantsLabels();
-        setConstant(constant);
+        // const constant = await GetConstantsLabels();
+        // setConstant(constant);
     }
     getConstant();
   }, [])
@@ -71,7 +75,7 @@ export const ConstantsPage = props => {
     return constantCouples
   }
 
-  let constantCouples = arrayToMatrix(constantTypes);
+  let constantCouples = arrayToMatrix(constantTypes); 
 
   return (
     <SafeAreaView style={styles.container}>
@@ -97,7 +101,7 @@ export const ConstantsPage = props => {
                   </View>
 
                   <View style = {styles.textInputView}>
-                    <TextInput style={styles.textInput} />
+                    <TextInput style={styles.textInput} onChangeText={(e) => (element[0].value = e)}/>
                   </View>
                 </View>
                 
@@ -130,7 +134,7 @@ export const ConstantsPage = props => {
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonRow}>
           <View style = {styles.buttonCell}>  
-            <ActionButton title="Enviar" />
+            <ActionButton title="Enviar"/>
           </View> 
           <View style = {styles.buttonCell}>  
             <GreenActionButton title="Salvar" />
@@ -144,7 +148,7 @@ export const ConstantsPage = props => {
             <PrimaryButton title="RUN"/>
           </View>
           <View style = {styles.buttonCell}>  
-            <SecondaryButton title="STOP"/>
+            <SecondaryButton title="STOP" onPress={() => {console.log(constantCouples[0][0])}}/>
           </View>
         </View> 
       </View>
