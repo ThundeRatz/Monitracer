@@ -18,6 +18,7 @@ import { PrimaryButton , SecondaryButton, ActionButton, RedActionButton, GreenAc
 import { ROTATION } from '../components/rotation.js';
 import { PROPOTION } from '../components/trigonometry';
 import { GetConstantsList, GetConstantsLabels } from '../server_communication/constants_api';
+import { BTPostData } from '../bt_communication/bt_data_sender';
 
 export const ConstantsPage = props => {
 
@@ -25,36 +26,61 @@ export const ConstantsPage = props => {
     {
       "id": 1,
       "description": "teste1",
-      "value": "10"
+      "value": ""
     },
     {
       "id": 2,
       "description": "teste2",
-      "value": null
+      "value": ""
     },
     {
       "id": 3,
       "description": "teste3",
-      "value": null
+      "value": ""
     }
   ];
 
-  const [constant, setConstant] = useState(teste);
+  const [constantList, setConstantList] = useState(teste);
   
   useEffect(() => {
     async function getConstant() {
-        // const constant = await GetConstantsLabels();
-        // setConstant(constant);
+        const constant = await GetConstantsLabels();
+        setConstantList(constant);
     }
     getConstant();
-  }, [])
+  }, []);
+
+  const setConstantValue = () => {
+
+  }
+
+  const ConstantInput = ({constant}) => {
+    return(
+      <View style = {styles.tableCell}>  
+        <View style = {styles.textView}>
+          <Body>{constant.description}</Body>
+        </View>
+
+        <View style = {styles.textInputView}>
+          <TextInput style={styles.textInput} onChangeText={(e) => {
+            // (constant.value = e);
+            var foundIndex = constantList.findIndex(x => x.id == constant.id);
+            console.log(constantList[foundIndex].value);
+            constantList[foundIndex].value = e;
+            }
+          }/>
+        </View>
+      </View>
+    );
+  }
+
+  const sendHandler = () => {
+    BTPostData(constantList);
+  }
 
 
   //Server constants simulation
-  // let constantTypes = ["Kp reta", "Ki reta", "Kd reta", "Kp curva", "Ki curva", "Kd curva",
-  // "Kp Zi-Za", "Ki Zi-Za", "Kd Zi-Za", "Kp Velocity", "Ki Velocity", "Kd Velocity", "Teste"];
-  let constantTypes = constant
-  //Arrange the array labels in threes (3 x n/3 matrix) to split between 3 columns on screen
+  let constantTypes = constantList;
 
   const arrayToMatrix = () => {
 
@@ -95,35 +121,9 @@ export const ConstantsPage = props => {
             return (
               <View style = {styles.tableRow} key={index}>
 
-                <View style = {styles.tableCell}>  
-                  <View style = {styles.textView}>
-                    <Body>{element[0].description}</Body>
-                  </View>
-
-                  <View style = {styles.textInputView}>
-                    <TextInput style={styles.textInput} onChangeText={(e) => (element[0].value = e)}/>
-                  </View>
-                </View>
-                
-                <View style = {styles.tableCell}>  
-                  <View style = {styles.textView}>
-                    <Body>{element[1].description}</Body>
-                  </View>
-                  
-                  <View style = {styles.textInputView}>
-                    <TextInput style={styles.textInput}/>
-                  </View>
-                </View>
-
-                <View style = {styles.tableCell}>  
-                  <View style = {styles.textView}>
-                    <Body>{element[2].description}</Body>
-                  </View>
-                  
-                  <View style = {styles.textInputView}>
-                    <TextInput style={styles.textInput}/>
-                  </View>
-                </View>
+                <ConstantInput constant={element[0]}/>
+                <ConstantInput constant={element[1]}/>
+                <ConstantInput constant={element[2]}/>
 
               </View>
             );
@@ -134,7 +134,7 @@ export const ConstantsPage = props => {
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonRow}>
           <View style = {styles.buttonCell}>  
-            <ActionButton title="Enviar"/>
+            <ActionButton title="Enviar" onPress={sendHandler}/>
           </View> 
           <View style = {styles.buttonCell}>  
             <GreenActionButton title="Salvar" />
