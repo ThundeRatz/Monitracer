@@ -5,218 +5,98 @@
  *
  * @author Gabriel Kishida <gabriel.kishida@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
- *
- * @date 06/2021
+ * @author Lucas Guedes <lucas.guedes@thunderatz.org>
+ * @author Henrique D'Amaral <henrique.matheus@thunderatz.org>
+ * 
+ * @date 10/2021
  */
 
-import React from 'react';
-import {SafeAreaView, ScrollView, StyleSheet} from 'react-native';
-
-import {H1, H3, Body} from '../components/typography';
-import {VSeparator, VBox} from '../components/grid';
-import {
-  Header,
-  CellContainer,
-  CellTitleContainer,
-  TextInputCell,
-} from '../components/cell';
-import { PrimaryButton, SecondaryButton, PrimaryButtonSmall, TertiaryButton, ActionButton, RedActionButton, RegulationButton } from '../components/button';
-import { SmallModal } from '../components/modal';
-import { BTPostData } from '../bt_communication/bt_data_sender';
-import {
-  BTGetDataContinuous,
-} from '../bt_communication/bt_data_receiver';
-import { GoToPage } from '../utils/nav';
+import React, {useEffect} from 'react';
+import {SafeAreaView, ScrollView, StyleSheet, View, Text, TouchableOpacity, Image, Dimensions} from 'react-native';
+import {COLORS} from '../components/colors';
+import {SPACING} from '../components/grid';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const HomePage = props => {
-  const [inputValue, setInputValue] = React.useState('');
-  const [modalVisible, setModalVisible] = React.useState(false);
 
-  const handleSimpleTestPress = async () => {
-    await BTPostData('1');
-  };
-
-  const handleComplexTestPress = async () => {
-    await BTPostData(inputValue);
-  };
-
-  const handleReceiveSignal = () => {
-    setModalVisible(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalVisible(false);
-  };
+  const FabButton = props => {
+    return (
+      <TouchableOpacity
+      style={styles.roundButton1}>
+        <Ionicons name='book-outline' size={35} color="white" />
+      </TouchableOpacity>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Header>
-        <H1>Monitracer</H1>
-        <Body>Versão para testes de desenvolvimento</Body>
-      </Header> */}
-      <ScrollView>
-        <VSeparator half />
-
-        <CellContainer>
-          <PrimaryButton
-            onPress={handleSimpleTestPress}
-            title={'PB enable'}
-            disable={false}
-          />
-        </CellContainer>
-
-        <VSeparator half />
-
-        <CellContainer>
-          <PrimaryButton
-            onPress={BTGetDataContinuous}
-            title={'PB disable'}
-            disable={true}
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <PrimaryButtonSmall
-            onPress={BTGetDataContinuous}
-            title={'PBS enable'}
-            disable={false}
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <PrimaryButtonSmall
-            onPress={BTGetDataContinuous}
-            title={'PBS disable'}
-            disable={true}
-          />
-        </CellContainer>
-
-        <VSeparator half />
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={BTGetDataContinuous}
-            title={'SB enable'}
-            disable={false}
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={BTGetDataContinuous}
-            title={'SB disable'}
-            disable={true}
-          />
-        </CellContainer>
-
-        <VSeparator half />
-
-        <CellContainer>
-          <TertiaryButton
-            onPress={BTGetDataContinuous}
-            title={'TB enable'}
-            disable={false}
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <TertiaryButton
-            onPress={BTGetDataContinuous}
-            title={'TB disable'}
-            disable={true}
-          />
-        </CellContainer>
-
-        <VSeparator half />
-
-        <CellContainer>
-          <ActionButton
-            onPress={BTGetDataContinuous}
-            title={'AB1 enable'}
-            disable={false}
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <ActionButton
-            onPress={BTGetDataContinuous}
-            title={'AB1 disable'}
-            disable={true}
-          />
-        </CellContainer>
-
-        <VSeparator half />
-
-        <CellContainer>
-          <RedActionButton
-            onPress={BTGetDataContinuous}
-            title={'RAB enable'}
-            disable={false}
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <RedActionButton
-            onPress={BTGetDataContinuous}
-            title={'RAB disable'}
-            disable={true}
-          />
-        </CellContainer>
-
-        <VSeparator half />
-
-        <CellContainer>
-          <RegulationButton
-            onPress={BTGetDataContinuous}
-          />
-        </CellContainer>
-
-        <VBox>
-          <CellTitleContainer>
-            <H3>Testes</H3>
-          </CellTitleContainer>
-        </VBox>
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={() => GoToPage(props.componentId, 'BluetoothListPage')}
-            title="CONFIGURAR"
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={() => GoToPage(props.componentId, 'HistoryPage')}
-            title="HISTÓRICOS"
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={() => GoToPage(props.componentId, 'ConstantsPage')}
-            title="CONSTANTES"
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={() => GoToPage(props.componentId, 'EvaluationPage')}
-            title="TESTES"
-          />
-        </CellContainer>
-
-        <CellContainer>
-          <SecondaryButton
-            onPress={() => GoToPage(props.componentId, 'ControlPage')}
-            title="CONTROLE"
-          />
-        </CellContainer>
-      </ScrollView>
+      <View style={styles.blueBackground}>
+        <Image
+          style={styles.image}
+          source={require('@img/Tracer-2.png')}
+        />
+      </View>
+      <View style = {styles.triangleCorner}/>
+      <View style={styles.titleContainer}>
+        <Image
+          style={styles.logoTypo}
+          source={require('@img/Tracer_typo.png')}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <FabButton/>
+      </View>
+      
     </SafeAreaView>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection:'column'
+  },
+  triangleCorner: {
+    width: 0,
+    height: 0,
+    backgroundColor: "transparent",
+    borderStyle: "solid",
+    borderRightWidth: Dimensions.get('window').width ,
+    borderTopWidth: Dimensions.get('window').width * 0.15, //width * tan(8.5°)
+    borderRightColor: "transparent",
+    borderTopColor: COLORS.thunderBlue,
+  },
+  roundButton1: { 
+    width: 64,
+    height: 64,   //dimensions from figma
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: SPACING.small,
+    borderRadius: 100,
+    backgroundColor: COLORS.thunderBlue,
+  },
+  blueBackground: {
+    justifyContent: 'center',
+    flex:3,
+    alignItems: 'center',
+    backgroundColor: COLORS.thunderBlue,
+  },
+  logoTypo: {
+    height: 50,
+    margin: 10,
+    resizeMode: "center",
+  },
+  image: {
+    height: 220,
+    margin: 20,
+    resizeMode: "center",
+  },
+  buttonContainer: {
+    flex:1.5,
+    justifyContent:'center',
+    alignItems: 'center',
+  },
+  titleContainer: {
+    flex:1,
+    alignItems: 'center',
   },
 });
