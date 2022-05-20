@@ -10,16 +10,10 @@
  */
 
 import {
-  SecondaryButton,
-  TertiaryButton,
   ActionButton,
 } from '../components/button';
-import {CellContainer} from '../components/cell';
 import React from 'react';
-import {SafeAreaView, ScrollView, View, StyleSheet} from 'react-native';
-import {GoToTab} from '../utils/nav';
-import {COLORS} from '../components/colors';
-import {backgroundColor} from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import {ScrollView, View, StyleSheet} from 'react-native';
 
 const encoder_evaluation = () => {
   console.log('testando encoder');
@@ -49,11 +43,11 @@ export const EvaluationPage = props => {
     },
     {
       test_name: 'Teste de motores',
-      routine: line_sensor_evaluation,
+      routine: motors_evaluation,
     },
     {
       test_name: 'Teste de Marcações Laterias',
-      routine: line_sensor_evaluation,
+      routine: lateral_marks_evaluation,
     },
   ];
   return (
