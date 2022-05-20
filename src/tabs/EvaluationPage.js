@@ -9,9 +9,7 @@
  * @date 05/2022
  */
 
-import {
-  ActionButton,
-} from '../components/button';
+import {ActionButton} from '../components/button';
 import React from 'react';
 import {ScrollView, View, StyleSheet} from 'react-native';
 
