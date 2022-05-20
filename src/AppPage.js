@@ -16,6 +16,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLORS} from './components/colors';
 
+import {TestServer} from './tests/TestServerPage';
+
 const Stack = createNativeStackNavigator();
 
 const Tab = createBottomTabNavigator();
@@ -42,6 +44,11 @@ function MyTabs() {
       pageComponent: HomePage,
       screenName: 'HomePage',
       tabBarLabel: 'HomePage',
+    },
+    {
+      pageComponent: TestServer,
+      screenName: 'TestServerPage',
+      tabBarLabel: 'TestServerPage',
     },
     {
       pageComponent: BluetoothListPage,
@@ -97,7 +104,7 @@ function MyTabs() {
         tabBarActiveTintColor: COLORS.thunderWhite,
         tabBarInactiveTintColor: COLORS.gray3,
 
-        tabBarButton: ['HomePage', 'BluetoothListPage'].includes(route.name)
+        tabBarButton: ['HomePage', 'BluetoothListPage','TestServerPage'].includes(route.name)
           ? () => {
               return null; //Dont show "Home" and "BluetoothListPage" in the bottom tabs (but it is still possible to navigate to them):
             }
