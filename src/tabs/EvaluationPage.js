@@ -1,61 +1,79 @@
 /**
- * @file TestPage.js
+ * @file EvalationPage.js
  *
  * @brief Page to send test commands to Tracer
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  *
- * @date 09/2021
+ * @date 05/2022
  */
 
-import {SecondaryButton} from '../components/button';
+import {SecondaryButton, TertiaryButton, ActionButton} from '../components/button';
 import {CellContainer} from '../components/cell';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, ScrollView, View, StyleSheet} from 'react-native';
 import {GoToTab} from '../utils/nav';
+import {COLORS} from '../components/colors'
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+
+const encoder_evaluation = () => {
+  console.log("testando encoder");
+}
+
+const line_sensor_evaluation = () => {
+  console.log("testando sensor de linha");
+}
+
+const motors_evaluation = () => {
+  console.log("testando motores");
+}
+
+const lateral_marks_evaluation = () => {
+  console.log("testando marcacoes laterais")
+}
 
 export const EvaluationPage = props => {
+  let evaluateRoutines = [
+    {
+      test_name: 'Teste de Encoder',
+      routine: encoder_evaluation
+    },
+    {
+      test_name: 'Teste de sensores de linha',
+      routine: line_sensor_evaluation
+    },
+    {
+      test_name: 'Teste de motores',
+      routine: line_sensor_evaluation
+    },
+    {
+      test_name: 'Teste de Marcações Laterias',
+      routine: line_sensor_evaluation
+    }
+  ]
   return (
-    <SafeAreaView>
-      <CellContainer>
-        <SecondaryButton onPress={() => GoToTab('HomePage')} title="Home" />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToTab('BluetoothListPage')}
-          title="Configurar bluetooth"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToTab('HistoryPage')}
-          title="Página de Históricos"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToTab('ConstantsPage')}
-          title="Página de Constantes"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToTab('EvaluationPage')}
-          title="Página de testes"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => GoToTab('ControlPage')}
-          title="Página para controlar o Tracer"
-        />
-      </CellContainer>
-    </SafeAreaView>
+    <ScrollView style = {styles.container}>
+      {evaluateRoutines.map((element, index) => {
+          return (
+            
+            <View style ={styles.buttonContainer} key={index}>
+              <ActionButton title= {element.test_name} onPress = {() => element.routine()}/>
+            </View>
+          )
+        })
+      }
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop:50
+  }, 
+  buttonContainer: {
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+  }
+
+})
