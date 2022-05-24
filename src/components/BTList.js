@@ -12,7 +12,8 @@
 import React from 'react';
 import {FlatList, View, Text, StyleSheet, Switch} from 'react-native';
 
-import {VBox, VSeparator, ListSeparator} from './cell';
+import {VBox, VSeparator} from './grid';
+import {ListSeparator} from './cell'
 import {H1, H3, Body, BodySecondary} from './typography';
 import {PrimaryButton} from './button';
 import {BTConnection} from '../bt_communication/bt_connection';
