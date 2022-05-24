@@ -18,15 +18,18 @@ import { ROTATION } from './rotation.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const PrimaryButton = props => {
+  let mainColor;
+  let secondaryColor;
+  let textColor;
   props.disable ? (
-      mainColor = COLORS.lightThunderBlue,
-      secondaryColor = COLORS.lightThunderYellow,
-      textColor = COLORS.gray5) : 
-    (
-      mainColor = COLORS.thunderBlue,
-      secondaryColor = COLORS.thunderYellow,
-      textColor = COLORS.gray6
-    );
+    mainColor = COLORS.lightThunderBlue,
+    secondaryColor = COLORS.lightThunderYellow,
+    textColor = COLORS.gray5) : 
+  (
+    mainColor = COLORS.thunderBlue,
+    secondaryColor = COLORS.thunderYellow,
+    textColor = COLORS.gray6
+  );
   return (<>
     <View style={{ height: props.title.length * 0.6 }} />
     <View>
@@ -48,15 +51,18 @@ export const PrimaryButton = props => {
 };
 
 export const PrimaryButtonSmall = props => {
+  let mainColor;
+  let secondaryColor;
+  let textColor;
   props.disable ? (
-      mainColor = COLORS.lightThunderBlue,
-      secondaryColor = COLORS.lightThunderYellow,
-      textColor = COLORS.gray5) : 
-    (
-      mainColor = COLORS.thunderBlue,
-      secondaryColor = COLORS.thunderYellow,
-      textColor = COLORS.gray6
-    );
+    mainColor = COLORS.lightThunderBlue,
+    secondaryColor = COLORS.lightThunderYellow,
+    textColor = COLORS.gray5) : 
+  (
+    mainColor = COLORS.thunderBlue,
+    secondaryColor = COLORS.thunderYellow,
+    textColor = COLORS.gray6
+  );
   return (<>
     <View>
       <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
@@ -78,15 +84,18 @@ export const PrimaryButtonSmall = props => {
 };
 
 export const SecondaryButton = props => {
+  let mainColor;
+  let secondaryColor;
+  let textColor;
   props.disable ? (
-      mainColor = COLORS.gray5,
-      secondaryColor = COLORS.lightThunderBlue,
-      textColor = COLORS.lightThunderBlue) : 
-    (
-      mainColor = COLORS.gray5,
-      secondaryColor = COLORS.thunderBlue,
-      textColor = COLORS.thunderBlue
-    );
+    mainColor = COLORS.gray5,
+    secondaryColor = COLORS.lightThunderBlue,
+    textColor = COLORS.lightThunderBlue) : 
+  (
+    mainColor = COLORS.gray5,
+    secondaryColor = COLORS.thunderBlue,
+    textColor = COLORS.thunderBlue
+  );
   return (<>
     <View style={{ height: props.title.length * 0.6 }} />
     <View>
@@ -108,9 +117,10 @@ export const SecondaryButton = props => {
 };
 
 export const TertiaryButton = props => {
+  let textColor;
   props.disable ? textColor = COLORS.lightThunderBlue : textColor = COLORS.thunderBlue;
 
-  return (<>
+  return (<>  
     <View>
       <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
         <View style={styles.BackgroundButton}>
@@ -126,6 +136,7 @@ export const TertiaryButton = props => {
 };
 
 export const ActionButton = props => {
+  let mainColor; 
   props.disable ? mainColor = COLORS.lightThunderBlue : mainColor = COLORS.thunderBlue;
 
   return (
@@ -138,6 +149,7 @@ export const ActionButton = props => {
 };
 
 export const RedActionButton = props => {
+  let mainColor;
   props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.thunderAllert;
 
   return (
@@ -148,6 +160,20 @@ export const RedActionButton = props => {
     </TouchableOpacity>
   );
 };
+
+export const GreenActionButton = props => {
+  let mainColor;
+  props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.controllButton01;
+
+  return (
+    <TouchableOpacity onPress={props.onPress}>
+      <View style={styles.actionButton} borderColor={mainColor}>
+        <H4 color={mainColor}>{props.title}</H4>
+      </View>
+    </TouchableOpacity>
+  );
+};
+
 export const RegulationButton = props => {
   return (
     <TouchableOpacity
@@ -161,9 +187,8 @@ const styles = StyleSheet.create({
   mainButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingVertical: SPACING.small,
-    paddingHorizontal: SPACING.large,
-    top: - 56 - 2 * SPACING.small + SPACING.xSmall,
+    paddingHorizontal: SPACING.medium,
+    top:- 56 + SPACING.xSmall,
     marginBottom: -20 - 2 * SPACING.small,
     marginHorizontal: SPACING.medium,
     left: SPACING.xSmall,
@@ -172,8 +197,7 @@ const styles = StyleSheet.create({
   BackgroundButton: {
     alignItems: 'center',
     alignSelf: 'flex-start',
-    paddingVertical: SPACING.small,
-    paddingHorizontal: SPACING.large,
+    paddingHorizontal: SPACING.medium,
     marginHorizontal: SPACING.medium,
     borderRadius: 5,
   },
@@ -186,15 +210,13 @@ const styles = StyleSheet.create({
     top: - 38 - 2 * SPACING.small + SPACING.xSmall,
     marginBottom: -20 - 2 * SPACING.small,
     marginHorizontal: SPACING.medium,
-    left: SPACING.xSmall,
     borderRadius: 5,
   },
 
   actionButton: {
     alignItems: 'center',
     borderWidth: 5,
-    paddingVertical: SPACING.small,
-    paddingHorizontal: SPACING.large,
+    paddingHorizontal: SPACING.xSmall,
     borderRadius: 5,
   },
 
