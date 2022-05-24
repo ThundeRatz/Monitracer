@@ -1,5 +1,5 @@
 /**
- * @file EvalationPage.js
+ * @file EvaluationPage.js
  *
  * @brief Page to send test commands to Tracer
  *
@@ -44,7 +44,7 @@ export const EvaluationPage = props => {
       routine: motors_evaluation,
     },
     {
-      test_name: 'Teste de Marcações Laterias',
+      test_name: 'Teste de Marcações Laterais',
       routine: lateral_marks_evaluation,
     },
   ];
