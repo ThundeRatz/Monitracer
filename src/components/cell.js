@@ -1,5 +1,16 @@
-import React from 'react';
-import {StyleSheet, View, TextInput} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  LayoutAnimation,
+  UIManager,
+} from 'react-native';
+import {H3, Body, BodySecondary} from './typography';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import {COLORS} from './colors';
+import {SPACING} from './grid';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
@@ -11,6 +22,80 @@ export const CellTitleContainer = props => {
 
 export const CellContainer = props => {
   return <View style={styles.cell}>{props.children}</View>;
+};
+
+const setAnimationCallback = () => {
+  if (
+    Platform.OS === 'android' &&
+    UIManager.setLayoutAnimationEnabledExperimental
+  ) {
+    UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+}
+
+export const PrimaryDropdownCell = props => {
+  const [expanded, setExpanded] = useState(false);
+  useEffect(()=>setAnimationCallback());
+
+  return (
+    <View>
+      <TouchableOpacity
+        style={styles.primaryDropdown}
+        onPress={() => {
+          LayoutAnimation.configureNext(
+            LayoutAnimation.create(200, 'linear', 'opacity'),
+          );
+          setExpanded(!expanded);
+        }}
+      >
+        <H3 color={'white'}>{props.title}</H3>
+        <Ionicons
+          name={expanded ? 'chevron-up-outline' : 'chevron-down-outline'}
+          size={40}
+          color={'white'}
+        />
+      </TouchableOpacity>
+      {expanded && <View style={styles.dropdownContent}>{props.content}</View>}
+    </View>
+  );
+};
+
+export const SecondaryDropdownCell = props => {
+  const [expanded, setExpanded] = useState(false);
+  useEffect(()=>setAnimationCallback());
+
+  return (
+    <View>
+      <TouchableOpacity
+        style={styles.secondaryDropdown}
+        onPress={() => {
+          LayoutAnimation.configureNext(
+            LayoutAnimation.create(200, 'linear', 'opacity'),
+          );
+          setExpanded(!expanded);
+        }}
+      >
+        <H3>{props.title}</H3>
+        <Ionicons
+          name={expanded ? 'chevron-up-outline' : 'chevron-down-outline'}
+          size={40}
+          color={'black'}
+        />
+      </TouchableOpacity>
+      {expanded && <View style={styles.dropdownContent}>{props.content}</View>}
+    </View>
+  );
+};
+
+export const DeviceCell = props => {
+  return (
+    <View style={{flexDirection: 'row'}}>
+      <View style={styles.deviceId}>
+        <Body>{props.deviceName}</Body>
+        <BodySecondary color={COLORS.gray3}>{props.deviceId}</BodySecondary>
+      </View>
+    </View>
+  );
 };
 
 export const TextInputCell = props => {
@@ -33,8 +118,29 @@ export const ListSeparator = () => {
 };
 
 const styles = StyleSheet.create({
+  deviceId: {
+    backgroundColor: COLORS.gray4,
+    flex: 0.8,
+  },
+  secondaryDropdown: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: COLORS.gray4,
+    padding: SPACING.small,
+  },
+  primaryDropdown: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    backgroundColor: COLORS.thunderBlue,
+    padding: SPACING.small,
+  },
+  dropdownContent: {
+    padding: SPACING.small,
+  },
   header: {
-    padding: 16,
+    padding: SPACING.small,
     borderBottomLeftRadius: 12,
     borderBottomRightRadius: 12,
     backgroundColor: '#f5d97d',
@@ -43,7 +149,7 @@ const styles = StyleSheet.create({
     padding: 12,
   },
   cell: {
-    padding: 8,
+    padding: SPACING.xsmall,
     borderColor: '#e3e3e3',
     backgroundColor: '#f2f2f2',
     borderWidth: 0.5,
