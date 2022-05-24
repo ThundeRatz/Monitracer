@@ -162,6 +162,7 @@ export const RedActionButton = props => {
 };
 
 export const GreenActionButton = props => {
+  let mainColor;
   props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.controllButton01;
 
   return (
