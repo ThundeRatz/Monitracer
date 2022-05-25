@@ -13,6 +13,20 @@ import React from 'react';
 import {PrimaryDropdownCell, SecondaryDropdownCell} from '../components/cell'
 import {Body, H3, H4} from '../components/typography';
 import {COLORS} from '../components/colors';
+import { ActionButton } from '../components/button';
+
+// Funções de backend para serem implementadas
+const importData = Lap => {
+  console.log('Importando os dados da volta: ' + Lap['label']);
+}
+
+const lapAnalysis = Lap => {
+  console.log('Analisando os dados da volta: ' + Lap['label']);
+}
+
+const eraseLap = Lap => {
+  console.log('Apagando a volta: ' + Lap['label']);
+}
 
 const ConstantsTable = props => {
   return (
@@ -118,7 +132,24 @@ export const HistoryPage = props => {
         return (
           <View style={styles.cellContainer} key={index}>
             <SecondaryDropdownCell title = {element.label} 
-            content = {<ConstantsTable constantsArray = {element.constants}/>}/>
+              content = {
+                <View>
+                  <ConstantsTable constantsArray = {element.constants}/>
+
+                  <View paddingHorizontal = {50} paddingVertical = {10}>
+                    <View style = {styles.buttonContainer}>
+                      <ActionButton title = {'Importar dados'} onPress = { () => importData(element)}/>
+                    </View>
+                    <View style = {styles.buttonContainer}>
+                      <ActionButton title = {'Análise de corrida'} onPress = { () => lapAnalysis(element)}/>
+                    </View>
+                    <View style = {styles.buttonContainer}>
+                      <ActionButton title = {'Apagar corrida'} onPress = { () => eraseLap(element)}/> 
+                    </View>
+                  </View>
+                </View>
+              }
+            />
           </View>
         );
       })}
@@ -128,7 +159,7 @@ export const HistoryPage = props => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    paddingTop: 0,
   },
   cellContainer: {
     paddingHorizontal: 30,
@@ -138,7 +169,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     flex:1.2,
-
   },
   constantsTableColumn: {
     borderBottomWidth:2,
@@ -156,5 +186,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center', //Centered horizontally
     alignItems: 'center', //Centered vertically
     flex:1,
+  },
+  buttonContainer: {
+    paddingVertical:10,
   }
 });
