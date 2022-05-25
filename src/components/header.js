@@ -20,7 +20,7 @@ export const HeaderComponent = props => {
       >
         <Image
           style={styles.icon}
-          source={require('../../assets/img/logo.png')}
+          source={require('../assets/img/logo.png')}
         />
       </TouchableOpacity>
 

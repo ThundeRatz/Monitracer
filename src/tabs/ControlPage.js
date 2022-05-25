@@ -19,7 +19,10 @@ export const ControlPage = props => {
   return (
     <SafeAreaView>
       <CellContainer>
-        <SecondaryButton onPress={() => NavigationManager.GoToTab('HomePage')} title="Home" />
+        <SecondaryButton
+          onPress={() => NavigationManager.GoToTab('HomePage')}
+          title="Home"
+        />
       </CellContainer>
 
       <CellContainer>

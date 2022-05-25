@@ -10,16 +10,32 @@
  */
 
 import {SecondaryButton} from '../components/button';
-import {CellContainer} from '../components/cell';
+import {CellContainer, ListSeparator} from '../components/cell';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 import {NavigationManager} from '../utils/nav';
+import {
+  PrimaryDropdownCell,
+  SecondaryDropdownCell,
+  DeviceCell,
+} from '../components/cell';
 
 export const HistoryPage = props => {
   return (
     <SafeAreaView>
+      <PrimaryDropdownCell
+        title="Arquivos na Nuvem"
+        content={<Text>Coisas na nuvem</Text>}
+      />
+      <SecondaryDropdownCell
+        title="Corrida 03"
+        content={<Text>Coisas da corrida 3</Text>}
+      />
       <CellContainer>
-        <SecondaryButton onPress={() => NavigationManager.GoToTab('HomePage')} title="Home" />
+        <SecondaryButton
+          onPress={() => NavigationManager.GoToTab('HomePage')}
+          title="Home"
+        />
       </CellContainer>
 
       <CellContainer>

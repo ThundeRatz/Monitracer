@@ -1,69 +1,75 @@
 /**
- * @file TestPage.js
+ * @file EvaluationPage.js
  *
  * @brief Page to send test commands to Tracer
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  *
- * @date 09/2021
+ * @date 05/2022
  */
 
-import {SecondaryButton} from '../components/button';
-import {CellContainer} from '../components/cell';
+import {ActionButton} from '../components/button';
 import React from 'react';
-import {SafeAreaView} from 'react-native';
-import {NavigationManager} from '../utils/nav';
+import {ScrollView, View, StyleSheet} from 'react-native';
+
+const encoder_evaluation = () => {
+  console.log('testando encoder');
+};
+
+const line_sensor_evaluation = () => {
+  console.log('testando sensor de linha');
+};
+
+const motors_evaluation = () => {
+  console.log('testando motores');
+};
+
+const lateral_marks_evaluation = () => {
+  console.log('testando marcacoes laterais');
+};
 
 export const EvaluationPage = props => {
+  let evaluateRoutines = [
+    {
+      test_name: 'Teste de Encoder',
+      routine: encoder_evaluation,
+    },
+    {
+      test_name: 'Teste de sensores de linha',
+      routine: line_sensor_evaluation,
+    },
+    {
+      test_name: 'Teste de motores',
+      routine: motors_evaluation,
+    },
+    {
+      test_name: 'Teste de Marcações Laterais',
+      routine: lateral_marks_evaluation,
+    },
+  ];
   return (
-    <SafeAreaView>
-      <CellContainer>
-        <SecondaryButton onPress={() => NavigationManager.GoToTab('HomePage')} title="Home" />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => NavigationManager.GoToTab('BluetoothListPage')}
-          title="Configurar bluetooth"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => NavigationManager.GoToTab('HistoryPage')}
-          title="Página de Históricos"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => NavigationManager.GoToTab('ConstantsPage')}
-          title="Página de Constantes"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => NavigationManager.GoToTab('EvaluationPage')}
-          title="Página de testes"
-        />
-      </CellContainer>
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => NavigationManager.GoToTab('ControlPage')}
-          title="Página controlar Tracer"
-        />
-      </CellContainer>
-
-
-      <CellContainer>
-        <SecondaryButton
-          onPress={() => NavigationManager.GoToTab('TestServerPage')}
-          title="Página para testes no geral"
-        />
-      </CellContainer>
-    </SafeAreaView>
+    <ScrollView style={styles.container}>
+      {evaluateRoutines.map((element, index) => {
+        return (
+          <View style={styles.buttonContainer} key={index}>
+            <ActionButton
+              title={element.test_name}
+              onPress={() => element.routine()}
+            />
+          </View>
+        );
+      })}
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+  },
+  buttonContainer: {
+    paddingHorizontal: 30,
+    paddingVertical: 20,
+  },
+});

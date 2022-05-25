@@ -158,64 +158,64 @@ export const ConstantsPage = props => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "column"
-  },
-  constantsInputContainer: {
-    flex: 1.5, 
-    backgroundColor: COLORS.gray4,
-  },
-  titleContainer: {
-    backgroundColor: COLORS.thunderBlue,
-    width: PROPOTION.width(Dimensions.get('window').width),
-    top: PROPOTION.top(Dimensions.get('window').width),
-    height: PROPOTION.height(Dimensions.get('window').width),
-    left: PROPOTION.left(Dimensions.get('window').width)
-  },
-  buttonsContainer: {
-    flex: 1,
-    flexDirection:'column',
-    backgroundColor: COLORS.gray5,
-  },
-  tableRow: {
-    flexDirection : "row",
-  },
-  buttonRow: {
-    flexDirection : "row",
-    paddingVertical: 10
-  },
-  tableCell: {
-    flexDirection : "column",
-    flex: 1,
-    alignItems: 'center',
-    borderLeftColor: COLORS.gray3,
-    borderLeftWidth: 1,
-    paddingLeft: 5,
-    justifyContent: 'center',
-  },
-  buttonCell: {
-    flexDirection : "row",
-    flex: 1,
-    padding:1,
-    justifyContent: 'center',
-  },
-  textView: {
-    flex:3,
-  },
-  textInputView: {
-    flex:2,
-    flexDirection: 'row',
-    paddingVertical: 5,
-    paddingHorizontal: 10
-  },
-  textInput: {
-    backgroundColor:"white",
-    borderRadius:8,
-    flex:1,
-    height:25,
-    fontSize:15,
-    paddingVertical: 0,
-    textAlign: 'center'
-  },
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+    },
+    constantsInputContainer: {
+        flex: 1.5,
+        backgroundColor: COLORS.gray4,
+    },
+    titleContainer: {
+        backgroundColor: COLORS.thunderBlue,
+        width: PROPOTION.width(Dimensions.get('window').width),
+        top: PROPOTION.top(Dimensions.get('window').width),
+        height: PROPOTION.height(Dimensions.get('window').width),
+        left: PROPOTION.left(Dimensions.get('window').width),
+    },
+    buttonsContainer: {
+        flex: 1,
+        flexDirection: 'column',
+        backgroundColor: COLORS.gray5,
+    },
+    tableRow: {
+        flexDirection: 'row',
+    },
+    buttonRow: {
+        flexDirection: 'row',
+        paddingVertical: 10,
+    },
+    tableCell: {
+        flexDirection: 'column',
+        flex: 1,
+        alignItems: 'center',
+        borderLeftColor: COLORS.gray3,
+        borderLeftWidth: 1,
+        paddingLeft: 5,
+        justifyContent: 'center',
+    },
+    buttonCell: {
+        flexDirection: 'row',
+        flex: 1,
+        padding: 1,
+        justifyContent: 'center',
+    },
+    textView: {
+        flex: 3,
+    },
+    textInputView: {
+        flex: 2,
+        flexDirection: 'row',
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+    },
+    textInput: {
+        backgroundColor: 'white',
+        borderRadius: 8,
+        flex: 1,
+        height: 25,
+        fontSize: 15,
+        paddingVertical: 0,
+        textAlign: 'center',
+    },
 });

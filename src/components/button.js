@@ -18,15 +18,18 @@ import { ROTATION } from './rotation.js';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export const PrimaryButton = props => {
+  let mainColor;
+  let secondaryColor;
+  let textColor;
   props.disable ? (
-      mainColor = COLORS.lightThunderBlue,
-      secondaryColor = COLORS.lightThunderYellow,
-      textColor = COLORS.gray5) : 
-    (
-      mainColor = COLORS.thunderBlue,
-      secondaryColor = COLORS.thunderYellow,
-      textColor = COLORS.gray6
-    );
+    mainColor = COLORS.lightThunderBlue,
+    secondaryColor = COLORS.lightThunderYellow,
+    textColor = COLORS.gray5) : 
+  (
+    mainColor = COLORS.thunderBlue,
+    secondaryColor = COLORS.thunderYellow,
+    textColor = COLORS.gray6
+  );
   return (<>
     <View style={{ height: props.title.length * 0.6 }} />
     <View>
@@ -48,15 +51,18 @@ export const PrimaryButton = props => {
 };
 
 export const PrimaryButtonSmall = props => {
+  let mainColor;
+  let secondaryColor;
+  let textColor;
   props.disable ? (
-      mainColor = COLORS.lightThunderBlue,
-      secondaryColor = COLORS.lightThunderYellow,
-      textColor = COLORS.gray5) : 
-    (
-      mainColor = COLORS.thunderBlue,
-      secondaryColor = COLORS.thunderYellow,
-      textColor = COLORS.gray6
-    );
+    mainColor = COLORS.lightThunderBlue,
+    secondaryColor = COLORS.lightThunderYellow,
+    textColor = COLORS.gray5) : 
+  (
+    mainColor = COLORS.thunderBlue,
+    secondaryColor = COLORS.thunderYellow,
+    textColor = COLORS.gray6
+  );
   return (<>
     <View>
       <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
@@ -78,15 +84,18 @@ export const PrimaryButtonSmall = props => {
 };
 
 export const SecondaryButton = props => {
+  let mainColor;
+  let secondaryColor;
+  let textColor;
   props.disable ? (
-      mainColor = COLORS.gray5,
-      secondaryColor = COLORS.lightThunderBlue,
-      textColor = COLORS.lightThunderBlue) : 
-    (
-      mainColor = COLORS.gray5,
-      secondaryColor = COLORS.thunderBlue,
-      textColor = COLORS.thunderBlue
-    );
+    mainColor = COLORS.gray5,
+    secondaryColor = COLORS.lightThunderBlue,
+    textColor = COLORS.lightThunderBlue) : 
+  (
+    mainColor = COLORS.gray5,
+    secondaryColor = COLORS.thunderBlue,
+    textColor = COLORS.thunderBlue
+  );
   return (<>
     <View style={{ height: props.title.length * 0.6 }} />
     <View>
@@ -108,9 +117,10 @@ export const SecondaryButton = props => {
 };
 
 export const TertiaryButton = props => {
+  let textColor;
   props.disable ? textColor = COLORS.lightThunderBlue : textColor = COLORS.thunderBlue;
 
-  return (<>
+  return (<>  
     <View>
       <TouchableOpacity onPress={props.onPress} style={ROTATION.Ktorze}>
         <View style={styles.BackgroundButton}>
@@ -126,6 +136,7 @@ export const TertiaryButton = props => {
 };
 
 export const ActionButton = props => {
+  let mainColor; 
   props.disable ? mainColor = COLORS.lightThunderBlue : mainColor = COLORS.thunderBlue;
 
   return (
@@ -138,7 +149,8 @@ export const ActionButton = props => {
 };
 
 export const RedActionButton = props => {
-  props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.thunderAlert;
+  let mainColor;
+  props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.thunderAllert;
 
   return (
     <TouchableOpacity onPress={props.onPress}>
@@ -150,6 +162,7 @@ export const RedActionButton = props => {
 };
 
 export const GreenActionButton = props => {
+  let mainColor;
   props.disable ? mainColor = COLORS.thunderError : mainColor = COLORS.controllButton01;
 
   return (
