@@ -9,71 +9,70 @@
  * @date 06/2022
  */
 
-import React, {useState, useEffect} from 'react';
-import {
-    SafeAreaView,
-    ScrollView,
-    StyleSheet,
-    View,
-    TextInput,
-    Dimensions,
-} from 'react-native';
-import {Body, H3} from '../components/typography';
-import {COLORS} from '../components/colors';
-import {
-    PrimaryButton,
-    SecondaryButton,
-    ActionButton,
-    RedActionButton,
-    GreenActionButton,
-} from '../components/button';
-import {ROTATION} from '../components/rotation.js';
-import {PROPOTION} from '../components/trigonometry';
-import {
-    GetConstantsList,
-    GetConstantsLabels,
-} from '../server_communication/constants_api';
-import {BTPostData,BTPostHex} from '../bt_communication/bt_data_sender';
-import { hex_to_ascii, int_to_ascii, int_to_hex } from '../utils/VariableFormat';
-import { constants_default_values } from '../utils/DefaultValues';
+import React, { useState, useEffect } from 'react';
+import {SafeAreaView, ScrollView, StyleSheet, View, TextInput, Dimensions} from 'react-native';
+import {GoToTab} from '../utils/nav';
+import { Body , H3} from '../components/typography';
+import { COLORS } from '../components/colors';
+import { PrimaryButton , SecondaryButton, ActionButton, RedActionButton, GreenActionButton} from '../components/button';
+import { ROTATION } from '../components/rotation.js';
+import { PROPOTION } from '../components/trigonometry';
+import { GetConstantsList, GetConstantsLabels } from '../server_communication/constants_api';
+import { BTPostData } from '../bt_communication/bt_data_sender';
+import { storeConstants, getConstants } from '../async_storage/async_storage';
 
 export const ConstantsPage = props => {
-    const USE_ROBONITOR_PROTOCOL = true;
+  const USE_ROBONITOR_PROTOCOL = true;
 
-    const [constantList, setConstantList] = useState(constants_default_values);
+  const [constantList, setConstantList] = useState();
+  
+  useEffect(() => {
+    async function getConstant() {
+      const constant = (await GetConstantsLabels()) ?? constants_default_values;
+        setConstantList(constant);
+    }
+    getConstant();
+  }, []);
 
-    useEffect(() => {
-        async function getConstant() {
-            const constant = (await GetConstantsLabels()) ?? constants_default_values ;
-            setConstantList(constant);
-        }
-        getConstant();
-    }, []);
+  useEffect(() => {
+    async function getConstant() {
+        const constant = await getConstants();
+        setConstantList(constant);
+    }
+    getConstant();
+  }, []);
 
-    const ConstantInput = ({constant}) => {
-        // useState[]
-        return (
-            <View style={styles.tableCell}>
-                <View style={styles.textView}>
-                    <Body>{constant.description}</Body>
-                </View>
+  const setConstantValue = () => {
 
-                <View style={styles.textInputView}>
-                    <TextInput
-                        style={styles.textInput}
-                        onChangeText={e => {
-                            // (constant.value = e);
-                            var foundIndex = constantList.findIndex(
-                                x => x.id == constant.id,
-                            );
-                            // console.log(constantList[foundIndex].value);
-                            constantList[foundIndex].value = e;
-                        }}
-                    >{constant.value}</TextInput>
-                </View>
-            </View>
-        );
-    };
+  }
+
+  const ConstantInput = ({constant}) => {
+    return(
+      <View style = {styles.tableCell}>  
+        <View style = {styles.textView}>
+          <Body>{constant.description}</Body>
+        </View>
+
+        <View style = {styles.textInputView}>
+          <TextInput 
+            style={styles.textInput}
+            onChangeText={(e) => {
+              var foundIndex = constantList.findIndex(x => x.id == constant.id);
+              console.log(constantList[foundIndex].value);
+              constantList[foundIndex].value = e;
+              }
+            }
+            defaultValue={constant.value}
+          />
+        </View>
+      </View>
+    );
+  }
+
+  const sendHandler = () => {
+    storeConstants(constantList);
+    BTPostData(constantList);
+  }
 
     const enviarButtonHandler = () => {
         console.log("enviarButtonHandler");
