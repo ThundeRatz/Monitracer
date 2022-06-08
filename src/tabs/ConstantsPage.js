@@ -9,152 +9,255 @@
  * @date 09/2021
  */
 
-import React, { useState, useEffect } from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, View, TextInput, Dimensions} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    View,
+    TextInput,
+    Dimensions,
+} from 'react-native';
 import {GoToTab} from '../utils/nav';
-import { Body , H3} from '../components/typography';
-import { COLORS } from '../components/colors';
-import { PrimaryButton , SecondaryButton, ActionButton, RedActionButton, GreenActionButton} from '../components/button';
-import { ROTATION } from '../components/rotation.js';
-import { PROPOTION } from '../components/trigonometry';
-import { GetConstantsList, GetConstantsLabels } from '../server_communication/constants_api';
-import { BTPostData } from '../bt_communication/bt_data_sender';
+import {Body, H3} from '../components/typography';
+import {COLORS} from '../components/colors';
+import {
+    PrimaryButton,
+    SecondaryButton,
+    ActionButton,
+    RedActionButton,
+    GreenActionButton,
+} from '../components/button';
+import {ROTATION} from '../components/rotation.js';
+import {PROPOTION} from '../components/trigonometry';
+import {
+    GetConstantsList,
+    GetConstantsLabels,
+} from '../server_communication/constants_api';
+import {BTPostData} from '../bt_communication/bt_data_sender';
 
 export const ConstantsPage = props => {
+    const byte_initial_signal_value = '{';
+    const byte_final_signal_value = '}';
+    const byte_word_separator_value = '~';
 
-  let teste =[
-    {
-      "id": 1,
-      "description": "teste1",
-      "value": ""
-    },
-    {
-      "id": 2,
-      "description": "teste2",
-      "value": ""
-    },
-    {
-      "id": 3,
-      "description": "teste3",
-      "value": ""
-    }
-  ];
+    // let value_template = (id,description,value) => {
+    //   let msg = {
+    //     id:id,
+    //     description:description,
+    //     value:value
+    //   }
+    //   return msg
+    // }
+    let teste = [
+        {
+            id: 1,
+            description: 'teste1',
+            value: '1',
+        },
+        {
+            id: 2,
+            description: 'teste2',
+            value: '1',
+        },
+        {
+            id: 3,
+            description: 'teste3',
+            value: '1',
+        },
+        {
+            id: 4,
+            description: 'teste4',
+            value: '1',
+        },
+        {
+            id: 5,
+            description: 'teste5',
+            value: '1',
+        },
+        {
+            id: 6,
+            description: 'teste3',
+            value: '1',
+        },
+        {
+            id: 7,
+            description: 'teste1',
+            value: '1',
+        },
+        {
+            id: 8,
+            description: 'teste2',
+            value: '1',
+        },
+        {
+            id: 9,
+            description: 'teste3',
+            value: '1',
+        },
+        {
+            id: 10,
+            description: 'teste1',
+            value: '1',
+        },
+        {
+            id: 11,
+            description: 'teste2',
+            value: '1',
+        },
+        {
+            id: 12,
+            description: 'teste3',
+            value: '1',
+        },
+        {
+            id: 13,
+            description: 'teste1',
+            value: '1',
+        },
+        {
+            id: 14,
+            description: 'teste2',
+            value: '1',
+        },
+        {
+            id: 15,
+            description: 'teste3',
+            value: '1',
+        },
+    ];
 
-  const [constantList, setConstantList] = useState(teste);
-  
-  useEffect(() => {
-    async function getConstant() {
-        const constant = await GetConstantsLabels();
-        constant = (constant == null) ? teste : constant
-        setConstantList(constant);
-    }
-    getConstant();
-  }, []);
+    const [constantList, setConstantList] = useState(teste);
 
-  const setConstantValue = () => {
-
-  }
-
-  const ConstantInput = ({constant}) => {
-    return(
-      <View style = {styles.tableCell}>  
-        <View style = {styles.textView}>
-          <Body>{constant.description}</Body>
-        </View>
-
-        <View style = {styles.textInputView}>
-          <TextInput style={styles.textInput} onChangeText={(e) => {
-            // (constant.value = e);
-            var foundIndex = constantList.findIndex(x => x.id == constant.id);
-            console.log(constantList[foundIndex].value);
-            constantList[foundIndex].value = e;
-            }
-          }/>
-        </View>
-      </View>
-    );
-  }
-
-  const sendHandler = () => {
-    BTPostData(constantList);
-  }
-
-
-  //Server constants simulation
-  let constantTypes = constantList;
-
-  const arrayToMatrix = () => {
-
-    let constantCouples = [];
-
-    constantTypes.forEach( (element, index, array) => {
-      if (index%3 == 0){
-        if(index == array.length - 1) {
-          constantCouples.push([array[index],null,null]);
-        } else if(index == array.length - 2){
-          constantCouples.push([array[index],array[index+1],null]);
-        } else {
-          constantCouples.push([array[index],array[index+1],array[index+2]]);
+    useEffect(() => {
+        async function getConstant() {
+            const constant = await GetConstantsLabels();
+            constant = constant == null ? teste : constant;
+            setConstantList(constant);
         }
-      } 
-    })
+        getConstant();
+    }, []);
 
-    return constantCouples
-  }
+    const setConstantValue = () => {};
 
-  let constantCouples = arrayToMatrix(constantTypes); 
+    const ConstantInput = ({constant}) => {
+        return (
+            <View style={styles.tableCell}>
+                <View style={styles.textView}>
+                    <Body>{constant.description}</Body>
+                </View>
 
-  return (
-    <SafeAreaView style={styles.container}>
+                <View style={styles.textInputView}>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={e => {
+                            // (constant.value = e);
+                            var foundIndex = constantList.findIndex(
+                                x => x.id == constant.id,
+                            );
+                            console.log(constantList[foundIndex].value);
+                            constantList[foundIndex].value = e;
+                        }}
+                    />
+                </View>
+            </View>
+        );
+    };
 
-      <View backgroundColor={COLORS.gray4}>
-        <View style={ROTATION.OitoEMeia}>
-          <View style={styles.titleContainer} paddingLeft = {20}>
-            <H3 color="white">SETUP</H3>
-          </View>
-        </View>
-      </View>
+    const sendHandler = () => {
+      let msg_to_send = '';
+      msg_to_send += byte_initial_signal_value
+      teste.forEach(({id,description,value}) => {
+        msg_to_send += (value+byte_word_separator_value)
+      })
+      msg_to_send += byte_final_signal_value
+      BTPostData(msg_to_send);
+    };
 
-      {/* Dinamic constants table*/}
-      <View style={styles.constantsInputContainer}>
-        <ScrollView>
-          {constantCouples.map((element, index) => {
-            return (
-              <View style = {styles.tableRow} key={index}>
+    //Server constants simulation
+    let constantTypes = constantList;
 
-                <ConstantInput constant={element[0]}/>
-                <ConstantInput constant={element[1]}/>
-                <ConstantInput constant={element[2]}/>
+    const arrayToMatrix = () => {
+        let constantCouples = [];
 
-              </View>
-            );
-          })}
-        </ScrollView>
-      </View>
+        constantTypes.forEach((element, index, array) => {
+            if (index % 3 == 0) {
+                if (index == array.length - 1) {
+                    constantCouples.push([array[index], null, null]);
+                } else if (index == array.length - 2) {
+                    constantCouples.push([
+                        array[index],
+                        array[index + 1],
+                        null,
+                    ]);
+                } else {
+                    constantCouples.push([
+                        array[index],
+                        array[index + 1],
+                        array[index + 2],
+                    ]);
+                }
+            }
+        });
 
-      <View style={styles.buttonsContainer}>
-        <View style={styles.buttonRow}>
-          <View style = {styles.buttonCell}>  
-            <ActionButton title="Enviar" onPress={sendHandler}/>
-          </View> 
-          <View style = {styles.buttonCell}>  
-            <GreenActionButton title="Salvar" />
-          </View> 
-          <View style = {styles.buttonCell}>  
-            <RedActionButton title="Clear" />
-          </View> 
-        </View>
-        <View style={styles.buttonRow} >
-          <View style = {styles.buttonCell}>  
-            <PrimaryButton title="RUN"/>
-          </View>
-          <View style = {styles.buttonCell}>  
-            <SecondaryButton title="STOP" onPress={() => {console.log(constantCouples[0][0])}}/>
-          </View>
-        </View> 
-      </View>
-    </SafeAreaView>
-  );
+        return constantCouples;
+    };
+
+    let constantCouples = arrayToMatrix(constantTypes);
+
+    return (
+        <SafeAreaView style={styles.container}>
+            <View backgroundColor={COLORS.gray4}>
+                <View style={ROTATION.OitoEMeia}>
+                    <View style={styles.titleContainer} paddingLeft={20}>
+                        <H3 color="white">SETUP</H3>
+                    </View>
+                </View>
+            </View>
+
+            {/* Dinamic constants table*/}
+            <View style={styles.constantsInputContainer}>
+                <ScrollView>
+                    {constantCouples.map((element, index) => {
+                        return (
+                            <View style={styles.tableRow} key={index}>
+                                <ConstantInput constant={element[0]} />
+                                <ConstantInput constant={element[1]} />
+                                <ConstantInput constant={element[2]} />
+                            </View>
+                        );
+                    })}
+                </ScrollView>
+            </View>
+
+            <View style={styles.buttonsContainer}>
+                <View style={styles.buttonRow}>
+                    <View style={styles.buttonCell}>
+                        <ActionButton title="Enviar" onPress={sendHandler} />
+                    </View>
+                    <View style={styles.buttonCell}>
+                        <GreenActionButton title="Salvar" />
+                    </View>
+                    <View style={styles.buttonCell}>
+                        <RedActionButton title="Clear" />
+                    </View>
+                </View>
+                <View style={styles.buttonRow}>
+                    <View style={styles.buttonCell}>
+                        <PrimaryButton title="RUN" />
+                    </View>
+                    <View style={styles.buttonCell}>
+                        <SecondaryButton
+                            title="STOP"
+                            onPress={() => {
+                                console.log(constantCouples[0][0]);
+                            }}
+                        />
+                    </View>
+                </View>
+            </View>
+        </SafeAreaView>
+    );
 };
 
 const styles = StyleSheet.create({
