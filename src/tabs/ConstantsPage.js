@@ -35,95 +35,87 @@ import {
     GetConstantsLabels,
 } from '../server_communication/constants_api';
 import {BTPostData} from '../bt_communication/bt_data_sender';
+import { hex_to_ascii, int_to_ascii } from '../utils/ToAscii';
 
 export const ConstantsPage = props => {
-    const byte_initial_signal_value = '{';
-    const byte_final_signal_value = '}';
-    const byte_word_separator_value = '~';
+    const byte_initial_signal_value = hex_to_ascii("ff");
+    const byte_final_signal_value = hex_to_ascii("fe");
 
-    // let value_template = (id,description,value) => {
-    //   let msg = {
-    //     id:id,
-    //     description:description,
-    //     value:value
-    //   }
-    //   return msg
-    // }
     let teste = [
         {
             id: 1,
             description: 'teste1',
-            value: '1',
+            value: '0',
         },
         {
             id: 2,
             description: 'teste2',
-            value: '1',
+            value: '0',
         },
         {
             id: 3,
             description: 'teste3',
-            value: '1',
+            value: '0',
         },
         {
             id: 4,
             description: 'teste4',
-            value: '1',
+            value: '0',
         },
         {
             id: 5,
             description: 'teste5',
-            value: '1',
+            value: '0',
         },
         {
             id: 6,
             description: 'teste3',
-            value: '1',
+            value: '0',
         },
         {
             id: 7,
             description: 'teste1',
-            value: '1',
+            value: '0',
         },
         {
             id: 8,
             description: 'teste2',
-            value: '1',
+            value: '0',
         },
         {
             id: 9,
             description: 'teste3',
-            value: '1',
+            value: '0',
         },
         {
             id: 10,
             description: 'teste1',
-            value: '1',
+            value: '0',
         },
         {
             id: 11,
             description: 'teste2',
-            value: '1',
+            value: '0',
         },
         {
             id: 12,
             description: 'teste3',
-            value: '1',
+            value: '0',
         },
         {
             id: 13,
             description: 'teste1',
-            value: '1',
+            value: '0',
         },
         {
             id: 14,
             description: 'teste2',
-            value: '1',
+            value: '0',
         },
         {
             id: 15,
             description: 'teste3',
-            value: '1',
+            value: '0',
         },
     ];
 
@@ -141,6 +133,7 @@ export const ConstantsPage = props => {
     const setConstantValue = () => {};
 
     const ConstantInput = ({constant}) => {
+        // useState[]
         return (
             <View style={styles.tableCell}>
                 <View style={styles.textView}>
@@ -165,14 +158,30 @@ export const ConstantsPage = props => {
     };
 
     const sendHandler = () => {
-      let msg_to_send = '';
-      msg_to_send += byte_initial_signal_value
-      teste.forEach(({id,description,value}) => {
-        msg_to_send += (value+byte_word_separator_value)
-      })
-      msg_to_send += byte_final_signal_value
-      BTPostData(msg_to_send);
+        formatMsgMonitracer(constantList);
     };
+
+    const sendMsgRobonitor = (msg) => {
+        // let msg_to_send = '';
+        // msg_to_send += byte_initial_signal_value
+        // constantList.forEach(({id,description,value}) => {
+        //     msg_to_send += (value+byte_word_separator_value)
+        // })
+        // msg_to_send += byte_final_signal_value
+    }
+
+    const formatMsgMonitracer = (msg) => {
+        constantList.forEach(({id,description,value}) => {
+            let data_msg = '';
+            data_msg += byte_initial_signal_value;
+            data_msg += int_to_ascii(id);
+            let data_int = parseInt(value,10);
+            data_msg += int_to_ascii(parseInt(data_int/255))
+            data_msg += int_to_ascii(data_int%255)
+            data_msg += byte_final_signal_value;
+            BTPostData(data_msg);
+        })
+    }
 
     //Server constants simulation
     let constantTypes = constantList;
