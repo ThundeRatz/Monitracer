@@ -9,6 +9,7 @@
  * @date 09/2021
  */
 
+import { Buffer } from 'buffer';
 import React, {useState, useEffect} from 'react';
 import {
     SafeAreaView,
@@ -35,11 +36,11 @@ import {
     GetConstantsLabels,
 } from '../server_communication/constants_api';
 import {BTPostData} from '../bt_communication/bt_data_sender';
-import { hex_to_ascii, int_to_ascii } from '../utils/ToAscii';
+import { hex_to_ascii, int_to_ascii, int_to_hex } from '../utils/VariableFormat';
 
 export const ConstantsPage = props => {
-    const byte_initial_signal_value = hex_to_ascii("ff");
-    const byte_final_signal_value = hex_to_ascii("fe");
+    const byte_initial_signal_value = "ff"
+    const byte_final_signal_value = "fe";
 
     let teste = [
         {
@@ -158,29 +159,37 @@ export const ConstantsPage = props => {
     };
 
     const sendHandler = () => {
-        formatMsgMonitracer(constantList);
+        // formatMsgMonitracer(constantList);
+        constantList.forEach(({id,description,value}) => {
+            // sendOneDataMonitracer(id,value);
+            sendOneDataRobonitor(id,value);
+        })
     };
 
-    const sendMsgRobonitor = (msg) => {
-        // let msg_to_send = '';
-        // msg_to_send += byte_initial_signal_value
-        // constantList.forEach(({id,description,value}) => {
-        //     msg_to_send += (value+byte_word_separator_value)
-        // })
-        // msg_to_send += byte_final_signal_value
+    const sendOneDataRobonitor = (id, value) => {
+        let data_msg = '';
+        data_msg += byte_initial_signal_value;
+        let new_id = (id-1);
+        data_msg += int_to_hex(parseInt(new_id/3));
+        data_msg += int_to_hex(new_id%3);
+        let data_int = parseInt(value,10);
+        data_msg += int_to_hex(parseInt(data_int/256))
+        data_msg += int_to_hex(data_int%256)
+        data_msg += byte_final_signal_value;
+        let buf = Buffer.from(data_msg, 'hex');
+        BTPostData(buf);
     }
 
-    const formatMsgMonitracer = (msg) => {
-        constantList.forEach(({id,description,value}) => {
-            let data_msg = '';
-            data_msg += byte_initial_signal_value;
-            data_msg += int_to_ascii(id);
-            let data_int = parseInt(value,10);
-            data_msg += int_to_ascii(parseInt(data_int/255))
-            data_msg += int_to_ascii(data_int%255)
-            data_msg += byte_final_signal_value;
-            BTPostData(data_msg);
-        })
+    const sendOneDataMonitracer = (id, value) => {
+        let data_msg = '';
+        data_msg += byte_initial_signal_value;
+        data_msg += int_to_hex(id);
+        let data_int = parseInt(value,10);
+        data_msg += int_to_hex(parseInt(data_int/256))
+        data_msg += int_to_hex(data_int%256)
+        data_msg += byte_final_signal_value;
+        let buf = Buffer.from(data_msg, 'hex');
+        BTPostData(buf);
     }
 
     //Server constants simulation
