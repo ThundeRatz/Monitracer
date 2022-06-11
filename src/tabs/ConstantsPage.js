@@ -21,25 +21,33 @@ import { GetConstantsList, GetConstantsLabels } from '../server_communication/co
 import { BTPostData } from '../bt_communication/bt_data_sender';
 import { storeConstants, getConstants } from '../async_storage/async_storage';
 
+const updateValues = (labels, values) => {
+  return labels.map((item) => {
+    var foundIndex = values.findIndex(x => x.id == item.id);
+    item.value = values[foundIndex]?.value;
+    return item;
+  });
+}
+
 export const ConstantsPage = props => {
   const USE_ROBONITOR_PROTOCOL = true;
 
   const [constantList, setConstantList] = useState();
   
   useEffect(() => {
-    async function getConstant() {
+    async function getServerConstant() {
       const constant = (await GetConstantsLabels()) ?? constants_default_values;
-        setConstantList(constant);
+      setConstantList(constantList ? updateValues(constant, constantList) : constant);
     }
-    getConstant();
+    getServerConstant();
   }, []);
 
   useEffect(() => {
-    async function getConstant() {
+    async function getLocalConstant() {
         const constant = await getConstants();
-        setConstantList(constant);
+        setConstantList(constantList ? updateValues(constant, constantList) : constant);
     }
-    getConstant();
+    getLocalConstant();
   }, []);
 
   const setConstantValue = () => {
@@ -58,7 +66,6 @@ export const ConstantsPage = props => {
             style={styles.textInput}
             onChangeText={(e) => {
               var foundIndex = constantList.findIndex(x => x.id == constant.id);
-              console.log(constantList[foundIndex].value);
               constantList[foundIndex].value = e;
               }
             }
