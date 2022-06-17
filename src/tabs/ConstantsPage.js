@@ -10,6 +10,7 @@
  */
 
 import { Buffer } from 'buffer';
+
 import React, {useState, useEffect} from 'react';
 import {
     SafeAreaView,
@@ -35,87 +36,86 @@ import {
     GetConstantsList,
     GetConstantsLabels,
 } from '../server_communication/constants_api';
-import {BTPostData} from '../bt_communication/bt_data_sender';
+import {BTPostData,BTPostHex} from '../bt_communication/bt_data_sender';
 import { hex_to_ascii, int_to_ascii, int_to_hex } from '../utils/VariableFormat';
 
 export const ConstantsPage = props => {
-    const byte_initial_signal_value = "ff"
-    const byte_final_signal_value = "fe";
+    const USE_ROBONITOR = true;
 
     let teste = [
         {
             id: 1,
-            description: 'teste1',
+            description: 'kp',
             value: '0',
         },
         {
             id: 2,
-            description: 'teste2',
+            description: 'kp',
             value: '0',
         },
         {
             id: 3,
-            description: 'teste3',
+            description: 'kp',
             value: '0',
         },
         {
             id: 4,
-            description: 'teste4',
+            description: 'ki',
             value: '0',
         },
         {
             id: 5,
-            description: 'teste5',
+            description: 'ki',
             value: '0',
         },
         {
             id: 6,
-            description: 'teste3',
+            description: 'ki',
             value: '0',
         },
         {
             id: 7,
-            description: 'teste1',
+            description: 'kd',
             value: '0',
         },
         {
             id: 8,
-            description: 'teste2',
+            description: 'kd',
             value: '0',
         },
         {
             id: 9,
-            description: 'teste3',
+            description: 'kd',
             value: '0',
         },
         {
             id: 10,
-            description: 'teste1',
+            description: 'left speed',
             value: '0',
         },
         {
             id: 11,
-            description: 'teste2',
+            description: 'left speed',
             value: '0',
         },
         {
             id: 12,
-            description: 'teste3',
+            description: 'left speed',
             value: '0',
         },
         {
             id: 13,
-            description: 'teste1',
+            description: 'right speed',
             value: '0',
         },
         {
             id: 14,
-            description: 'teste2',
+            description: 'right speed',
             value: '0',
         },
         {
             id: 15,
-            description: 'teste3',
+            description: 'right speed',
             value: '0',
         },
     ];
@@ -158,38 +158,80 @@ export const ConstantsPage = props => {
         );
     };
 
-    const sendHandler = () => {
-        // formatMsgMonitracer(constantList);
+    const enviarButtonHandler = () => {
+        console.log("enviarButtonHandler");
         constantList.forEach(({id,description,value}) => {
-            // sendOneDataMonitracer(id,value);
-            sendOneDataRobonitor(id,value);
+            if(USE_ROBONITOR){
+                sendOneDataRobonitor(id,value);
+            } else {
+                sendOneDataMonitracer(id,value);
+            }
         })
+    };
+
+    const salvarButtonHandler = () => {
+        console.log("salvarButtonHandler");
+        // if(USE_ROBONITOR){
+        //     let data_msg = "c9c9c9c9";
+        //     BTPostHex(data_msg)
+        // } else {
+        //     sendOneDataMonitracer("14","14");
+        // }
+    };
+
+    const clearButtonHandler = () => {
+        console.log("clearButtonHandler");
+        constantList.map((val,index) => {
+            constantList[index].value = 0; 
+        })
+
+    }
+
+    const runButtonHandler = () => {
+        console.log("runButtonHandler");
+        if(USE_ROBONITOR){
+            let data_msg = "c8000000";
+            BTPostHex(data_msg)
+        } else {
+            sendOneDataMonitracer("14","14");
+        }
+    };
+
+    const stopButtonHandler = () => {
+        console.log("stopButtonHandler");
+        if(USE_ROBONITOR){
+            let data_msg = "c9000000";
+            BTPostHex(data_msg)
+        } else {
+            sendOneDataMonitracer("14","14");
+        }
     };
 
     const sendOneDataRobonitor = (id, value) => {
         let data_msg = '';
-        data_msg += byte_initial_signal_value;
+
         let new_id = (id-1);
         data_msg += int_to_hex(parseInt(new_id/3));
         data_msg += int_to_hex(new_id%3);
         let data_int = parseInt(value,10);
         data_msg += int_to_hex(parseInt(data_int/256))
         data_msg += int_to_hex(data_int%256)
-        data_msg += byte_final_signal_value;
-        let buf = Buffer.from(data_msg, 'hex');
-        BTPostData(buf);
+
+        BTPostHex(data_msg)
+
     }
 
     const sendOneDataMonitracer = (id, value) => {
         let data_msg = '';
-        data_msg += byte_initial_signal_value;
+        // set id
         data_msg += int_to_hex(id);
+
+        // set data to send
         let data_int = parseInt(value,10);
         data_msg += int_to_hex(parseInt(data_int/256))
         data_msg += int_to_hex(data_int%256)
-        data_msg += byte_final_signal_value;
-        let buf = Buffer.from(data_msg, 'hex');
-        BTPostData(buf);
+
+        BTPostHex(data_msg)
     }
 
     //Server constants simulation
@@ -251,25 +293,23 @@ export const ConstantsPage = props => {
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonRow}>
                     <View style={styles.buttonCell}>
-                        <ActionButton title="Enviar" onPress={sendHandler} />
+                        <ActionButton title="Enviar" onPress={enviarButtonHandler} />
                     </View>
                     <View style={styles.buttonCell}>
-                        <GreenActionButton title="Salvar" />
+                        <GreenActionButton title="Salvar" onPress={salvarButtonHandler} />
                     </View>
                     <View style={styles.buttonCell}>
-                        <RedActionButton title="Clear" />
+                        <RedActionButton title="Clear" onPress={clearButtonHandler} />
                     </View>
                 </View>
                 <View style={styles.buttonRow}>
                     <View style={styles.buttonCell}>
-                        <PrimaryButton title="RUN" />
+                        <PrimaryButton title="RUN"  onPress={runButtonHandler}/>
                     </View>
                     <View style={styles.buttonCell}>
                         <SecondaryButton
                             title="STOP"
-                            onPress={() => {
-                                console.log(constantCouples[0][0]);
-                            }}
+                            onPress={stopButtonHandler}
                         />
                     </View>
                 </View>
@@ -304,7 +344,7 @@ const styles = StyleSheet.create({
     },
     buttonRow: {
         flexDirection: 'row',
-        paddingVertical: 10,
+        paddingVertical: 20,
     },
     tableCell: {
         flexDirection: 'column',
