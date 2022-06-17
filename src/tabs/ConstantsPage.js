@@ -6,10 +6,9 @@
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  *
- * @date 09/2021
+ * @date 06/2022
  */
 
-import { Buffer } from 'buffer';
 
 import React, {useState, useEffect} from 'react';
 import {
@@ -20,7 +19,6 @@ import {
     TextInput,
     Dimensions,
 } from 'react-native';
-import {GoToTab} from '../utils/nav';
 import {Body, H3} from '../components/typography';
 import {COLORS} from '../components/colors';
 import {
@@ -149,7 +147,7 @@ export const ConstantsPage = props => {
                             var foundIndex = constantList.findIndex(
                                 x => x.id == constant.id,
                             );
-                            console.log(constantList[foundIndex].value);
+                            // console.log(constantList[foundIndex].value);
                             constantList[foundIndex].value = e;
                         }}
                     />
