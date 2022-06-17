@@ -110,7 +110,7 @@ export const ConstantsPage = props => {
         },
         {
             id: 14,
-            description: 'right speed',
+            description: 'propel speed',
             value: '0',
         },
         {
@@ -171,12 +171,6 @@ export const ConstantsPage = props => {
 
     const salvarButtonHandler = () => {
         console.log("salvarButtonHandler");
-        // if(USE_ROBONITOR){
-        //     let data_msg = "c9c9c9c9";
-        //     BTPostHex(data_msg)
-        // } else {
-        //     sendOneDataMonitracer("14","14");
-        // }
     };
 
     const clearButtonHandler = () => {
@@ -190,20 +184,20 @@ export const ConstantsPage = props => {
     const runButtonHandler = () => {
         console.log("runButtonHandler");
         if(USE_ROBONITOR){
-            let data_msg = "c8000000";
+            let data_msg = "c9000000";
             BTPostHex(data_msg)
         } else {
-            sendOneDataMonitracer("14","14");
+            sendOneDataMonitracer(201,"00");
         }
     };
 
     const stopButtonHandler = () => {
         console.log("stopButtonHandler");
         if(USE_ROBONITOR){
-            let data_msg = "c9000000";
+            let data_msg = "c8000000";
             BTPostHex(data_msg)
         } else {
-            sendOneDataMonitracer("14","14");
+            sendOneDataMonitracer(200,"00");
         }
     };
 
