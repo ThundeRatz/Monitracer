@@ -20,15 +20,21 @@ const byte_final_signal_value = "fe"
 /*****************************************
  * Public Functions
  *****************************************/
+
+/**
+ * @brief Send hexedecimal to bluetooth.
+ *
+ * @param msg data to be sent
+ *
+ */
 export const BTPostHex = async msg => {
   let msg_header_tail = byte_initial_signal_value+msg+byte_final_signal_value
-  // console.log('sinal: ' + msg_header_tail);
   let buf = Buffer.from(msg_header_tail, 'hex');
   BTPostData(buf);
 }
 
 /**
- * @brief Send data to server.
+ * @brief Send data to bluetooth.
  *
  * @param msg data to be sent
  *
@@ -37,7 +43,6 @@ export const BTPostData = async msg => {
   try {
     await BluetoothSerial.clear(); //Clear all buffer data
     await BluetoothSerial.write(msg);
-    // console.log('Successfuly wrote to device');
   } catch (error) {
     console.log(error);
   }
