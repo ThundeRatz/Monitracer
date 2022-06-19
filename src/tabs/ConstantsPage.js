@@ -44,7 +44,7 @@ export const ConstantsPage = props => {
 
     useEffect(() => {
         async function getConstant() {
-            const constant = await GetConstantsLabels();
+            let constant = await GetConstantsLabels();
             constant = constant == null ? constants_default_values : constant;
             setConstantList(constant);
         }
