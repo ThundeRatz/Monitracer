@@ -38,7 +38,7 @@ import { hex_to_ascii, int_to_ascii, int_to_hex } from '../utils/VariableFormat'
 import { constants_default_values } from '../utils/DefaultValues';
 
 export const ConstantsPage = props => {
-    const USE_ROBONITOR = true;
+    const USE_ROBONITOR_PROTOCOL = true;
 
     const [constantList, setConstantList] = useState(constants_default_values);
 
@@ -50,8 +50,6 @@ export const ConstantsPage = props => {
         }
         getConstant();
     }, []);
-
-    const setConstantValue = () => {};
 
     const ConstantInput = ({constant}) => {
         // useState[]
@@ -81,7 +79,7 @@ export const ConstantsPage = props => {
     const enviarButtonHandler = () => {
         console.log("enviarButtonHandler");
         constantList.forEach(({id,description,value}) => {
-            if(USE_ROBONITOR){
+            if(USE_ROBONITOR_PROTOCOL){
                 sendOneDataRobonitor(id,value);
             } else {
                 sendOneDataMonitracer(id,value);
@@ -95,15 +93,13 @@ export const ConstantsPage = props => {
 
     const clearButtonHandler = () => {
         console.log("clearButtonHandler");
-        constantList.map((val,index) => {
-            constantList[index].value = 0; 
-        })
-
+        for (const v of constantList) {
+            v.value = 0
+        }
     }
 
     const runButtonHandler = () => {
-        console.log("runButtonHandler");
-        if(USE_ROBONITOR){
+        if(USE_ROBONITOR_PROTOCOL){
             let data_msg = "c9000000";
             BTPostHex(data_msg)
         } else {
@@ -112,8 +108,7 @@ export const ConstantsPage = props => {
     };
 
     const stopButtonHandler = () => {
-        console.log("stopButtonHandler");
-        if(USE_ROBONITOR){
+        if(USE_ROBONITOR_PROTOCOL){
             let data_msg = "c8000000";
             BTPostHex(data_msg)
         } else {
