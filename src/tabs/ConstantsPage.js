@@ -92,7 +92,7 @@ export const ConstantsPage = props => {
     };
 
     const clearButtonHandler = () => {
-        const clearConstants = constantList.map(item => ({...item, value: 0}))
+        const clearConstants = constantList.map(item => ({...item, value: null}))
         setConstantList(clearConstants)
     }
 
@@ -115,32 +115,34 @@ export const ConstantsPage = props => {
     };
 
     const sendOneDataRobonitor = (id, value) => {
-        value = value ?? 0
-        let data_msg = '';
-
-        let new_id = (id-1);
-        data_msg += int_to_hex(parseInt(new_id/3));
-        data_msg += int_to_hex(new_id%3);
-        let data_int = parseInt(value,10);
-        data_msg += int_to_hex(parseInt(data_int/256))
-        data_msg += int_to_hex(data_int%256)
-
-        BTPostHex(data_msg)
+        if(value != null) {
+            let data_msg = '';
+    
+            let new_id = (id-1);
+            data_msg += int_to_hex(parseInt(new_id/3));
+            data_msg += int_to_hex(new_id%3);
+            let data_int = parseInt(value,10);
+            data_msg += int_to_hex(parseInt(data_int/256))
+            data_msg += int_to_hex(data_int%256)
+    
+            BTPostHex(data_msg)
+        }
 
     }
 
     const sendOneDataMonitracer = (id, value) => {
-        value = value ?? 0
-        let data_msg = '';
-        // set id
-        data_msg += int_to_hex(id);
+        if(value != null) {
+            let data_msg = '';
+            // set id
+            data_msg += int_to_hex(id);
 
-        // set data to send
-        let data_int = parseInt(value,10);
-        data_msg += int_to_hex(parseInt(data_int/256))
-        data_msg += int_to_hex(data_int%256)
+            // set data to send
+            let data_int = parseInt(value,10);
+            data_msg += int_to_hex(parseInt(data_int/256))
+            data_msg += int_to_hex(data_int%256)
 
-        BTPostHex(data_msg)
+            BTPostHex(data_msg)
+        }
     }
 
     //Server constants simulation
