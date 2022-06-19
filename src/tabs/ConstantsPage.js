@@ -44,8 +44,7 @@ export const ConstantsPage = props => {
 
     useEffect(() => {
         async function getConstant() {
-            let constant = await GetConstantsLabels();
-            constant = constant == null ? constants_default_values : constant;
+            const constant = (await GetConstantsLabels()) ?? constants_default_values ;
             setConstantList(constant);
         }
         getConstant();
@@ -70,7 +69,7 @@ export const ConstantsPage = props => {
                             // console.log(constantList[foundIndex].value);
                             constantList[foundIndex].value = e;
                         }}
-                    />
+                    >{constant.value}</TextInput>
                 </View>
             </View>
         );
@@ -89,14 +88,12 @@ export const ConstantsPage = props => {
 
     const salvarButtonHandler = () => {
         console.log("salvarButtonHandler");
+        console.log(constantList)
     };
 
     const clearButtonHandler = () => {
-        const clear_constants = constantList.map((item) => {
-            item.value = 0;
-            return item
-        })
-        setConstantList(clear_constants) 
+        const clearConstants = constantList.map(item => ({...item, value: 0}))
+        setConstantList(clearConstants)
     }
 
     const runButtonHandler = () => {
@@ -118,6 +115,7 @@ export const ConstantsPage = props => {
     };
 
     const sendOneDataRobonitor = (id, value) => {
+        value = value ?? 0
         let data_msg = '';
 
         let new_id = (id-1);
@@ -132,6 +130,7 @@ export const ConstantsPage = props => {
     }
 
     const sendOneDataMonitracer = (id, value) => {
+        value = value ?? 0
         let data_msg = '';
         // set id
         data_msg += int_to_hex(id);
@@ -145,11 +144,11 @@ export const ConstantsPage = props => {
     }
 
     //Server constants simulation
-    let constantTypes = constantList;
-
+    
     const arrayToMatrix = () => {
         let constantCouples = [];
-
+        let constantTypes = constantList;
+        
         constantTypes.forEach((element, index, array) => {
             if (index % 3 == 0) {
                 if (index == array.length - 1) {
@@ -173,7 +172,7 @@ export const ConstantsPage = props => {
         return constantCouples;
     };
 
-    let constantCouples = arrayToMatrix(constantTypes);
+    let constantCouples = arrayToMatrix();
 
     return (
         <SafeAreaView style={styles.container}>
