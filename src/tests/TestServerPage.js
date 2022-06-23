@@ -21,16 +21,19 @@ import {
 import {Navigation} from 'react-native-navigation';
 
 import {H1, H2, H3, Body, BodySecondary} from '../components/typography';
+
 import {
   Header,
   CellContainer,
   CellTitleContainer,
-  VBox,
   TextInputCell,
 } from '../components/cell';
+
 import {
-  VSeparator
-} from '../components/grid'
+  VSeparator, 
+  VBox,
+} from '../components/grid';
+
 import {
   PrimaryButton,
   SecondaryButton,

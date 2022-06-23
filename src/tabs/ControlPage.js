@@ -56,7 +56,15 @@ export const ControlPage = props => {
       <CellContainer>
         <SecondaryButton
           onPress={() => NavigationManager.GoToTab('ControlPage')}
-          title="Página para controlar o Tracer"
+          title="Página controlar Tracer"
+        />
+      </CellContainer>
+
+
+      <CellContainer>
+        <SecondaryButton
+          onPress={() => NavigationManager.GoToTab('TestServerPage')}
+          title="Página para testes no geral"
         />
       </CellContainer>
     </SafeAreaView>

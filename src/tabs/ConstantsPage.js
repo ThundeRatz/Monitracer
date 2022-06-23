@@ -6,10 +6,10 @@
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
  *
- * @date 09/2021
+ * @date 06/2022
  */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     SafeAreaView,
     ScrollView,
@@ -18,7 +18,6 @@ import {
     TextInput,
     Dimensions,
 } from 'react-native';
-import {GoToTab} from '../utils/nav';
 import {Body, H3} from '../components/typography';
 import {COLORS} from '../components/colors';
 import {
@@ -30,28 +29,128 @@ import {
 } from '../components/button';
 import {ROTATION} from '../components/rotation.js';
 import {PROPOTION} from '../components/trigonometry';
+import {
+    GetConstantsList,
+    GetConstantsLabels,
+} from '../server_communication/constants_api';
+import {BTPostData,BTPostHex} from '../bt_communication/bt_data_sender';
+import { hex_to_ascii, int_to_ascii, int_to_hex } from '../utils/VariableFormat';
+import { constants_default_values } from '../utils/DefaultValues';
 
 export const ConstantsPage = props => {
-    //Server constants simulation
-    let constantTypes = [
-        'Kp reta',
-        'Ki reta',
-        'Kd reta',
-        'Kp curva',
-        'Ki curva',
-        'Kd curva',
-        'Kp Zi-Za',
-        'Ki Zi-Za',
-        'Kd Zi-Za',
-        'Kp Velocity',
-        'Ki Velocity',
-        'Kd Velocity',
-    ];
+    const USE_ROBONITOR_PROTOCOL = true;
 
-    //Arrange the array labels in threes (3 x n/3 matrix) to split between 3 columns on screen
+    const [constantList, setConstantList] = useState(constants_default_values);
+
+    useEffect(() => {
+        async function getConstant() {
+            const constant = (await GetConstantsLabels()) ?? constants_default_values ;
+            setConstantList(constant);
+        }
+        getConstant();
+    }, []);
+
+    const ConstantInput = ({constant}) => {
+        // useState[]
+        return (
+            <View style={styles.tableCell}>
+                <View style={styles.textView}>
+                    <Body>{constant.description}</Body>
+                </View>
+
+                <View style={styles.textInputView}>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={e => {
+                            // (constant.value = e);
+                            var foundIndex = constantList.findIndex(
+                                x => x.id == constant.id,
+                            );
+                            // console.log(constantList[foundIndex].value);
+                            constantList[foundIndex].value = e;
+                        }}
+                    >{constant.value}</TextInput>
+                </View>
+            </View>
+        );
+    };
+
+    const enviarButtonHandler = () => {
+        console.log("enviarButtonHandler");
+        constantList.forEach(({id,description,value}) => {
+            if(USE_ROBONITOR_PROTOCOL){
+                sendOneDataRobonitor(id,value);
+            } else {
+                sendOneDataMonitracer(id,value);
+            }
+        })
+    };
+
+    const salvarButtonHandler = () => {
+        console.log("salvarButtonHandler");
+        console.log(constantList)
+    };
+
+    const clearButtonHandler = () => {
+        const clearConstants = constantList.map(item => ({...item, value: null}))
+        setConstantList(clearConstants)
+    }
+
+    const runButtonHandler = () => {
+        if(USE_ROBONITOR_PROTOCOL){
+            let data_msg = "c9000000";
+            BTPostHex(data_msg)
+        } else {
+            sendOneDataMonitracer(201,"00");
+        }
+    };
+
+    const stopButtonHandler = () => {
+        if(USE_ROBONITOR_PROTOCOL){
+            let data_msg = "c8000000";
+            BTPostHex(data_msg)
+        } else {
+            sendOneDataMonitracer(200,"00");
+        }
+    };
+
+    const sendOneDataRobonitor = (id, value) => {
+        if(value != null) {
+            let data_msg = '';
+    
+            let new_id = (id-1);
+            data_msg += int_to_hex(parseInt(new_id/3));
+            data_msg += int_to_hex(new_id%3);
+            let data_int = parseInt(value,10);
+            data_msg += int_to_hex(parseInt(data_int/256))
+            data_msg += int_to_hex(data_int%256)
+    
+            BTPostHex(data_msg)
+        }
+
+    }
+
+    const sendOneDataMonitracer = (id, value) => {
+        if(value != null) {
+            let data_msg = '';
+            // set id
+            data_msg += int_to_hex(id);
+
+            // set data to send
+            let data_int = parseInt(value,10);
+            data_msg += int_to_hex(parseInt(data_int/256))
+            data_msg += int_to_hex(data_int%256)
+
+            BTPostHex(data_msg)
+        }
+    }
+
+    //Server constants simulation
+    
     const arrayToMatrix = () => {
         let constantCouples = [];
-
+        let constantTypes = constantList;
+        
         constantTypes.forEach((element, index, array) => {
             if (index % 3 == 0) {
                 if (index == array.length - 1) {
@@ -75,7 +174,7 @@ export const ConstantsPage = props => {
         return constantCouples;
     };
 
-    let constantCouples = arrayToMatrix(constantTypes);
+    let constantCouples = arrayToMatrix();
 
     return (
         <SafeAreaView style={styles.container}>
@@ -93,35 +192,9 @@ export const ConstantsPage = props => {
                     {constantCouples.map((element, index) => {
                         return (
                             <View style={styles.tableRow} key={index}>
-                                <View style={styles.tableCell}>
-                                    <View style={styles.textView}>
-                                        <Body>{element[0]}</Body>
-                                    </View>
-
-                                    <View style={styles.textInputView}>
-                                        <TextInput style={styles.textInput} />
-                                    </View>
-                                </View>
-
-                                <View style={styles.tableCell}>
-                                    <View style={styles.textView}>
-                                        <Body>{element[1]}</Body>
-                                    </View>
-
-                                    <View style={styles.textInputView}>
-                                        <TextInput style={styles.textInput} />
-                                    </View>
-                                </View>
-
-                                <View style={styles.tableCell}>
-                                    <View style={styles.textView}>
-                                        <Body>{element[2]}</Body>
-                                    </View>
-
-                                    <View style={styles.textInputView}>
-                                        <TextInput style={styles.textInput} />
-                                    </View>
-                                </View>
+                                <ConstantInput constant={element[0]} />
+                                <ConstantInput constant={element[1]} />
+                                <ConstantInput constant={element[2]} />
                             </View>
                         );
                     })}
@@ -131,21 +204,24 @@ export const ConstantsPage = props => {
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonRow}>
                     <View style={styles.buttonCell}>
-                        <ActionButton title="Enviar" />
+                        <ActionButton title="Enviar" onPress={enviarButtonHandler} />
                     </View>
                     <View style={styles.buttonCell}>
-                        <GreenActionButton title="Salvar" />
+                        <GreenActionButton title="Salvar" onPress={salvarButtonHandler} />
                     </View>
                     <View style={styles.buttonCell}>
-                        <RedActionButton title="Limpar" />
+                        <RedActionButton title="Clear" onPress={clearButtonHandler} />
                     </View>
                 </View>
                 <View style={styles.buttonRow}>
                     <View style={styles.buttonCell}>
-                        <PrimaryButton title="RUN" />
+                        <PrimaryButton title="RUN"  onPress={runButtonHandler}/>
                     </View>
                     <View style={styles.buttonCell}>
-                        <SecondaryButton title="STOP" />
+                        <SecondaryButton
+                            title="STOP"
+                            onPress={stopButtonHandler}
+                        />
                     </View>
                 </View>
             </View>
@@ -179,7 +255,7 @@ const styles = StyleSheet.create({
     },
     buttonRow: {
         flexDirection: 'row',
-        paddingVertical: 10,
+        paddingVertical: 20,
     },
     tableCell: {
         flexDirection: 'column',
