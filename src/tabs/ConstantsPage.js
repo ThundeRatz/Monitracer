@@ -9,155 +9,180 @@
  * @date 06/2022
  */
 
-import React, { useState, useEffect } from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, View, TextInput, Dimensions} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+    SafeAreaView,
+    ScrollView,
+    StyleSheet,
+    View,
+    TextInput,
+    Dimensions,
+} from 'react-native';
 import {GoToTab} from '../utils/nav';
-import { Body , H3} from '../components/typography';
-import { COLORS } from '../components/colors';
-import { PrimaryButton , SecondaryButton, ActionButton, RedActionButton, GreenActionButton} from '../components/button';
-import { ROTATION } from '../components/rotation.js';
-import { PROPOTION } from '../components/trigonometry';
-import { GetConstantsList, GetConstantsLabels } from '../server_communication/constants_api';
-import { BTPostData } from '../bt_communication/bt_data_sender';
-import { storeConstants, getConstants } from '../async_storage/async_storage';
+import {Body, H3} from '../components/typography';
+import {COLORS} from '../components/colors';
+import {
+    PrimaryButton,
+    SecondaryButton,
+    ActionButton,
+    RedActionButton,
+    GreenActionButton,
+} from '../components/button';
+import {ROTATION} from '../components/rotation.js';
+import {PROPOTION} from '../components/trigonometry';
+import {
+    GetConstantsList,
+    GetConstantsLabels,
+} from '../server_communication/constants_api';
+import {storeConstants, getConstants} from '../async_storage/async_storage';
+import {constants_default_values} from '../utils/DefaultValues';
+import {BTPostData, BTPostHex} from '../bt_communication/bt_data_sender';
+import {int_to_hex} from '../utils/VariableFormat';
 
 const updateValues = (labels, values) => {
-  return labels.map((item) => {
-    var foundIndex = values.findIndex(x => x.id == item.id);
-    item.value = values[foundIndex]?.value;
-    return item;
-  });
-}
+    return labels.map(item => {
+        var foundIndex = values.findIndex(x => x.id == item.id);
+        item.value = values[foundIndex]?.value;
+        return item;
+    });
+};
 
 export const ConstantsPage = props => {
-  const USE_ROBONITOR_PROTOCOL = true;
+    const USE_ROBONITOR_PROTOCOL = true;
 
-  const [constantList, setConstantList] = useState();
-  
-  useEffect(() => {
-    async function getServerConstant() {
-      const constant = (await GetConstantsLabels()) ?? constants_default_values;
-      setConstantList(constantList ? updateValues(constant, constantList) : constant);
-    }
-    getServerConstant();
-  }, []);
+    const [constantList, setConstantList] = useState();
 
-  useEffect(() => {
-    async function getLocalConstant() {
-        const constant = await getConstants();
-        setConstantList(constantList ? updateValues(constant, constantList) : constant);
-    }
-    getLocalConstant();
-  }, []);
+    useEffect(() => {
+        async function getServerConstant() {
+            const constant =
+                (await GetConstantsLabels()) ?? constants_default_values;
 
-  const setConstantValue = () => {
+            console.log(constant);
+            setConstantList(updateValues(constant, constantList));
+        }
+        getServerConstant();
+    }, []);
 
-  }
+    useEffect(() => {
+        async function getLocalConstant() {
+            const constant = await getConstants();
+            setConstantList(
+                constantList ? updateValues(constantList, constant) : constant,
+            );
+        }
+        getLocalConstant();
+    }, []);
 
-  const ConstantInput = ({constant}) => {
-    return(
-      <View style = {styles.tableCell}>  
-        <View style = {styles.textView}>
-          <Body>{constant.description}</Body>
-        </View>
+    const setConstantValue = () => {};
 
-        <View style = {styles.textInputView}>
-          <TextInput 
-            style={styles.textInput}
-            onChangeText={(e) => {
-              var foundIndex = constantList.findIndex(x => x.id == constant.id);
-              constantList[foundIndex].value = e;
-              }
-            }
-            defaultValue={constant.value}
-          />
-        </View>
-      </View>
-    );
-  }
+    const ConstantInput = ({constant}) => {
+        return (
+            <View style={styles.tableCell}>
+                <View style={styles.textView}>
+                    <Body>{constant.description}</Body>
+                </View>
 
-  const sendHandler = () => {
-    storeConstants(constantList);
-    BTPostData(constantList);
-  }
+                <View style={styles.textInputView}>
+                    <TextInput
+                        style={styles.textInput}
+                        onChangeText={e => {
+                            var foundIndex = constantList.findIndex(
+                                x => x.id == constant.id,
+                            );
+                            constantList[foundIndex].value = e;
+                        }}
+                        defaultValue={constant.value}
+                    />
+                </View>
+            </View>
+        );
+    };
+
+    const sendHandler = () => {
+        storeConstants(constantList);
+        BTPostData(constantList);
+    };
 
     const enviarButtonHandler = () => {
-        console.log("enviarButtonHandler");
-        constantList.forEach(({id,description,value}) => {
-            if(USE_ROBONITOR_PROTOCOL){
-                sendOneDataRobonitor(id,value);
+        console.log('enviarButtonHandler');
+        constantList.forEach(({id, description, value}) => {
+            if (USE_ROBONITOR_PROTOCOL) {
+                sendOneDataRobonitor(id, value);
             } else {
-                sendOneDataMonitracer(id,value);
+                sendOneDataMonitracer(id, value);
             }
-        })
+        });
     };
 
     const salvarButtonHandler = () => {
-        console.log("salvarButtonHandler");
-        console.log(constantList)
+        console.log('salvarButtonHandler');
+        console.log(constantList);
+        storeConstants(constantList);
     };
 
     const clearButtonHandler = () => {
-        const clearConstants = constantList.map(item => ({...item, value: null}))
-        setConstantList(clearConstants)
-    }
+        const clearConstants = constantList.map(item => ({
+            ...item,
+            value: null,
+        }));
+        setConstantList(clearConstants);
+    };
 
     const runButtonHandler = () => {
-        if(USE_ROBONITOR_PROTOCOL){
-            let data_msg = "c9000000";
-            BTPostHex(data_msg)
+        if (USE_ROBONITOR_PROTOCOL) {
+            let data_msg = 'c9000000';
+            BTPostHex(data_msg);
         } else {
-            sendOneDataMonitracer(201,"00");
+            sendOneDataMonitracer(201, '00');
         }
     };
 
     const stopButtonHandler = () => {
-        if(USE_ROBONITOR_PROTOCOL){
-            let data_msg = "c8000000";
-            BTPostHex(data_msg)
+        if (USE_ROBONITOR_PROTOCOL) {
+            let data_msg = 'c8000000';
+            BTPostHex(data_msg);
         } else {
-            sendOneDataMonitracer(200,"00");
+            sendOneDataMonitracer(200, '00');
         }
     };
 
     const sendOneDataRobonitor = (id, value) => {
-        if(value != null) {
+        if (value != null) {
             let data_msg = '';
-    
-            let new_id = (id-1);
-            data_msg += int_to_hex(parseInt(new_id/3));
-            data_msg += int_to_hex(new_id%3);
-            let data_int = parseInt(value,10);
-            data_msg += int_to_hex(parseInt(data_int/256))
-            data_msg += int_to_hex(data_int%256)
-    
-            BTPostHex(data_msg)
-        }
 
-    }
+            let new_id = id - 1;
+            data_msg += int_to_hex(parseInt(new_id / 3));
+            data_msg += int_to_hex(new_id % 3);
+            let data_int = parseInt(value, 10);
+            data_msg += int_to_hex(parseInt(data_int / 256));
+            data_msg += int_to_hex(data_int % 256);
+
+            BTPostHex(data_msg);
+        }
+    };
 
     const sendOneDataMonitracer = (id, value) => {
-        if(value != null) {
+        if (value != null) {
             let data_msg = '';
             // set id
             data_msg += int_to_hex(id);
 
             // set data to send
-            let data_int = parseInt(value,10);
-            data_msg += int_to_hex(parseInt(data_int/256))
-            data_msg += int_to_hex(data_int%256)
+            let data_int = parseInt(value, 10);
+            data_msg += int_to_hex(parseInt(data_int / 256));
+            data_msg += int_to_hex(data_int % 256);
 
-            BTPostHex(data_msg)
+            BTPostHex(data_msg);
         }
-    }
+    };
 
     //Server constants simulation
-    
+
     const arrayToMatrix = () => {
         let constantCouples = [];
         let constantTypes = constantList;
-        
-        constantTypes.forEach((element, index, array) => {
+
+        constantTypes?.forEach((element, index, array) => {
             if (index % 3 == 0) {
                 if (index == array.length - 1) {
                     constantCouples.push([array[index], null, null]);
@@ -210,18 +235,27 @@ export const ConstantsPage = props => {
             <View style={styles.buttonsContainer}>
                 <View style={styles.buttonRow}>
                     <View style={styles.buttonCell}>
-                        <ActionButton title="Enviar" onPress={enviarButtonHandler} />
+                        <ActionButton
+                            title="Enviar"
+                            onPress={enviarButtonHandler}
+                        />
                     </View>
                     <View style={styles.buttonCell}>
-                        <GreenActionButton title="Salvar" onPress={salvarButtonHandler} />
+                        <GreenActionButton
+                            title="Salvar"
+                            onPress={salvarButtonHandler}
+                        />
                     </View>
                     <View style={styles.buttonCell}>
-                        <RedActionButton title="Clear" onPress={clearButtonHandler} />
+                        <RedActionButton
+                            title="Clear"
+                            onPress={clearButtonHandler}
+                        />
                     </View>
                 </View>
                 <View style={styles.buttonRow}>
                     <View style={styles.buttonCell}>
-                        <PrimaryButton title="RUN"  onPress={runButtonHandler}/>
+                        <PrimaryButton title="RUN" onPress={runButtonHandler} />
                     </View>
                     <View style={styles.buttonCell}>
                         <SecondaryButton
