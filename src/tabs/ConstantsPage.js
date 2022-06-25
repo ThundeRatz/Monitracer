@@ -5,6 +5,7 @@
  *
  * @author Lucas Guedes <lucas.guedes@thunderatz.org>
  * @author Vanderson Santos <vanderson.santos@thunderatz.org>
+ * @author Henrique Matheus <henrique.matheus@thunderatz.org>
  *
  * @date 06/2022
  */
@@ -18,7 +19,6 @@ import {
     TextInput,
     Dimensions,
 } from 'react-native';
-import {GoToTab} from '../utils/nav';
 import {Body, H3} from '../components/typography';
 import {COLORS} from '../components/colors';
 import {
@@ -30,10 +30,7 @@ import {
 } from '../components/button';
 import {ROTATION} from '../components/rotation.js';
 import {PROPOTION} from '../components/trigonometry';
-import {
-    GetConstantsList,
-    GetConstantsLabels,
-} from '../server_communication/constants_api';
+import {GetConstantsLabels} from '../server_communication/constants_api';
 import {storeConstants, getConstants} from '../async_storage/async_storage';
 import {constants_default_values} from '../utils/DefaultValues';
 import {BTPostData, BTPostHex} from '../bt_communication/bt_data_sender';
@@ -41,8 +38,10 @@ import {int_to_hex} from '../utils/VariableFormat';
 
 const updateValues = (labels, values) => {
     return labels.map(item => {
-        var foundIndex = values.findIndex(x => x.id == item.id);
-        item.value = values[foundIndex]?.value;
+        var foundIndex = values?.findIndex(x => x.id == item.id);
+        if (foundIndex != undefined) {
+            item.value = values[foundIndex]?.value;
+        }
         return item;
     });
 };
@@ -54,26 +53,17 @@ export const ConstantsPage = props => {
 
     useEffect(() => {
         async function getServerConstant() {
-            const constant =
+            const localConstant = await getConstants();
+            const serverConstant =
                 (await GetConstantsLabels()) ?? constants_default_values;
-
-            console.log(constant);
-            setConstantList(updateValues(constant, constantList));
+            console.log('localConstant', localConstant);
+            console.log('serverConstant', serverConstant);
+            const FinalConstants = updateValues(serverConstant, localConstant);
+            console.log('FinalConstants', FinalConstants);
+            setConstantList(updateValues(serverConstant, localConstant));
         }
         getServerConstant();
     }, []);
-
-    useEffect(() => {
-        async function getLocalConstant() {
-            const constant = await getConstants();
-            setConstantList(
-                constantList ? updateValues(constantList, constant) : constant,
-            );
-        }
-        getLocalConstant();
-    }, []);
-
-    const setConstantValue = () => {};
 
     const ConstantInput = ({constant}) => {
         return (
@@ -98,13 +88,9 @@ export const ConstantsPage = props => {
         );
     };
 
-    const sendHandler = () => {
-        storeConstants(constantList);
-        BTPostData(constantList);
-    };
-
     const enviarButtonHandler = () => {
         console.log('enviarButtonHandler');
+        storeConstants(constantList);
         constantList.forEach(({id, description, value}) => {
             if (USE_ROBONITOR_PROTOCOL) {
                 sendOneDataRobonitor(id, value);
@@ -126,6 +112,7 @@ export const ConstantsPage = props => {
             value: null,
         }));
         setConstantList(clearConstants);
+        storeConstants(null);
     };
 
     const runButtonHandler = () => {
