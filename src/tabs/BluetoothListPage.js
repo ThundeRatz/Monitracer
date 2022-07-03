@@ -10,14 +10,18 @@
  */
 
 import React, {useEffect} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, View, StyleSheet, Dimensions, ScrollView} from 'react-native';
 
-import {H1, Body} from '../components/typography';
+import {H1, Body, H3} from '../components/typography';
 import {Header, ListSeparator} from '../components/cell';
 import {BTList, BluetoothEnableButton} from '../components/BTList';
 
 import {BTConnection} from '../bt_communication/bt_connection';
 import {DeviceCell} from '../components/cell';
+import {MainTitle} from '../components/mainTitle';
+
+import {COLORS} from '../components/colors';
+import {PROPOTION} from '../components/trigonometry';
 
 export const BluetoothListPage = () => {
   const [BTInit, BTRemove, EnableBT, DisableBT, , lista, bolEnableBlu] =
@@ -40,17 +44,22 @@ export const BluetoothListPage = () => {
   };
 
   return (
-    <SafeAreaView>
-      <Header>
-        <H1>Bluetooth</H1>
+    <SafeAreaView flex={1}>
+      <View style={styles.titleContainer} paddingLeft={20} paddingRight={20}>
         <BluetoothEnableButton
+          color={COLORS.thunderWhite}
           value={bolEnableBlu}
           onValueChange={async () => await toggleBluetooth()}
         />
-        <Body>Lista de Dispositivos bluetooth para conexão</Body>
-      </Header>
+      </View>
+
       <BTList data={lista} />
-      <DeviceCell deviceName="device 01" deviceId="AA:BB:CC:DD:EE:FF" />
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  titleContainer: {
+      backgroundColor: COLORS.thunderBlue,
+  },
+});
