@@ -120,7 +120,9 @@ export const ListSeparator = () => {
 const styles = StyleSheet.create({
   deviceId: {
     backgroundColor: COLORS.gray4,
-    flex: 0.8,
+    padding: SPACING.xSmall,
+    borderRadius: SPACING.xSmall,
+    width: '100%',
   },
   secondaryDropdown: {
     alignItems: 'center',
