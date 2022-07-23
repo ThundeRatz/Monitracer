@@ -108,10 +108,10 @@ export const ConstantsPage = props => {
     };
 
     const clearButtonHandler = () => {
-        const clearConstants = constantList.map(item => ({
+        const clearConstants = constantList.map(item => {
             ...item,
             value: null,
-        }));
+        });
         setConstantList(clearConstants);
         storeConstants(null);
     };
