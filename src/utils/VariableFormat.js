@@ -18,12 +18,12 @@ export const hex_to_ascii = (str1) => {
 export const int_to_hex = (int1) => {
 	let yourNumberHex = parseInt(int1, 10).toString(16);
 	if(yourNumberHex.length == 1){
-		yourNumberHex = '0' + yourNumberHex
+		yourNumberHex = '0' + yourNumberHex;
 	}
-	return yourNumberHex
+	return yourNumberHex;
 }
 
 export const int_to_ascii = (int1) => {
     let yourNumberHex = parseInt(int1, 10).toString(16);
-    return hex_to_ascii(yourNumberHex)
+    return hex_to_ascii(yourNumberHex);
 }
