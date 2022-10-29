@@ -10,7 +10,7 @@
  */
 
 import React from 'react';
-import {FlatList, View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView} from 'react-native';
+import {FlatList, View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView, Button} from 'react-native';
 
 import {ListSeparator} from './cell';
 import {VBox, VSeparator} from './grid';
@@ -21,13 +21,13 @@ import { COLORS } from './colors';
 import { DeviceCell } from './cell';
 
 export const BTList = props => {
-  const [, , , , BTLogin] = BTConnection();
+  const [, , , , BTLogin, , , connectedDeviceId] = BTConnection();
 
   const _renderItem = ({item}) => {
     return (
       <View padding={10} alignItems={'center'}>
         <TouchableOpacity onPress={() => connectPress(item)}>
-          <DeviceCell deviceName={item?.name} deviceId={item?.id} />
+          <DeviceCell deviceName={item?.name} deviceId={item?.id} deviceIsConnected={connectedDeviceId == item?.id} />
         </TouchableOpacity> 
       </View>
     );

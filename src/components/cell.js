@@ -93,6 +93,7 @@ export const DeviceCell = props => {
       <View style={styles.deviceId}>
         <Body>{props.deviceName}</Body>
         <BodySecondary color={COLORS.gray3}>{props.deviceId}</BodySecondary>
+        {props.deviceIsConnected && <View style ={styles.connectionBall}/>}
       </View>
     </View>
   );
@@ -123,6 +124,13 @@ const styles = StyleSheet.create({
     padding: SPACING.xSmall,
     borderRadius: SPACING.xSmall,
     width: '100%',
+  },
+  connectionBall: {
+    backgroundColor: COLORS.thunderSuccess,
+    width: 20,
+    height: 20,
+    alignSelf: 'flex-end',
+    borderRadius: 10,
   },
   secondaryDropdown: {
     alignItems: 'center',
