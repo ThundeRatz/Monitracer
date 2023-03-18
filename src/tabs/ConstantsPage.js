@@ -34,6 +34,7 @@ import {GetConstantsLabels} from '../server_communication/constants_api';
 import {storeConstants, getConstants} from '../async_storage/async_storage';
 import {constants_default_values} from '../utils/DefaultValues';
 import {BTPostData, BTPostHex} from '../bt_communication/bt_data_sender';
+import {BTGetDataContinuous, BTGetData} from '../bt_communication/bt_data_receiver';
 import {int_to_hex} from '../utils/VariableFormat';
 import {MainTitle} from '../components/mainTitle';
 
@@ -48,7 +49,11 @@ const updateValues = (labels, values) => {
 };
 
 export const ConstantsPage = props => {
-    const USE_ROBONITOR_PROTOCOL = true;
+
+    // const {sendData} = useBLE();
+    const { lapTime } = BTGetDataContinuous();
+
+    const USE_ROBONITOR_PROTOCOL = false;
 
     const [constantList, setConstantList] = useState();
 
@@ -197,7 +202,7 @@ export const ConstantsPage = props => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <MainTitle title={'SETUP'} />
+            <MainTitle title={'SETUP'} subtitle={lapTime} />
 
             {/* Dinamic constants table*/}
             <View style={styles.constantsInputContainer}>
