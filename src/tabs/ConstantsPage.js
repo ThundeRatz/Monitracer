@@ -53,7 +53,7 @@ export const ConstantsPage = props => {
     // const {sendData} = useBLE();
     const { lapTime } = BTGetDataContinuous();
 
-    const USE_ROBONITOR_PROTOCOL = false;
+    const USE_ROBONITOR_PROTOCOL = true;
 
     const [constantList, setConstantList] = useState();
 
