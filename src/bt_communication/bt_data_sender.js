@@ -28,8 +28,8 @@ const byte_final_signal_value = "fe"
  *
  */
 export const BTPostHex = async msg => {
-  let msg_header_tail = byte_initial_signal_value+msg+byte_final_signal_value
-  console.log("BT > msg sent: " + msg_header_tail)
+  let msg_header_tail = byte_initial_signal_value + msg + byte_final_signal_value;
+  console.log("BT > msg sent: " + msg_header_tail);
   let buf = Buffer.from(msg_header_tail, 'hex');
   await BTPostData(buf);
 }
