@@ -12,8 +12,7 @@ export const UnavailablePage = () => {
             />
             <H3 color={COLORS.thunderBlue} align="center">Ei, calma aí!</H3>
             <Body align="center">Ainda não temos nada aqui, mas estamos trabalhando nisso :)</Body>
-            </Body>
-
+        </>
     );
 };
 

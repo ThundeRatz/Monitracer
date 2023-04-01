@@ -31,8 +31,8 @@ import {
 import {ROTATION} from '../components/rotation.js';
 import {PROPOTION} from '../components/trigonometry';
 import {GetConstantsLabels} from '../server_communication/constants_api';
-import {storeConstants, getConstants} from '../async_storage/async_storage';
 import {constants_default_values} from '../utils/DefaultValues';
+import {storeConstants, getConstants} from '../async_storage/async_storage';
 import {BTPostData, BTPostHex} from '../bt_communication/bt_data_sender';
 import {int_to_hex} from '../utils/VariableFormat';
 import {MainTitle} from '../components/mainTitle';
@@ -55,8 +55,9 @@ export const ConstantsPage = props => {
   useEffect(() => {
     async function getServerConstant() {
       const localConstant = await getConstants();
-      const serverConstant =
-        (await GetConstantsLabels()) ?? constants_default_values;
+      // const serverConstant =
+      //   (await GetConstantsLabels()) ?? constants_default_values;
+      const serverConstant = constants_default_values;
       console.log('localConstant', localConstant);
       console.log('serverConstant', serverConstant);
       const FinalConstants = updateValues(serverConstant, localConstant);
