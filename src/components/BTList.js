@@ -10,27 +10,25 @@
  */
 
 import React from 'react';
-import {FlatList, View, Text, StyleSheet, Switch} from 'react-native';
+import {FlatList, View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView} from 'react-native';
 
 import {ListSeparator} from './cell';
 import {VBox, VSeparator} from './grid';
 import {H1, H3, Body, BodySecondary} from './typography';
 import {PrimaryButton} from './button';
 import {BTConnection} from '../bt_communication/bt_connection';
+import { COLORS } from './colors';
+import { DeviceCell } from './cell';
 
 export const BTList = props => {
   const [, , , , BTLogin] = BTConnection();
 
   const _renderItem = ({item}) => {
     return (
-      <View style={styles.wrapper}>
-        <View>
-          <H3> {item.name} </H3>
-          <BodySecondary> {item.id}</BodySecondary>
-        </View>
-        <View>
-          <PrimaryButton title="conectar" onPress={() => connectPress(item)} />
-        </View>
+      <View padding={10} alignItems={'center'}>
+        <TouchableOpacity onPress={() => connectPress(item)}>
+          <DeviceCell deviceName={item?.name} deviceId={item?.id} />
+        </TouchableOpacity> 
       </View>
     );
   };
@@ -49,22 +47,23 @@ export const BTList = props => {
   };
 
   return (
-    <FlatList
-      ListEmptyComponent={renderEmpty}
-      data={props.data}
-      ItemSeparatorComponent={ListSeparator}
-      ListFooterComponent={ListSeparator}
-      ListHeaderComponent={ListSeparator}
-      keyExtractor={item => item.id}
-      renderItem={item => _renderItem(item)}
-    />
+    <View flex={1}>
+      <FlatList
+        ListEmptyComponent={renderEmpty}
+        data={props.data}
+        keyExtractor={item => item?.id}
+        renderItem={item => _renderItem(item)}
+        style={{height: '100%'}}
+      />
+    </View>
+    
   );
 };
 
 export const BluetoothEnableButton = props => {
   return (
     <View style={styles.enable}>
-      <BodySecondary>Ligar Bluetooth</BodySecondary>
+      <H3 color={props.color ?? COLORS.thunderBlack}>BLUETOOTH</H3>
       <Text style={styles.text}></Text>
       <Switch value={props.value} onValueChange={props.onValueChange}></Switch>
     </View>
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
   },
   enable: {
     flexDirection: 'row',
-    marginTop: '5%',
+    marginTop: '2%',
     marginBottom: '2%',
   },
   text: {

@@ -35,6 +35,7 @@ import {storeConstants, getConstants} from '../async_storage/async_storage';
 import {constants_default_values} from '../utils/DefaultValues';
 import {BTPostData, BTPostHex} from '../bt_communication/bt_data_sender';
 import {int_to_hex} from '../utils/VariableFormat';
+import {MainTitle} from '../components/mainTitle';
 
 const updateValues = (labels, values) => {
     return labels.map(item => {
@@ -107,10 +108,10 @@ export const ConstantsPage = props => {
     };
 
     const clearButtonHandler = () => {
-        const clearConstants = constantList.map(item => ({
+        const clearConstants = constantList.map(item => {
             ...item,
             value: null,
-        }));
+        });
         setConstantList(clearConstants);
         storeConstants(null);
     };
@@ -196,13 +197,7 @@ export const ConstantsPage = props => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <View backgroundColor={COLORS.gray4}>
-                <View style={ROTATION.OitoEMeia}>
-                    <View style={styles.titleContainer} paddingLeft={20}>
-                        <H3 color="white">SETUP</H3>
-                    </View>
-                </View>
-            </View>
+            <MainTitle title={'SETUP'} />
 
             {/* Dinamic constants table*/}
             <View style={styles.constantsInputContainer}>
@@ -264,13 +259,6 @@ const styles = StyleSheet.create({
     constantsInputContainer: {
         flex: 1.5,
         backgroundColor: COLORS.gray4,
-    },
-    titleContainer: {
-        backgroundColor: COLORS.thunderBlue,
-        width: PROPOTION.width(Dimensions.get('window').width),
-        top: PROPOTION.top(Dimensions.get('window').width),
-        height: PROPOTION.height(Dimensions.get('window').width),
-        left: PROPOTION.left(Dimensions.get('window').width),
     },
     buttonsContainer: {
         flex: 1,
