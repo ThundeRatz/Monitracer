@@ -9,11 +9,11 @@
  * @date 12/2021
  */
 
-export const ROTATION ={
-    Ktorze: {
-        transform: [{ rotate: "-14deg" }]
-    },
-    OitoEMeia: {
-        transform: [{ rotate: "-8.5deg" }]
-    },
+export const ROTATION = {
+  Ktorze: {
+    transform: [{rotate: '-14deg'}],
+  },
+  OitoEMeia: {
+    transform: [{rotate: '-8.5deg'}],
+  },
 };

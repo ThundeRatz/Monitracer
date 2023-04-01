@@ -31,11 +31,11 @@ const setAnimationCallback = () => {
   ) {
     UIManager.setLayoutAnimationEnabledExperimental(true);
   }
-}
+};
 
 export const PrimaryDropdownCell = props => {
   const [expanded, setExpanded] = useState(false);
-  useEffect(()=>setAnimationCallback());
+  useEffect(() => setAnimationCallback());
 
   return (
     <View>
@@ -46,8 +46,7 @@ export const PrimaryDropdownCell = props => {
             LayoutAnimation.create(200, 'linear', 'opacity'),
           );
           setExpanded(!expanded);
-        }}
-      >
+        }}>
         <H3 color={'white'}>{props.title}</H3>
         <Ionicons
           name={expanded ? 'chevron-up-outline' : 'chevron-down-outline'}
@@ -62,7 +61,7 @@ export const PrimaryDropdownCell = props => {
 
 export const SecondaryDropdownCell = props => {
   const [expanded, setExpanded] = useState(false);
-  useEffect(()=>setAnimationCallback());
+  useEffect(() => setAnimationCallback());
 
   return (
     <View>
@@ -73,8 +72,7 @@ export const SecondaryDropdownCell = props => {
             LayoutAnimation.create(200, 'linear', 'opacity'),
           );
           setExpanded(!expanded);
-        }}
-      >
+        }}>
         <H3>{props.title}</H3>
         <Ionicons
           name={expanded ? 'chevron-up-outline' : 'chevron-down-outline'}
@@ -112,7 +110,7 @@ export const TextInputCell = props => {
 export const ListSeparator = () => {
   return (
     <View style={styles.list}>
-      <View style={styles.ListSeparator}></View>
+      <View style={styles.ListSeparator} />
     </View>
   );
 };

@@ -28,65 +28,64 @@ export const HistoryPage = props => {
     <SafeAreaView>
       {SHOW_PAGE ? (
         <UnavailablePage />
-      ): (
+      ) : (
         <>
           <PrimaryDropdownCell
-              title="Arquivos na Nuvem"
-              content={<Text>Coisas na nuvem</Text>}
+            title="Arquivos na Nuvem"
+            content={<Text>Coisas na nuvem</Text>}
+          />
+          <SecondaryDropdownCell
+            title="Corrida 03"
+            content={<Text>Coisas da corrida 3</Text>}
+          />
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('HomePage')}
+              title="Home"
             />
-            <SecondaryDropdownCell
-              title="Corrida 03"
-              content={<Text>Coisas da corrida 3</Text>}
+          </CellContainer>
+
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('BluetoothListPage')}
+              title="Configurar bluetooth"
             />
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('HomePage')}
-                title="Home"
-              />
-            </CellContainer>
+          </CellContainer>
 
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('BluetoothListPage')}
-                title="Configurar bluetooth"
-              />
-            </CellContainer>
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('HistoryPage')}
+              title="Página de Históricos"
+            />
+          </CellContainer>
 
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('HistoryPage')}
-                title="Página de Históricos"
-              />
-            </CellContainer>
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('ConstantsPage')}
+              title="Página de Constantes"
+            />
+          </CellContainer>
 
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('ConstantsPage')}
-                title="Página de Constantes"
-              />
-            </CellContainer>
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('EvaluationPage')}
+              title="Página de testes"
+            />
+          </CellContainer>
 
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('EvaluationPage')}
-                title="Página de testes"
-              />
-            </CellContainer>
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('ControlPage')}
+              title="Página controlar Tracer"
+            />
+          </CellContainer>
 
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('ControlPage')}
-                title="Página controlar Tracer"
-              />
-            </CellContainer>
-
-
-            <CellContainer>
-              <SecondaryButton
-                onPress={() => NavigationManager.GoToTab('TestServerPage')}
-                title="Página para testes no geral"
-              />
-            </CellContainer>
+          <CellContainer>
+            <SecondaryButton
+              onPress={() => NavigationManager.GoToTab('TestServerPage')}
+              title="Página para testes no geral"
+            />
+          </CellContainer>
         </>
       )}
     </SafeAreaView>

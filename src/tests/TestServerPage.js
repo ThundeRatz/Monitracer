@@ -29,10 +29,7 @@ import {
   TextInputCell,
 } from '../components/cell';
 
-import {
-  VSeparator, 
-  VBox,
-} from '../components/grid';
+import {VSeparator, VBox} from '../components/grid';
 
 import {
   PrimaryButton,
