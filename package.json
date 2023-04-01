@@ -4,16 +4,20 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
+    "android-release": "react-native run-android --variant=release",
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.5",
     "@react-navigation/bottom-tabs": "^6.0.5",
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.2.2",
+    "appcenter": "4.4.4",
+    "appcenter-analytics": "4.4.4",
+    "appcenter-crashes": "4.4.4",
     "axios": "^0.21.1",
     "buffer": "^6.0.3",
     "react": "17.0.1",

@@ -21,7 +21,10 @@ export const SPACING = {
   xLarge: 48,
 };
 
-export const DIMENSIONS = {width: Dimensions.get('window').width, height: Dimensions.get('window').height };
+export const DIMENSIONS = {
+  width: Dimensions.get('window').width,
+  height: Dimensions.get('window').height,
+};
 
 const styles = StyleSheet.create({
   vbox: {

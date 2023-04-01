@@ -10,13 +10,13 @@
  */
 
 export const COLORS = {
-    /* Primary */
-    thunderBlue: "#011749",
-    lightThunderBlue: "#535F7A",
+  /* Primary */
+  thunderBlue: '#011749',
+  lightThunderBlue: '#535F7A',
 
-    /* Secondary */
-    thunderYellow: "#FCE702",
-    lightThunderYellow: "#F8ED7C",
+  /* Secondary */
+  thunderYellow: '#FCE702',
+  lightThunderYellow: '#F8ED7C',
 
   /* Appendant */
   controllButton01: '#008000',

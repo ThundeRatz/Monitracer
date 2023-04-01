@@ -10,15 +10,23 @@
  */
 
 import React from 'react';
-import {FlatList, View, Text, StyleSheet, Switch, TouchableOpacity, ScrollView} from 'react-native';
+import {
+  FlatList,
+  View,
+  Text,
+  StyleSheet,
+  Switch,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 
 import {ListSeparator} from './cell';
 import {VBox, VSeparator} from './grid';
 import {H1, H3, Body, BodySecondary} from './typography';
 import {PrimaryButton} from './button';
 import {BTConnection} from '../bt_communication/bt_connection';
-import { COLORS } from './colors';
-import { DeviceCell } from './cell';
+import {COLORS} from './colors';
+import {DeviceCell} from './cell';
 
 export const BTList = props => {
   const [, , , , BTLogin] = BTConnection();
@@ -28,7 +36,7 @@ export const BTList = props => {
       <View padding={10} alignItems={'center'}>
         <TouchableOpacity onPress={() => connectPress(item)}>
           <DeviceCell deviceName={item?.name} deviceId={item?.id} />
-        </TouchableOpacity> 
+        </TouchableOpacity>
       </View>
     );
   };
@@ -56,7 +64,6 @@ export const BTList = props => {
         style={{height: '100%'}}
       />
     </View>
-    
   );
 };
 
@@ -64,8 +71,8 @@ export const BluetoothEnableButton = props => {
   return (
     <View style={styles.enable}>
       <H3 color={props.color ?? COLORS.thunderBlack}>BLUETOOTH</H3>
-      <Text style={styles.text}></Text>
-      <Switch value={props.value} onValueChange={props.onValueChange}></Switch>
+      <Text style={styles.text} />
+      <Switch value={props.value} onValueChange={props.onValueChange} />
     </View>
   );
 };

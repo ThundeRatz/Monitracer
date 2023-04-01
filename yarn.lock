@@ -966,6 +966,13 @@
     "@types/yargs" "^15.0.0"
     "chalk" "^4.0.0"
 
+"@react-native-async-storage/async-storage@^1.17.5":
+  "integrity" "sha512-0XT5zZa3mh8XfAFYytq9hPyI6w0FJEBED4pjeLc17pkNF9tND86fsTX2pQFr15uV0nvfYeHisbd/mM7bpGrWKA=="
+  "resolved" "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.17.5.tgz"
+  "version" "1.17.5"
+  dependencies:
+    "merge-options" "^3.0.4"
+
 "@react-native-community/cli-debugger-ui@^5.0.1-alpha.1":
   "integrity" "sha512-o6msDywXU7q0dPKhCTo8IrpmJ+7o+kVghyHlrAndnb30p6vnm4pID5Yi7lHXGfs6bQXorKUWX8oD5xYwWkN8qw=="
   "resolved" "https://registry.npmjs.org/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-5.0.1-alpha.1.tgz"
@@ -1515,6 +1522,39 @@
   dependencies:
     "normalize-path" "^3.0.0"
     "picomatch" "^2.0.4"
+
+"appcenter-analytics@4.4.4":
+  "integrity" "sha512-ie+trXl328rNy/qjuBTPefvFaG8oNhGp7ZVWi/noPIPU+rWqWQGXXIZbdngaRZC11tqgVOCp6pOePyoQ5AIi5A=="
+  "resolved" "https://registry.npmjs.org/appcenter-analytics/-/appcenter-analytics-4.4.4.tgz"
+  "version" "4.4.4"
+  dependencies:
+    "appcenter" "4.4.4"
+
+"appcenter-crashes@4.4.4":
+  "integrity" "sha512-Hps5Gnkv99Sgsc9n8A/HWWFs4tMkVmW4apcc6PKnat2Lquysr55k0jqNSPqZVuSK4DNUyPoqaXMUPbeCUhWNNg=="
+  "resolved" "https://registry.npmjs.org/appcenter-crashes/-/appcenter-crashes-4.4.4.tgz"
+  "version" "4.4.4"
+  dependencies:
+    "appcenter" "4.4.4"
+
+"appcenter-link-scripts@4.4.4":
+  "integrity" "sha512-nQHQW04AUFwhs13WfKb79HqwEMVaXaKq2OYUMNkO30leWDlx1HHLF11pofhQHFY4mprGfXQ2aKxqLlVS9ezVjQ=="
+  "resolved" "https://registry.npmjs.org/appcenter-link-scripts/-/appcenter-link-scripts-4.4.4.tgz"
+  "version" "4.4.4"
+  dependencies:
+    "debug" "4.1.1"
+    "glob" "5.0.15"
+    "mkdirp" "0.5.3"
+    "plist" "^3.0.2"
+    "which" "1.2.11"
+    "xcode" "2.0.0"
+
+"appcenter@4.4.4":
+  "integrity" "sha512-I/9fT2G2G/wqsuUMnhdGm+DbGjT+9AfLedFPppyzh2jKfTaUK8KfwSsHs/+mkQBYq7VToG0G4p3y8Erpg9rG4w=="
+  "resolved" "https://registry.npmjs.org/appcenter/-/appcenter-4.4.4.tgz"
+  "version" "4.4.4"
+  dependencies:
+    "appcenter-link-scripts" "4.4.4"
 
 "appdirsjs@^1.2.4":
   "integrity" "sha512-WO5StDORR6JF/xYnXk/Fm0yu+iULaV5ULKuUw0Tu+jbgiTlSquaWBCgbpnsHLMXldf+fM3Gxn5p7vjond7He6w=="
@@ -2362,6 +2402,13 @@
   dependencies:
     "ms" "2.0.0"
 
+"debug@4.1.1":
+  "integrity" "sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw=="
+  "resolved" "https://registry.npmjs.org/debug/-/debug-4.1.1.tgz"
+  "version" "4.1.1"
+  dependencies:
+    "ms" "^2.1.1"
+
 "decamelize@^1.2.0":
   "integrity" "sha1-9lNNFRSCabIDUue+4m9QH5oZEpA="
   "resolved" "https://registry.npmjs.org/decamelize/-/decamelize-1.2.0.tgz"
@@ -3173,6 +3220,17 @@
     "once" "^1.3.0"
     "path-is-absolute" "^1.0.0"
 
+"glob@5.0.15":
+  "integrity" "sha512-c9IPMazfRITpmAAKi22dK1VKxGDX9ehhqfABDriL/lzO92xcUKEJPQHrVA/2YHSNFB4iFlykVmWvwo48nr3OxA=="
+  "resolved" "https://registry.npmjs.org/glob/-/glob-5.0.15.tgz"
+  "version" "5.0.15"
+  dependencies:
+    "inflight" "^1.0.4"
+    "inherits" "2"
+    "minimatch" "2 || 3"
+    "once" "^1.3.0"
+    "path-is-absolute" "^1.0.0"
+
 "globals@^11.1.0":
   "integrity" "sha512-WOBp/EEGUiIsJSp7wcv/y6MO+lV9UoncWqxuFfm8eBwzWNgyfBd6Gz+IeKQ9jCmyhoH99g15M3T+QaVHFjizVA=="
   "resolved" "https://registry.npmjs.org/globals/-/globals-11.12.0.tgz"
@@ -3602,6 +3660,11 @@
   "resolved" "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   "version" "7.0.0"
 
+"is-plain-obj@^2.1.0":
+  "integrity" "sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA=="
+  "resolved" "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-2.1.0.tgz"
+  "version" "2.1.0"
+
 "is-plain-object@^2.0.3", "is-plain-object@^2.0.4":
   "integrity" "sha512-h5PpgXkWitc38BBMYawTYMWJHFZJVnBquFE57xFpjB8pJFiF6gZ+bU+WyI/yqXiFR5mdLsgYNaPe8uao6Uv9Og=="
   "resolved" "https://registry.npmjs.org/is-plain-object/-/is-plain-object-2.0.4.tgz"
@@ -3670,6 +3733,11 @@
   "integrity" "sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE="
   "resolved" "https://registry.npmjs.org/isarray/-/isarray-1.0.0.tgz"
   "version" "1.0.0"
+
+"isexe@^1.1.1":
+  "integrity" "sha512-d2eJzK691yZwPHcv1LbeAOa91yMJ9QmfTgSO1oXB65ezVhXQsxBac2vEB4bMVms9cGzaA99n6V2viHMq82VLDw=="
+  "resolved" "https://registry.npmjs.org/isexe/-/isexe-1.1.2.tgz"
+  "version" "1.1.2"
 
 "isexe@^2.0.0":
   "integrity" "sha1-6PvzdNxVb/iUehDcsFctYz8s+hA="
@@ -4523,6 +4591,13 @@
   dependencies:
     "object-visit" "^1.0.0"
 
+"merge-options@^3.0.4":
+  "integrity" "sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ=="
+  "resolved" "https://registry.npmjs.org/merge-options/-/merge-options-3.0.4.tgz"
+  "version" "3.0.4"
+  dependencies:
+    "is-plain-obj" "^2.1.0"
+
 "merge-stream@^2.0.0":
   "integrity" "sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w=="
   "resolved" "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz"
@@ -4914,7 +4989,7 @@
   "resolved" "https://registry.npmjs.org/mimic-fn/-/mimic-fn-2.1.0.tgz"
   "version" "2.1.0"
 
-"minimatch@^3.0.2", "minimatch@^3.0.4":
+"minimatch@^3.0.2", "minimatch@^3.0.4", "minimatch@2 || 3":
   "integrity" "sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA=="
   "resolved" "https://registry.npmjs.org/minimatch/-/minimatch-3.0.4.tgz"
   "version" "3.0.4"
@@ -4941,6 +5016,18 @@
   dependencies:
     "minimist" "^1.2.5"
 
+"mkdirp@0.5.3":
+  "integrity" "sha512-P+2gwrFqx8lhew375MQHHeTlY8AuOJSrGf0R5ddkEndUkmwpgUob/vQuBD1V22/Cw1/lJr4x+EjllSezBThzBg=="
+  "resolved" "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.3.tgz"
+  "version" "0.5.3"
+  dependencies:
+    "minimist" "^1.2.5"
+
+"ms@^2.1.1", "ms@2.1.2":
+  "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
+  "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
+  "version" "2.1.2"
+
 "ms@2.0.0":
   "integrity" "sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g="
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
@@ -4950,11 +5037,6 @@
   "integrity" "sha512-tgp+dl5cGk28utYktBsrFqA7HKgrhgPsg6Z/EfhWI4gl1Hwq8B/GmY/0oXZ6nF8hDVesS/FpnYaD/kOWhYQvyg=="
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.1.tgz"
   "version" "2.1.1"
-
-"ms@2.1.2":
-  "integrity" "sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w=="
-  "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
-  "version" "2.1.2"
 
 "nanoid@^3.1.23":
   "integrity" "sha512-zJpuPDwOv8D2zq2WRoMe1HsfZthVewpel9CAvTfc/2mBD1uUT/agc5f7GHGWXlYkFvi1mVxe4IjvP2HNrop7nQ=="
@@ -5409,7 +5491,7 @@
   dependencies:
     "find-up" "^4.0.0"
 
-"plist@^3.0.1":
+"plist@^3.0.1", "plist@^3.0.2":
   "integrity" "sha512-MSrkwZBdQ6YapHy87/8hDU8MnIcyxBKjeF+McXnr5A9MtffPewTs7G3hlpodT5TacyfIyFTaJEhh3GGcmasTgQ=="
   "resolved" "https://registry.npmjs.org/plist/-/plist-3.0.2.tgz"
   "version" "3.0.2"
@@ -5636,7 +5718,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@0.64.0":
+"react-native@*", "react-native@^0.0.0-0 || 0.60 - 0.68 || 1000.0.0", "react-native@0.64.0":
   "integrity" "sha512-8dhSHBthgGwAjU+OjqUEA49229ThPMQH7URH0u8L0xoQFCnZO2sZ9Wc6KcbxI0x9KSmjCMFFZqRe3w3QsRv64g=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.64.0.tgz"
   "version" "0.64.0"
@@ -7028,6 +7110,13 @@
   dependencies:
     "isexe" "^2.0.0"
 
+"which@1.2.11":
+  "integrity" "sha512-8kWuAZrtPpcfj0UM1rpIJopAawk+Uz+KxNSxk0U0j9fmekidFSRDhyrHOEbD5qePWF6YicG1wSUuFA6BfsE3ig=="
+  "resolved" "https://registry.npmjs.org/which/-/which-1.2.11.tgz"
+  "version" "1.2.11"
+  dependencies:
+    "isexe" "^1.1.1"
+
 "word-wrap@^1.2.3", "word-wrap@~1.2.3":
   "integrity" "sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ=="
   "resolved" "https://registry.npmjs.org/word-wrap/-/word-wrap-1.2.3.tgz"
@@ -7107,6 +7196,14 @@
   "integrity" "sha512-uCrmPITrqTEzhn0TtT57fJaNaw8YJs1aCzs+P/QqxsDbvPZSv7XMPPwXrKvHtD6pLjBM/NaVwraWJm8q83Y4iQ=="
   "resolved" "https://registry.npmjs.org/xcode/-/xcode-2.1.0.tgz"
   "version" "2.1.0"
+  dependencies:
+    "simple-plist" "^1.0.0"
+    "uuid" "^3.3.2"
+
+"xcode@2.0.0":
+  "integrity" "sha512-5xF6RCjAdDEiEsbbZaS/gBRt3jZ/177otZcpoLCjGN/u1LrfgH7/Sgeeavpr/jELpyDqN2im3AKosl2G2W8hfw=="
+  "resolved" "https://registry.npmjs.org/xcode/-/xcode-2.0.0.tgz"
+  "version" "2.0.0"
   dependencies:
     "simple-plist" "^1.0.0"
     "uuid" "^3.3.2"

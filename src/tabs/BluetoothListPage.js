@@ -10,7 +10,13 @@
  */
 
 import React, {useEffect} from 'react';
-import {SafeAreaView, View, StyleSheet, Dimensions, ScrollView} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+} from 'react-native';
 
 import {H1, Body, H3} from '../components/typography';
 import {Header, ListSeparator} from '../components/cell';
@@ -60,6 +66,6 @@ export const BluetoothListPage = () => {
 
 const styles = StyleSheet.create({
   titleContainer: {
-      backgroundColor: COLORS.thunderBlue,
+    backgroundColor: COLORS.thunderBlue,
   },
 });

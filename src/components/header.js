@@ -9,19 +9,14 @@ export const HeaderComponent = props => {
   return (
     <View style={styles.header}>
       <TouchableOpacity
-        onPress={() => NavigationManager.GoToTab('BluetoothListPage')}
-      >
+        onPress={() => NavigationManager.GoToTab('BluetoothListPage')}>
         <Ionicons name="bluetooth" color={COLORS.thunderWhite} size={30} />
       </TouchableOpacity>
 
       <TouchableOpacity
         onPress={() => NavigationManager.GoToTab('HomePage')}
-        onLongPress={() => GoToDinoTracer()}
-      >
-        <Image
-          style={styles.icon}
-          source={require('../assets/img/logo.png')}
-        />
+        onLongPress={() => GoToDinoTracer()}>
+        <Image style={styles.icon} source={require('../assets/img/logo.png')} />
       </TouchableOpacity>
 
       <TouchableOpacity>

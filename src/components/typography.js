@@ -23,7 +23,9 @@ export const Body = props => (
 );
 
 export const BodySecondary = props => (
-  <Text style={styles(props.color, props.align).bodySecondary}>{props.children}</Text>
+  <Text style={styles(props.color, props.align).bodySecondary}>
+    {props.children}
+  </Text>
 );
 
 export const Input = props => (

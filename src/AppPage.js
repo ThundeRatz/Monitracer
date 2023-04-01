@@ -106,7 +106,11 @@ function MyTabs() {
         tabBarActiveTintColor: COLORS.thunderWhite,
         tabBarInactiveTintColor: COLORS.gray3,
 
-        tabBarButton: ['HomePage', 'BluetoothListPage','TestServerPage'].includes(route.name)
+        tabBarButton: [
+          'HomePage',
+          'BluetoothListPage',
+          'TestServerPage',
+        ].includes(route.name)
           ? () => {
               return null; //Dont show "Home" and "BluetoothListPage" in the bottom tabs (but it is still possible to navigate to them):
             }
@@ -127,8 +131,7 @@ function MyTabs() {
 
           return <Ionicons name={iconName} size={size} color={color} />;
         },
-      })}
-    >
+      })}>
       {pagesArray.map((element, index) => {
         return (
           <Tab.Screen

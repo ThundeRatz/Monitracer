@@ -13,7 +13,7 @@ import {ActionButton} from '../components/button';
 import React from 'react';
 import {ScrollView, View, StyleSheet} from 'react-native';
 import {UnavailablePage} from '../components/unavailablePage';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const SHOW_PAGE = true;
 
@@ -56,18 +56,18 @@ export const EvaluationPage = props => {
     <SafeAreaView>
       {SHOW_PAGE ? (
         <UnavailablePage />
-      ): (
+      ) : (
         <ScrollView style={styles.container}>
-        {evaluateRoutines.map((element, index) => {
-          return (
-            <View style={styles.buttonContainer} key={index}>
-              <ActionButton
-                title={element.test_name}
-                onPress={() => element.routine()}
-              />
-            </View>
-          );
-        })}
+          {evaluateRoutines.map((element, index) => {
+            return (
+              <View style={styles.buttonContainer} key={index}>
+                <ActionButton
+                  title={element.test_name}
+                  onPress={() => element.routine()}
+                />
+              </View>
+            );
+          })}
         </ScrollView>
       )}
     </SafeAreaView>
