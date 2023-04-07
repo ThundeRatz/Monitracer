@@ -1,12 +1,23 @@
 # New MoniTracer
 
-Aplicativo desenvolvido para controle de constantes, manuseio e testagem do robô seguidor de linha Tracer.
+App developed in React-Native for constants controll, handling and test of the line follower robot Tracer.
+## 🏃🏽‍♀️ Run project
 
-Será desenvolvido em React-Native...
+To run on staging enviroment, run on project root:
 
-## 📱 Geração de versão de release na Play Store
+```bash
+npm run android:staging
+```
 
-Para gerar a versão de release basta rodar:
+To run on production enviroment, run on project root:
+
+```bash
+npm run android:prod
+```
+
+## 📱 Create release version for Play Store
+
+To create the release version run:
 
 ```bash
 cd android
@@ -15,4 +26,4 @@ cd android
 ./gradlew bundleRelease
 ```
 
-Esses comandos irão gerar o arquivo `app-release.aab` estará disponível na pasta `android/app/build/outputs/bundle/release`. Esse arquivo pode ser usado no Google Play Console para gerar uma versão do app.
+These commnads will create the file `app-release.aab`, aveilable on the folder `android/app/build/outputs/bundle/release`. This file can be used on Google Play Console to generate a version of the app on Play Store.
