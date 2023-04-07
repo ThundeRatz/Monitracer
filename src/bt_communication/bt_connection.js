@@ -27,6 +27,7 @@ export const BTConnection = () => {
   const [lista, setLista] = useState([]);
   const [bolEnableBlu, setBolEnableBlu] = useState(false);
   const [connected, setConnected] = useState(false);
+  const [connectedDeviceId, setConnectedDeviceId] = useState("");
   const [loading, setLoading] = useState(false);
 
   /**
@@ -108,10 +109,11 @@ export const BTConnection = () => {
       );
       const connected = await BluetoothSerial.isConnected();
       setConnected(connected);
+      setConnectedDeviceId(device.id);
     } catch (error) {
       console.log(error);
     }
   };
 
-  return [BTInit, BTRemove, EnableBT, DisableBT, BTLogin, lista, bolEnableBlu];
+  return [BTInit, BTRemove, EnableBT, DisableBT, BTLogin, lista, bolEnableBlu, connectedDeviceId];
 };

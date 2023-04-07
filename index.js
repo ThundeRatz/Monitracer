@@ -13,6 +13,12 @@ import {HomePage} from './src/tabs/HomePage.js';
 import {AppPage} from './src/AppPage.js';
 import {TestServer} from './src/tests/TestServerPage';
 
+Navigation.setDefaultOptions({
+  layout: {
+    orientation: ['portrait'],
+  },
+});
+
 Navigation.registerComponent('AppPage', () => AppPage);
 Navigation.registerComponent('SplashScreen', () => SplashScreen);
 Navigation.registerComponent('BluetoothListPage', () => BluetoothListPage);

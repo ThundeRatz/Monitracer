@@ -10,7 +10,7 @@ import {
 import {H3, Body, BodySecondary} from './typography';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {COLORS} from './colors';
-import {SPACING} from './grid';
+import {SPACING, HBox, HBoxItem} from './grid';
 
 export const Header = props => {
   return <View style={styles.header}>{props.children}</View>;
@@ -91,8 +91,16 @@ export const DeviceCell = props => {
   return (
     <View style={{flexDirection: 'row'}}>
       <View style={styles.deviceId}>
-        <Body>{props.deviceName}</Body>
-        <BodySecondary color={COLORS.gray3}>{props.deviceId}</BodySecondary>
+        <HBox style={{backgroundColor:COLORS.thunderBlack}}>
+          <HBoxItem>
+            <Body>{props.deviceName}</Body>
+            <BodySecondary color={COLORS.gray3}>{props.deviceId}</BodySecondary>
+          </HBoxItem>
+          <HBoxItem flex>
+            {props.deviceIsConnected && <View style ={styles.connectionBall}/>}
+          </HBoxItem>
+        </HBox>
+        
       </View>
     </View>
   );
@@ -123,6 +131,13 @@ const styles = StyleSheet.create({
     padding: SPACING.xSmall,
     borderRadius: SPACING.xSmall,
     width: '100%',
+  },
+  connectionBall: {
+    backgroundColor: COLORS.thunderSuccess,
+    width: 20,
+    height: 20,
+    alignSelf: 'flex-end',
+    borderRadius: 10,
   },
   secondaryDropdown: {
     alignItems: 'center',
