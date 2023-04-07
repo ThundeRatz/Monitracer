@@ -5617,6 +5617,11 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-config@^1.5.0":
+  "integrity" "sha512-slecooA/0tCwhb+RuWEbwLqtKirGh9vWPRpgDfH7uPAraCciqHNH2XjS9ylW+Spn4FUrHg5KWTqUGs9BdBADHg=="
+  "resolved" "https://registry.npmjs.org/react-native-config/-/react-native-config-1.5.0.tgz"
+  "version" "1.5.0"
+
 "react-native-navigation@^7.21.0":
   "integrity" "sha512-KkO9LCoiXGRvEMPWju7rxTrAGXdTVmVGYcEJNQipZSwFIvIE+3hwBCp11ELyWHd9h0e8FDlT0vqHdxE2osOF+w=="
   "resolved" "https://registry.npmjs.org/react-native-navigation/-/react-native-navigation-7.23.1.tgz"
