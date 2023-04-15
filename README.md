@@ -17,6 +17,19 @@ npm run android:prod
 
 ## 📱 Create release version for Play Store
 
+First, update the code version on `/android/app/build.gradle`. Add one to `versionCode` and upgrade `versionName` according with change
+
+```
+android {
+    ...
+    defaultConfig {
+        ...
+        versionCode X 
+        versionName "X.X.X"   
+    }
+}
+```
+
 To create the release version run:
 
 ```bash
